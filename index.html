@@ -15,9 +15,12 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #0a0a0a;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 119, 198, 0.05) 0%, transparent 50%);
             min-height: 100vh;
-            color: #333;
+            color: #e0e0e0;
         }
 
         .main-container {
@@ -29,13 +32,20 @@
 
         .header {
             text-align: center;
-            color: white;
+            color: #f0f0f0;
             margin-bottom: 30px;
             padding-top: 20px;
+            position: relative;
         }
 
         .header h1 {
-            font-size: 28px;
+            font-size: 24px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #c0c0c0, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 10px;
         }
 
@@ -44,78 +54,97 @@
             top: 20px;
             right: 20px;
             padding: 5px 10px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 15px;
-            color: white;
-            font-size: 12px;
+            background: rgba(30, 30, 30, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            color: #888;
+            font-size: 11px;
             display: flex;
             align-items: center;
             gap: 5px;
         }
 
         .sync-indicator {
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
-            background: #4CAF50;
+            background: #00ff88;
         }
 
         .sync-indicator.syncing {
-            background: #FFC107;
+            background: #ffaa00;
             animation: pulse 1s infinite;
         }
 
         .sync-indicator.offline {
-            background: #f44336;
+            background: #ff3366;
         }
 
         @keyframes pulse {
             0% { opacity: 1; }
-            50% { opacity: 0.5; }
+            50% { opacity: 0.3; }
             100% { opacity: 1; }
         }
 
         /* Section Selector */
         .section-selector {
-            background: rgba(255,255,255,0.2);
-            border-radius: 20px;
-            padding: 10px;
+            background: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 8px;
             margin-bottom: 30px;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+            gap: 8px;
         }
 
         .section-btn {
             padding: 12px;
-            background: rgba(255,255,255,0.3);
-            color: white;
-            border: 2px solid transparent;
-            border-radius: 15px;
-            font-weight: 600;
-            font-size: 14px;
+            background: transparent;
+            color: #888;
+            border: 1px solid transparent;
+            border-radius: 10px;
+            font-weight: 300;
+            font-size: 13px;
             cursor: pointer;
             transition: all 0.3s;
             text-align: center;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
         }
 
         .section-btn.active {
-            background: white;
-            color: #667eea;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
         }
 
         .section-btn:hover {
-            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.03);
+            color: #fff;
+        }
+
+        .section-btn svg {
+            width: 16px;
+            height: 16px;
+            opacity: 0.8;
         }
 
         /* Auth Styles */
         .auth-container {
-            background: white;
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
-            padding: 30px;
+            padding: 40px 30px;
             margin-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
             text-align: center;
         }
 
@@ -123,107 +152,152 @@
             width: 100%;
             padding: 15px;
             margin: 10px 0;
-            border: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 10px;
-            font-size: 16px;
-            font-weight: 600;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: all 0.3s;
+        }
+
+        .auth-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
         }
 
         .auth-button:active {
-            transform: scale(0.95);
+            transform: scale(0.98);
         }
 
         .google-signin {
-            background: white;
-            border: 2px solid #ddd;
-            color: #333;
+            background: rgba(255, 255, 255, 0.05);
+            color: #e0e0e0;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
         }
 
+        .google-signin:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
         .anonymous-signin {
-            background: #667eea;
-            color: white;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            color: #e0e0e0;
         }
 
         /* Card Styles */
         .card {
-            background: white;
-            border-radius: 20px;
+            background: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
             padding: 20px;
             margin-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .card h3 {
+            color: #f0f0f0;
+            font-weight: 300;
+            letter-spacing: 1px;
+            font-size: 16px;
         }
 
         /* Form Styles */
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-            color: #333;
-            font-size: 14px;
+            margin-bottom: 8px;
+            font-weight: 300;
+            color: #aaa;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .form-group input, .form-group textarea, .form-group select {
             width: 100%;
-            padding: 10px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 16px;
-            transition: border-color 0.3s;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            font-size: 14px;
+            color: #e0e0e0;
+            transition: all 0.3s;
         }
 
         .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
             outline: none;
-            border-color: #667eea;
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
         .form-group textarea {
             resize: vertical;
-            min-height: 60px;
+            min-height: 80px;
         }
 
         /* Button Styles */
         .btn {
-            padding: 12px 20px;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: 600;
+            padding: 12px 24px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 1px;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s;
+            text-transform: uppercase;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
         }
 
         .btn-success {
-            background: #4CAF50;
-            color: white;
+            background: rgba(0, 255, 136, 0.1);
+            color: #00ff88;
+            border-color: rgba(0, 255, 136, 0.3);
+        }
+
+        .btn-success:hover {
+            background: rgba(0, 255, 136, 0.15);
         }
 
         .btn-danger {
-            background: #f44336;
-            color: white;
+            background: rgba(255, 51, 102, 0.1);
+            color: #ff3366;
+            border-color: rgba(255, 51, 102, 0.3);
+        }
+
+        .btn-danger:hover {
+            background: rgba(255, 51, 102, 0.15);
         }
 
         .btn-warning {
-            background: #FF9800;
-            color: white;
+            background: rgba(255, 170, 0, 0.1);
+            color: #ffaa00;
+            border-color: rgba(255, 170, 0, 0.3);
+        }
+
+        .btn-warning:hover {
+            background: rgba(255, 170, 0, 0.15);
         }
 
         .btn:active {
-            transform: scale(0.95);
+            transform: scale(0.98);
         }
 
         .btn-full {
@@ -237,33 +311,56 @@
         }
 
         .rating-dash {
-            width: 20px;
-            height: 4px;
-            border-radius: 2px;
-            background: #e0e0e0;
+            width: 25px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
         }
 
-        .rating-dash.low { background: #f44336; }
-        .rating-dash.medium { background: #FFC107; }
-        .rating-dash.high { background: #4CAF50; }
-        .rating-dash.inactive { background: #e0e0e0; }
+        .rating-dash.low { 
+            background: linear-gradient(90deg, #ff3366 0%, rgba(255, 51, 102, 0.3) 100%);
+        }
+        .rating-dash.medium { 
+            background: linear-gradient(90deg, #ffaa00 0%, #ffaa00 50%, rgba(255, 170, 0, 0.3) 100%);
+        }
+        .rating-dash.high { 
+            background: #00ff88;
+            box-shadow: 0 0 5px rgba(0, 255, 136, 0.5);
+        }
+        .rating-dash.inactive { 
+            background: rgba(255, 255, 255, 0.05);
+        }
 
         /* Women Management Styles */
         .filter-bar {
-            background: white;
+            background: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 15px;
             padding: 15px;
             margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .search-input {
             width: 100%;
-            padding: 10px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 16px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            font-size: 14px;
+            color: #e0e0e0;
             margin-bottom: 10px;
+        }
+
+        .search-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .search-input::placeholder {
+            color: #666;
         }
 
         .filter-chips {
@@ -274,18 +371,26 @@
 
         .filter-chip {
             padding: 6px 12px;
-            border: 2px solid #e0e0e0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
-            background: white;
+            background: rgba(255, 255, 255, 0.03);
+            color: #888;
             cursor: pointer;
             transition: all 0.2s;
-            font-size: 14px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .filter-chip:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
         }
 
         .filter-chip.active {
-            background: #667eea;
-            color: white;
-            border-color: #667eea;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
         .woman-grid {
@@ -294,46 +399,66 @@
         }
 
         .woman-card {
-            background: white;
+            background: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 15px;
             padding: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: all 0.3s;
             position: relative;
         }
 
         .woman-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         .woman-score {
             position: absolute;
             top: 10px;
             right: 10px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+            color: #fff;
             padding: 5px 10px;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 16px;
+            border-radius: 8px;
+            font-weight: 300;
+            font-size: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .woman-status-badge {
             display: inline-block;
             padding: 4px 10px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: 600;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 400;
             text-transform: uppercase;
+            letter-spacing: 1px;
             margin-top: 5px;
         }
 
-        .status-current { background: #4CAF50; color: white; }
-        .status-in-process { background: #2196F3; color: white; }
-        .status-passive { background: #FF9800; color: white; }
-        .status-archived { background: #9E9E9E; color: white; }
+        .status-current { 
+            background: rgba(0, 255, 136, 0.15);
+            color: #00ff88;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+        }
+        .status-in-process { 
+            background: rgba(33, 150, 243, 0.15);
+            color: #64b5f6;
+            border: 1px solid rgba(33, 150, 243, 0.3);
+        }
+        .status-passive { 
+            background: rgba(255, 170, 0, 0.15);
+            color: #ffaa00;
+            border: 1px solid rgba(255, 170, 0, 0.3);
+        }
+        .status-archived { 
+            background: rgba(158, 158, 158, 0.15);
+            color: #9e9e9e;
+            border: 1px solid rgba(158, 158, 158, 0.3);
+        }
 
         /* Date Scheduling Styles */
         .date-list {
@@ -342,11 +467,12 @@
         }
 
         .date-card {
-            background: white;
-            border-radius: 15px;
+            background: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
             padding: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border-left: 4px solid #667eea;
+            border-left: 2px solid rgba(255, 255, 255, 0.3);
         }
 
         .date-header {
@@ -357,16 +483,17 @@
         }
 
         .date-time {
-            font-weight: 600;
-            color: #667eea;
-            font-size: 16px;
+            font-weight: 300;
+            color: #fff;
+            font-size: 14px;
         }
 
         .date-woman {
-            background: #f0f0f0;
+            background: rgba(255, 255, 255, 0.05);
             padding: 4px 10px;
-            border-radius: 8px;
-            font-size: 14px;
+            border-radius: 6px;
+            font-size: 12px;
+            color: #aaa;
         }
 
         /* Modal Styles */
@@ -377,7 +504,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
             z-index: 1000;
             padding: 20px;
             overflow-y: auto;
@@ -388,38 +516,48 @@
         }
 
         .modal-content {
-            background: white;
+            background: rgba(15, 15, 15, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
-            padding: 20px;
+            padding: 30px 20px;
             max-width: 450px;
             margin: 20px auto;
             position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
         }
 
         .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .modal-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: #667eea;
+            font-size: 18px;
+            font-weight: 300;
+            color: #fff;
+            letter-spacing: 1px;
         }
 
         .close-btn {
             width: 30px;
             height: 30px;
             border-radius: 50%;
-            background: #f0f0f0;
-            border: none;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             cursor: pointer;
             font-size: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: #666;
+            transition: all 0.3s;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
         }
 
         /* Bottom Navigation */
@@ -428,11 +566,12 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: white;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             justify-content: space-around;
             padding: 10px 0;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
         }
 
         .nav-item {
@@ -445,17 +584,19 @@
         }
 
         .nav-item.active {
-            color: #667eea;
+            color: #fff;
         }
 
         .nav-icon {
-            font-size: 24px;
-            margin-bottom: 2px;
+            font-size: 20px;
+            margin-bottom: 4px;
         }
 
         .nav-label {
-            font-size: 11px;
-            font-weight: 500;
+            font-size: 10px;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         /* Approach specific styles */
@@ -468,27 +609,35 @@
 
         .effort-btn {
             padding: 10px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            background: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.03);
+            color: #888;
             cursor: pointer;
             transition: all 0.3s;
             text-align: center;
         }
 
         .effort-btn.selected {
-            background: #667eea;
-            color: white;
-            border-color: #667eea;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
         .approach-item {
-            background: white;
-            border-radius: 15px;
+            background: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
             padding: 15px;
             margin-bottom: 10px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
             cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .approach-item:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateX(3px);
         }
 
         .approach-header {
@@ -498,12 +647,12 @@
         }
 
         .approach-date {
-            font-weight: 600;
-            color: #667eea;
+            font-weight: 300;
+            color: #fff;
         }
 
         .photo-upload-area {
-            border: 2px dashed #e0e0e0;
+            border: 1px dashed rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             padding: 20px;
             text-align: center;
@@ -517,34 +666,73 @@
             margin-top: 10px;
         }
 
+        .photo-preview-item {
+            position: relative;
+            display: inline-block;
+        }
+
         .photo-preview {
             width: 80px;
             height: 80px;
-            border-radius: 10px;
+            border-radius: 8px;
             object-fit: cover;
-            border: 2px solid #667eea;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .photo-delete-btn {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(255, 51, 102, 0.9);
+            color: white;
+            border: 1px solid rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            transition: all 0.2s;
+        }
+
+        .photo-delete-btn:hover {
+            background: #ff3366;
+            transform: scale(1.1);
         }
 
         .rating-section {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .rating-section:last-of-type {
+            border-bottom: none;
         }
 
         .rating-section h3 {
-            color: #667eea;
-            margin-bottom: 10px;
-            font-size: 16px;
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 14px;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .rating-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .rating-item label {
             flex: 1;
-            font-size: 14px;
+            font-size: 13px;
+            color: #aaa;
         }
 
         .rating-buttons {
@@ -553,43 +741,58 @@
         }
 
         .rating-btn {
-            padding: 5px 10px;
-            border: 1px solid #e0e0e0;
+            padding: 5px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 5px;
-            background: white;
+            background: rgba(255, 255, 255, 0.03);
+            color: #666;
             cursor: pointer;
-            font-size: 12px;
+            font-size: 11px;
             transition: all 0.2s;
+            text-transform: uppercase;
+        }
+
+        .rating-btn:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #aaa;
         }
 
         .rating-btn.selected {
-            background: #667eea;
-            color: white;
-            border-color: #667eea;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
         .loading {
             text-align: center;
-            color: white;
+            color: #666;
             padding: 20px;
         }
 
         .user-info {
             text-align: center;
-            color: white;
-            font-size: 14px;
+            color: #666;
+            font-size: 12px;
             margin-top: 5px;
+            letter-spacing: 0.5px;
         }
 
         .sign-out {
-            background: #f44336;
-            color: white;
+            background: rgba(255, 51, 102, 0.1);
+            color: #ff3366;
             padding: 8px 15px;
-            border: none;
+            border: 1px solid rgba(255, 51, 102, 0.3);
             border-radius: 8px;
-            font-size: 14px;
+            font-size: 12px;
             cursor: pointer;
             margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+
+        .sign-out:hover {
+            background: rgba(255, 51, 102, 0.2);
         }
 
         .section {
@@ -603,43 +806,59 @@
         .empty-state {
             text-align: center;
             padding: 40px 20px;
-            color: #999;
+            color: #666;
         }
 
         .empty-state-icon {
             font-size: 48px;
             margin-bottom: 10px;
+            opacity: 0.3;
         }
 
         .progress-bar {
             width: 100%;
-            height: 30px;
-            background: #f0f0f0;
-            border-radius: 15px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 2px;
             overflow: hidden;
             position: relative;
-            margin-top: 10px;
+            margin-top: 15px;
         }
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #667eea, #764ba2);
+            background: linear-gradient(90deg, rgba(0, 255, 136, 0.8), rgba(0, 255, 136, 0.3));
             transition: width 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
+            position: relative;
+        }
+
+        .progress-fill::after {
+            content: attr(data-percentage);
+            position: absolute;
+            right: -30px;
+            top: 6px;
+            font-size: 10px;
+            color: #666;
         }
 
         .edit-actions {
             display: flex;
-            gap: 10px;
-            margin-top: 10px;
+            gap: 8px;
+            margin-top: 12px;
         }
 
         .woman-link-select {
             margin-top: 10px;
+        }
+
+        select {
+            background: rgba(255, 255, 255, 0.03);
+            color: #e0e0e0;
+        }
+
+        select option {
+            background: #1a1a1a;
+            color: #e0e0e0;
         }
     </style>
 </head>
@@ -651,7 +870,7 @@
 
     <div class="main-container">
         <div class="header">
-            <h1>💪 Dating Tracker</h1>
+            <h1>TRACKER</h1>
             <div class="user-info" id="userInfo"></div>
         </div>
 
@@ -689,13 +908,22 @@
             <!-- Section Selector -->
             <div class="section-selector">
                 <button class="section-btn active" onclick="switchSection('approaches')">
-                    📊 Approaches
+                    <svg fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+                    </svg>
+                    APPROACH
                 </button>
                 <button class="section-btn" onclick="switchSection('dates')">
-                    📅 Dates
+                    <svg fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                    </svg>
+                    DATES
                 </button>
                 <button class="section-btn" onclick="switchSection('wms')">
-                    👩 WMS
+                    <svg fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+                    </svg>
+                    WMS
                 </button>
             </div>
 
@@ -705,25 +933,25 @@
                 <div class="card">
                     <div style="display: flex; justify-content: space-around; margin-bottom: 20px;">
                         <div style="text-align: center;">
-                            <div style="font-size: 12px; color: #666; text-transform: uppercase;">This Week</div>
-                            <div style="font-size: 36px; font-weight: bold; color: #667eea;" id="weekScore">0</div>
+                            <div style="font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;">This Week</div>
+                            <div style="font-size: 36px; font-weight: 200; color: #fff;" id="weekScore">0</div>
                         </div>
                         <div style="text-align: center;">
-                            <div style="font-size: 12px; color: #666; text-transform: uppercase;">Target</div>
-                            <div style="font-size: 36px; font-weight: bold; color: #667eea;">5</div>
+                            <div style="font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;">Target</div>
+                            <div style="font-size: 36px; font-weight: 200; color: #fff;">5</div>
                         </div>
                     </div>
                     <div class="progress-bar">
-                        <div class="progress-fill" id="progressBar" style="width: 0%">0%</div>
+                        <div class="progress-fill" id="progressBar" style="width: 0%" data-percentage="0%"></div>
                     </div>
                 </div>
 
                 <button class="btn btn-primary btn-full" onclick="showApproachForm()" style="margin-bottom: 20px;">
-                    + Log New Approach
+                    + NEW APPROACH
                 </button>
 
                 <div class="card">
-                    <h3 style="margin-bottom: 15px; color: #667eea;">Recent Approaches</h3>
+                    <h3 style="margin-bottom: 15px;">RECENT APPROACHES</h3>
                     <div id="approachList"></div>
                 </div>
             </div>
@@ -731,16 +959,16 @@
             <!-- Date Scheduling Section -->
             <div id="datesSection" class="section">
                 <button class="btn btn-primary btn-full" onclick="showDateForm()" style="margin-bottom: 20px;">
-                    + Schedule New Date
+                    + SCHEDULE DATE
                 </button>
 
                 <div class="card">
-                    <h3 style="margin-bottom: 15px; color: #667eea;">Upcoming Dates</h3>
+                    <h3 style="margin-bottom: 15px;">UPCOMING DATES</h3>
                     <div id="upcomingDates"></div>
                 </div>
 
                 <div class="card" style="margin-top: 20px;">
-                    <h3 style="margin-bottom: 15px; color: #667eea;">Past Dates</h3>
+                    <h3 style="margin-bottom: 15px;">PAST DATES</h3>
                     <div id="pastDates"></div>
                 </div>
             </div>
@@ -748,7 +976,7 @@
             <!-- Woman Management System Section -->
             <div id="wmsSection" class="section">
                 <button class="btn btn-primary btn-full" onclick="showWomanForm()" style="margin-bottom: 20px;">
-                    + Add New Woman
+                    + ADD WOMAN
                 </button>
 
                 <div class="filter-bar">
@@ -771,15 +999,27 @@
     <!-- Bottom Navigation -->
     <div class="bottom-nav" id="bottomNav" style="display: none;">
         <div class="nav-item active" onclick="switchTab('dashboard')">
-            <div class="nav-icon">📊</div>
+            <div class="nav-icon">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+                </svg>
+            </div>
             <div class="nav-label">Dashboard</div>
         </div>
         <div class="nav-item" onclick="switchTab('history')">
-            <div class="nav-icon">📜</div>
+            <div class="nav-icon">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/>
+                </svg>
+            </div>
             <div class="nav-label">History</div>
         </div>
         <div class="nav-item" onclick="switchTab('stats')">
-            <div class="nav-icon">📈</div>
+            <div class="nav-icon">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                </svg>
+            </div>
             <div class="nav-label">Stats</div>
         </div>
     </div>
@@ -927,6 +1167,9 @@
                     <button onclick="document.getElementById('photoUpload').click()" class="btn btn-primary btn-full">
                         Select Photos
                     </button>
+                    <p style="font-size: 12px; color: #999; margin-top: 10px; text-align: center;">
+                        Click the × on any photo to remove it
+                    </p>
                     <div class="photo-preview-container" id="photoPreview"></div>
                 </div>
             </div>
@@ -1376,11 +1619,8 @@
                         });
                     });
                     
-                    // Update photo preview
-                    const preview = document.getElementById('photoPreview');
-                    preview.innerHTML = window.currentPhotos.map(photo => 
-                        `<img src="${photo}" class="photo-preview">`
-                    ).join('');
+                    // Update photo preview with delete buttons
+                    updatePhotoPreview();
                 }
             } else {
                 document.getElementById('womanName').value = '';
@@ -1586,12 +1826,12 @@
             const percentage = Math.min((weekScore / 5) * 100, 100);
             const progressBar = document.getElementById('progressBar');
             progressBar.style.width = percentage + '%';
-            progressBar.textContent = Math.round(percentage) + '%';
+            progressBar.setAttribute('data-percentage', Math.round(percentage) + '%');
             
             // Update approach list
             const list = document.getElementById('approachList');
             if (window.approaches.length === 0) {
-                list.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📊</div>No approaches yet</div>';
+                list.innerHTML = '<div class="empty-state"><div class="empty-state-icon">—</div>No approaches yet</div>';
                 return;
             }
             
@@ -1603,15 +1843,25 @@
                     <div class="approach-item" onclick="showApproachForm('${approach.firebaseKey}')">
                         <div class="approach-header">
                             <span class="approach-date">${date.toLocaleDateString()}</span>
-                            <span style="background: ${approach.effortLevel === 'high' ? '#4CAF50' : approach.effortLevel === 'medium' ? '#FFC107' : '#FF9800'}; color: white; padding: 2px 8px; border-radius: 5px; font-size: 12px;">
-                                ${approach.effortLevel.toUpperCase()} +${approach.effortScore}
+                            <span style="background: ${approach.effortLevel === 'high' ? 'rgba(0, 255, 136, 0.15)' : approach.effortLevel === 'medium' ? 'rgba(255, 170, 0, 0.15)' : 'rgba(255, 51, 102, 0.15)'}; color: ${approach.effortLevel === 'high' ? '#00ff88' : approach.effortLevel === 'medium' ? '#ffaa00' : '#ff3366'}; padding: 4px 10px; border-radius: 6px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid ${approach.effortLevel === 'high' ? 'rgba(0, 255, 136, 0.3)' : approach.effortLevel === 'medium' ? 'rgba(255, 170, 0, 0.3)' : 'rgba(255, 51, 102, 0.3)'};">
+                                ${approach.effortLevel} +${approach.effortScore}
                             </span>
                         </div>
-                        <div style="color: #666; font-size: 14px; margin: 5px 0;">📍 ${approach.location}</div>
-                        ${woman ? `<div style="color: #667eea; font-size: 14px;">👩 ${woman.name}</div>` : ''}
-                        <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #f0f0f0;">
-                            <div style="color: #4CAF50; font-size: 14px;">✅ ${approach.goodFeedback}</div>
-                            <div style="color: #f44336; font-size: 14px; margin-top: 5px;">📝 ${approach.badFeedback}</div>
+                        <div style="color: #888; font-size: 13px; margin: 8px 0;">
+                            <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24" style="vertical-align: middle; margin-right: 4px;">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                            </svg>
+                            ${approach.location}
+                        </div>
+                        ${woman ? `<div style="color: #aaa; font-size: 13px;">
+                            <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24" style="vertical-align: middle; margin-right: 4px;">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                            </svg>
+                            ${woman.name}
+                        </div>` : ''}
+                        <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255, 255, 255, 0.05);">
+                            <div style="color: #00ff88; font-size: 13px;">✓ ${approach.goodFeedback}</div>
+                            <div style="color: #ff3366; font-size: 13px; margin-top: 5px;">→ ${approach.badFeedback}</div>
                         </div>
                         <div class="edit-actions">
                             <button class="btn btn-warning" onclick="event.stopPropagation(); showApproachForm('${approach.firebaseKey}')" style="flex: 1;">Edit</button>
@@ -1765,19 +2015,37 @@
                 return;
             }
 
-            const preview = document.getElementById('photoPreview');
-            
             Array.from(files).forEach(file => {
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     window.currentPhotos.push(e.target.result);
-                    const img = document.createElement('img');
-                    img.src = e.target.result;
-                    img.className = 'photo-preview';
-                    preview.appendChild(img);
+                    updatePhotoPreview();
                 };
                 reader.readAsDataURL(file);
             });
+            
+            // Reset file input
+            event.target.value = '';
+        }
+
+        window.deletePhoto = function(index) {
+            window.currentPhotos.splice(index, 1);
+            updatePhotoPreview();
+        }
+
+        function updatePhotoPreview() {
+            const preview = document.getElementById('photoPreview');
+            if (window.currentPhotos.length === 0) {
+                preview.innerHTML = '';
+                return;
+            }
+            
+            preview.innerHTML = window.currentPhotos.map((photo, index) => `
+                <div class="photo-preview-item">
+                    <img src="${photo}" class="photo-preview">
+                    <div class="photo-delete-btn" onclick="deletePhoto(${index})">×</div>
+                </div>
+            `).join('');
         }
 
         window.toggleFilter = function(chip, status) {
