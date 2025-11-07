@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Approach Tracker</title>
+    <title>💪 Approach Tracker</title>
     <style>
         * {
             margin: 0;
@@ -348,6 +348,170 @@
             color: #f44336;
         }
 
+        /* Women Management Styles */
+        .women-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .women-tab {
+            flex: 1;
+            padding: 10px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .women-tab.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .woman-card {
+            background: white;
+            border-radius: 20px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .woman-score {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .woman-photos {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 10px;
+            overflow-x: auto;
+        }
+
+        .woman-photo {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 2px solid #e0e0e0;
+        }
+
+        .woman-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .woman-status {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .status-active {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .status-passive {
+            background: #FF9800;
+            color: white;
+        }
+
+        .woman-highlights {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .rating-section {
+            margin-bottom: 20px;
+        }
+
+        .rating-section h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .rating-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .rating-item label {
+            flex: 1;
+            font-size: 14px;
+        }
+
+        .rating-buttons {
+            display: flex;
+            gap: 5px;
+        }
+
+        .rating-btn {
+            padding: 5px 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            background: white;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+
+        .rating-btn.selected {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .photo-upload-area {
+            border: 2px dashed #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .photo-preview-container {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .photo-preview {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 2px solid #667eea;
+        }
+
+        .passive-options {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
         .tab-bar {
             position: fixed;
             bottom: 0;
@@ -401,6 +565,66 @@
             color: white;
             font-size: 14px;
             margin-top: 5px;
+        }
+
+        .woman-detail-view {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .detail-photos {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            margin-bottom: 20px;
+        }
+
+        .detail-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 2px solid #e0e0e0;
+        }
+
+        .detail-section {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .detail-section:last-child {
+            border-bottom: none;
+        }
+
+        .detail-section h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            font-size: 14px;
+        }
+
+        .detail-value {
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .back-btn {
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -543,6 +767,235 @@
             </div>
         </div>
 
+        <!-- Women Page -->
+        <div id="womenPage" class="page">
+            <button class="action-button" onclick="showWomanForm()">
+                + Add New Woman
+            </button>
+
+            <div class="women-tabs">
+                <div class="women-tab active" onclick="switchWomenTab('active')">
+                    Active
+                </div>
+                <div class="women-tab" onclick="switchWomenTab('passive')">
+                    Passive
+                </div>
+            </div>
+
+            <div id="activeWomen" class="women-list">
+                <!-- Active women cards will be here -->
+            </div>
+
+            <div id="passiveWomen" class="women-list" style="display: none;">
+                <!-- Passive women cards will be here -->
+            </div>
+
+            <!-- Add/Edit Woman Form -->
+            <div class="form-container" id="womanForm">
+                <h2 style="margin-bottom: 20px; color: #667eea;">Woman Profile</h2>
+                
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" id="womanName" placeholder="Her name" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Photos (up to 5)</label>
+                    <div class="photo-upload-area">
+                        <input type="file" id="photoUpload" accept="image/*" multiple onchange="handlePhotoUpload(event)" style="display: none;">
+                        <button onclick="document.getElementById('photoUpload').click()" class="action-button" style="margin: 0;">
+                            Select Photos
+                        </button>
+                        <div class="photo-preview-container" id="photoPreview"></div>
+                    </div>
+                </div>
+
+                <!-- Rating Sections -->
+                <div class="rating-section">
+                    <h3>Personality</h3>
+                    <div class="rating-item">
+                        <label>Funny</label>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" onclick="setRating('funny', 'low', this)">Low</button>
+                            <button class="rating-btn" onclick="setRating('funny', 'medium', this)">Med</button>
+                            <button class="rating-btn" onclick="setRating('funny', 'high', this)">High</button>
+                        </div>
+                    </div>
+                    <div class="rating-item">
+                        <label>Sweet & Submissive</label>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" onclick="setRating('sweet', 'low', this)">Low</button>
+                            <button class="rating-btn" onclick="setRating('sweet', 'medium', this)">Med</button>
+                            <button class="rating-btn" onclick="setRating('sweet', 'high', this)">High</button>
+                        </div>
+                    </div>
+                    <div class="rating-item">
+                        <label>Low Maintenance</label>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" onclick="setRating('lowMaintenance', 'low', this)">Low</button>
+                            <button class="rating-btn" onclick="setRating('lowMaintenance', 'medium', this)">Med</button>
+                            <button class="rating-btn" onclick="setRating('lowMaintenance', 'high', this)">High</button>
+                        </div>
+                    </div>
+                    <div class="rating-item">
+                        <label>Loyal</label>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" onclick="setRating('loyal', 'low', this)">Low</button>
+                            <button class="rating-btn" onclick="setRating('loyal', 'medium', this)">Med</button>
+                            <button class="rating-btn" onclick="setRating('loyal', 'high', this)">High</button>
+                        </div>
+                    </div>
+                    <div class="rating-item">
+                        <label>Intelligence</label>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" onclick="setRating('intelligence', 'low', this)">Low</button>
+                            <button class="rating-btn" onclick="setRating('intelligence', 'medium', this)">Med</button>
+                            <button class="rating-btn" onclick="setRating('intelligence', 'high', this)">High</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rating-section">
+                    <h3>Body</h3>
+                    <div class="rating-item">
+                        <label>Tits</label>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" onclick="setRating('tits', 'low', this)">Low</button>
+                            <button class="rating-btn" onclick="setRating('tits', 'medium', this)">Med</button>
+                            <button class="rating-btn" onclick="setRating('tits', 'high', this)">High</button>
+                        </div>
+                    </div>
+                    <div class="rating-item">
+                        <label>Ass</label>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" onclick="setRating('ass', 'low', this)">Low</button>
+                            <button class="rating-btn" onclick="setRating('ass', 'medium', this)">Med</button>
+                            <button class="rating-btn" onclick="setRating('ass', 'high', this)">High</button>
+                        </div>
+                    </div>
+                    <div class="rating-item">
+                        <label>Height</label>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" onclick="setRating('height', 'low', this)">Low</button>
+                            <button class="rating-btn" onclick="setRating('height', 'medium', this)">Med</button>
+                            <button class="rating-btn" onclick="setRating('height', 'high', this)">High</button>
+                        </div>
+                    </div>
+                    <div class="rating-item">
+                        <label>Face</label>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" onclick="setRating('face', 'low', this)">Low</button>
+                            <button class="rating-btn" onclick="setRating('face', 'medium', this)">Med</button>
+                            <button class="rating-btn" onclick="setRating('face', 'high', this)">High</button>
+                        </div>
+                    </div>
+                    <div class="rating-item">
+                        <label>Hair</label>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" onclick="setRating('hair', 'low', this)">Low</button>
+                            <button class="rating-btn" onclick="setRating('hair', 'medium', this)">Med</button>
+                            <button class="rating-btn" onclick="setRating('hair', 'high', this)">High</button>
+                        </div>
+                    </div>
+                    <div class="rating-item">
+                        <label>Nails</label>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" onclick="setRating('nails', 'low', this)">Low</button>
+                            <button class="rating-btn" onclick="setRating('nails', 'medium', this)">Med</button>
+                            <button class="rating-btn" onclick="setRating('nails', 'high', this)">High</button>
+                        </div>
+                    </div>
+                    <div class="rating-item">
+                        <label>Tummy</label>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" onclick="setRating('tummy', 'low', this)">Low</button>
+                            <button class="rating-btn" onclick="setRating('tummy', 'medium', this)">Med</button>
+                            <button class="rating-btn" onclick="setRating('tummy', 'high', this)">High</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rating-section">
+                    <h3>Fashion and Class</h3>
+                    <div class="rating-item">
+                        <label>Clothing</label>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" onclick="setRating('clothing', 'low', this)">Low</button>
+                            <button class="rating-btn" onclick="setRating('clothing', 'medium', this)">Med</button>
+                            <button class="rating-btn" onclick="setRating('clothing', 'high', this)">High</button>
+                        </div>
+                    </div>
+                    <div class="rating-item">
+                        <label>Money</label>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" onclick="setRating('money', 'low', this)">Low</button>
+                            <button class="rating-btn" onclick="setRating('money', 'medium', this)">Med</button>
+                            <button class="rating-btn" onclick="setRating('money', 'high', this)">High</button>
+                        </div>
+                    </div>
+                    <div class="rating-item">
+                        <label>Classy</label>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" onclick="setRating('classy', 'low', this)">Low</button>
+                            <button class="rating-btn" onclick="setRating('classy', 'medium', this)">Med</button>
+                            <button class="rating-btn" onclick="setRating('classy', 'high', this)">High</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rating-section">
+                    <h3>Overall</h3>
+                    <div class="rating-item">
+                        <label>Adds to my status</label>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" onclick="setRating('status', 'low', this)">Low</button>
+                            <button class="rating-btn" onclick="setRating('status', 'medium', this)">Med</button>
+                            <button class="rating-btn" onclick="setRating('status', 'high', this)">High</button>
+                        </div>
+                    </div>
+                    <div class="rating-item">
+                        <label>Do I think she's hot</label>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" onclick="setRating('hot', 'low', this)">Low</button>
+                            <button class="rating-btn" onclick="setRating('hot', 'medium', this)">Med</button>
+                            <button class="rating-btn" onclick="setRating('hot', 'high', this)">High</button>
+                        </div>
+                    </div>
+                    <div class="rating-item">
+                        <label>Do I like her</label>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" onclick="setRating('like', 'low', this)">Low</button>
+                            <button class="rating-btn" onclick="setRating('like', 'medium', this)">Med</button>
+                            <button class="rating-btn" onclick="setRating('like', 'high', this)">High</button>
+                        </div>
+                    </div>
+                    <div class="rating-item">
+                        <label>Can I see long term</label>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" onclick="setRating('longTerm', 'low', this)">Low</button>
+                            <button class="rating-btn" onclick="setRating('longTerm', 'medium', this)">Med</button>
+                            <button class="rating-btn" onclick="setRating('longTerm', 'high', this)">High</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Other Notes</label>
+                    <textarea id="womanNotes" placeholder="Any other thoughts..." rows="4"></textarea>
+                </div>
+
+                <div class="form-buttons">
+                    <button class="save-btn" onclick="saveWoman()">Save</button>
+                    <button class="cancel-btn" onclick="hideWomanForm()">Cancel</button>
+                </div>
+            </div>
+
+            <!-- Woman Detail View -->
+            <div id="womanDetail" class="woman-detail-view" style="display: none;">
+                <!-- Details will be populated here -->
+            </div>
+        </div>
+
         <!-- Stats Page -->
         <div id="statsPage" class="page">
             <div class="score-card">
@@ -563,6 +1016,18 @@
                 <h3 style="margin-bottom: 15px; color: #667eea;">This Month</h3>
                 <div id="monthlyStats"></div>
             </div>
+
+            <div class="score-card" style="margin-top: 20px;">
+                <h3 style="margin-bottom: 15px; color: #667eea;">Women Stats</h3>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                    <span>Active Women:</span>
+                    <span style="font-weight: bold;" id="activeCount">0</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <span>Passive Women:</span>
+                    <span style="font-weight: bold;" id="passiveCount">0</span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -574,6 +1039,10 @@
         <div class="tab-item" onclick="switchTab('history')">
             <div class="tab-icon">📊</div>
             <div class="tab-label">History</div>
+        </div>
+        <div class="tab-item" onclick="switchTab('women')">
+            <div class="tab-icon">👩</div>
+            <div class="tab-label">Women</div>
         </div>
         <div class="tab-item" onclick="switchTab('stats')">
             <div class="tab-icon">📈</div>
@@ -599,8 +1068,15 @@
             get, 
             onValue, 
             push,
-            remove
+            remove,
+            update
         } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js';
+        import {
+            getStorage,
+            ref as storageRef,
+            uploadString,
+            getDownloadURL
+        } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js';
 
         // Your Firebase configuration - REPLACE WITH YOUR CONFIG
 
@@ -612,19 +1088,24 @@
   		storageBucket: "approach-tracker.firebasestorage.app",
   		messagingSenderId: "175879600021",
   		appId: "1:175879600021:web:2c7b64f9a4eb32f473e89c"
-	};
-     
+		};
+       
 
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const database = getDatabase(app);
+        const storage = getStorage(app);
         const googleProvider = new GoogleAuthProvider();
 
         // Global variables
         window.currentUser = null;
         window.approaches = [];
+        window.women = [];
         window.selectedEffort = { level: 'high', score: 1.5 };
+        window.currentRatings = {};
+        window.currentPhotos = [];
+        window.editingWomanId = null;
         window.unsubscribe = null;
 
         // Auth functions
@@ -706,12 +1187,12 @@
         // Set up real-time sync with Firebase
         function setupRealtimeSync(userId) {
             const approachesRef = ref(database, `users/${userId}/approaches`);
+            const womenRef = ref(database, `users/${userId}/women`);
             
-            // Listen for changes
-            window.unsubscribe = onValue(approachesRef, (snapshot) => {
+            // Listen for approaches changes
+            onValue(approachesRef, (snapshot) => {
                 const data = snapshot.val();
                 if (data) {
-                    // Convert Firebase object to array
                     window.approaches = Object.entries(data)
                         .map(([key, value]) => ({ ...value, firebaseKey: key }))
                         .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
@@ -719,15 +1200,445 @@
                     window.approaches = [];
                 }
                 
-                // Update UI
                 updateDashboard();
                 updateHistory();
                 updateStats();
                 updateSyncStatus('synced');
-            }, (error) => {
-                console.error('Sync error:', error);
-                updateSyncStatus('offline');
             });
+
+            // Listen for women changes
+            onValue(womenRef, (snapshot) => {
+                const data = snapshot.val();
+                if (data) {
+                    window.women = Object.entries(data)
+                        .map(([key, value]) => ({ ...value, firebaseKey: key }));
+                } else {
+                    window.women = [];
+                }
+                
+                updateWomenList();
+                updateStats();
+                updateSyncStatus('synced');
+            });
+        }
+
+        // Women Management Functions
+        window.showWomanForm = function() {
+            document.getElementById('womanForm').style.display = 'block';
+            document.querySelector('#womenPage .action-button').style.display = 'none';
+            window.editingWomanId = null;
+            window.currentRatings = {};
+            window.currentPhotos = [];
+            document.getElementById('photoPreview').innerHTML = '';
+        }
+
+        window.hideWomanForm = function() {
+            document.getElementById('womanForm').style.display = 'none';
+            document.querySelector('#womenPage .action-button').style.display = 'block';
+            // Reset form
+            document.getElementById('womanName').value = '';
+            document.getElementById('womanNotes').value = '';
+            document.getElementById('photoPreview').innerHTML = '';
+            document.querySelectorAll('.rating-btn').forEach(btn => btn.classList.remove('selected'));
+            window.currentRatings = {};
+            window.currentPhotos = [];
+        }
+
+        window.handlePhotoUpload = function(event) {
+            const files = event.target.files;
+            if (files.length + window.currentPhotos.length > 5) {
+                alert('Maximum 5 photos allowed');
+                return;
+            }
+
+            const preview = document.getElementById('photoPreview');
+            
+            Array.from(files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    window.currentPhotos.push(e.target.result);
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.className = 'photo-preview';
+                    preview.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        window.setRating = function(category, value, btn) {
+            // Remove selected class from siblings
+            const parent = btn.parentElement;
+            parent.querySelectorAll('.rating-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            
+            window.currentRatings[category] = value;
+        }
+
+        window.calculateScore = function(ratings) {
+            const weights = {
+                // Personality (25%)
+                funny: 0.05,
+                sweet: 0.05,
+                lowMaintenance: 0.05,
+                loyal: 0.05,
+                intelligence: 0.05,
+                // Body (30%)
+                tits: 0.04,
+                ass: 0.04,
+                height: 0.04,
+                face: 0.06,
+                hair: 0.04,
+                nails: 0.04,
+                tummy: 0.04,
+                // Fashion and Class (15%)
+                clothing: 0.05,
+                money: 0.05,
+                classy: 0.05,
+                // Overall (30%)
+                status: 0.075,
+                hot: 0.075,
+                like: 0.075,
+                longTerm: 0.075
+            };
+
+            const valueMap = { low: 3, medium: 6.5, high: 10 };
+            
+            let totalScore = 0;
+            for (const [key, weight] of Object.entries(weights)) {
+                const value = ratings[key] || 'medium';
+                totalScore += valueMap[value] * weight;
+            }
+
+            return Math.round(totalScore * 10) / 10;
+        }
+
+        window.saveWoman = async function() {
+            if (!window.currentUser) {
+                alert('Please sign in first');
+                return;
+            }
+
+            const name = document.getElementById('womanName').value;
+            const notes = document.getElementById('womanNotes').value;
+
+            if (!name) {
+                alert('Please enter a name');
+                return;
+            }
+
+            updateSyncStatus('syncing');
+
+            const score = calculateScore(window.currentRatings);
+
+            const woman = {
+                name,
+                ratings: window.currentRatings,
+                notes,
+                photos: window.currentPhotos,
+                score,
+                status: 'active',
+                createdAt: new Date().toISOString(),
+                updatedAt: new Date().toISOString()
+            };
+
+            try {
+                const womenRef = ref(database, `users/${window.currentUser.uid}/women`);
+                
+                if (window.editingWomanId) {
+                    await update(ref(database, `users/${window.currentUser.uid}/women/${window.editingWomanId}`), woman);
+                } else {
+                    await push(womenRef, woman);
+                }
+
+                hideWomanForm();
+                updateSyncStatus('synced');
+            } catch (error) {
+                console.error('Error saving woman:', error);
+                alert('Error saving. Please try again.');
+                updateSyncStatus('offline');
+            }
+        }
+
+        window.updateWomenList = function() {
+            const activeWomen = window.women.filter(w => w.status === 'active')
+                .sort((a, b) => b.score - a.score);
+            const passiveWomen = window.women.filter(w => w.status === 'passive')
+                .sort((a, b) => b.score - a.score);
+
+            // Update active women
+            const activeContainer = document.getElementById('activeWomen');
+            if (activeWomen.length === 0) {
+                activeContainer.innerHTML = '<p style="text-align: center; color: #999; padding: 20px;">No active women yet</p>';
+            } else {
+                activeContainer.innerHTML = activeWomen.map(woman => createWomanCard(woman)).join('');
+            }
+
+            // Update passive women
+            const passiveContainer = document.getElementById('passiveWomen');
+            if (passiveWomen.length === 0) {
+                passiveContainer.innerHTML = '<p style="text-align: center; color: #999; padding: 20px;">No passive women yet</p>';
+            } else {
+                passiveContainer.innerHTML = passiveWomen.map(woman => createWomanCard(woman)).join('');
+            }
+        }
+
+        function createWomanCard(woman) {
+            const photos = woman.photos && woman.photos.length > 0 
+                ? woman.photos.slice(0, 3).map(photo => 
+                    `<img src="${photo}" class="woman-photo" alt="${woman.name}">`
+                ).join('') 
+                : '<div class="woman-photo" style="background: #f0f0f0; display: flex; align-items: center; justify-content: center;">📷</div>';
+
+            const highlights = [];
+            if (woman.ratings.hot === 'high') highlights.push('🔥 Hot');
+            if (woman.ratings.like === 'high') highlights.push('❤️ Like');
+            if (woman.ratings.longTerm === 'high') highlights.push('💍 LTR');
+
+            return `
+                <div class="woman-card" onclick="viewWomanDetail('${woman.firebaseKey}')">
+                    <div class="woman-score">${woman.score}</div>
+                    <div class="woman-photos">${photos}</div>
+                    <div class="woman-name">${woman.name}</div>
+                    <div class="woman-status status-${woman.status}">${woman.status.toUpperCase()}</div>
+                    <div class="woman-highlights">${highlights.join(' • ') || 'Tap to view details'}</div>
+                    ${woman.status === 'active' ? `
+                        <button onclick="event.stopPropagation(); makePassive('${woman.firebaseKey}')" 
+                                style="margin-top: 10px; padding: 8px; background: #FF9800; color: white; border: none; border-radius: 8px; cursor: pointer; width: 100%;">
+                            Move to Passive
+                        </button>
+                    ` : woman.recontactDate ? `
+                        <div style="margin-top: 10px; padding: 8px; background: #f0f0f0; border-radius: 8px; font-size: 12px; text-align: center;">
+                            Recontact: ${new Date(woman.recontactDate).toLocaleDateString()}
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+        }
+
+        window.viewWomanDetail = function(womanId) {
+            const woman = window.women.find(w => w.firebaseKey === womanId);
+            if (!woman) return;
+
+            const photos = woman.photos && woman.photos.length > 0
+                ? woman.photos.map(photo => 
+                    `<img src="${photo}" class="detail-photo" alt="${woman.name}">`
+                ).join('')
+                : '<p style="color: #999;">No photos</p>';
+
+            const ratingDisplay = (value) => {
+                const map = { low: '⭐', medium: '⭐⭐', high: '⭐⭐⭐' };
+                return map[value] || '⭐⭐';
+            };
+
+            const detail = `
+                <button class="back-btn" onclick="closeWomanDetail()">← Back</button>
+                <h2 style="color: #667eea; margin-bottom: 10px;">${woman.name}</h2>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                    <span class="woman-status status-${woman.status}">${woman.status.toUpperCase()}</span>
+                    <span class="woman-score" style="position: static;">${woman.score}/10</span>
+                </div>
+                
+                <div class="detail-photos">${photos}</div>
+                
+                <div class="detail-section">
+                    <h4>Personality</h4>
+                    <div class="detail-item">
+                        <span>Funny</span>
+                        <span class="detail-value">${ratingDisplay(woman.ratings.funny)}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Sweet & Submissive</span>
+                        <span class="detail-value">${ratingDisplay(woman.ratings.sweet)}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Low Maintenance</span>
+                        <span class="detail-value">${ratingDisplay(woman.ratings.lowMaintenance)}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Loyal</span>
+                        <span class="detail-value">${ratingDisplay(woman.ratings.loyal)}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Intelligence</span>
+                        <span class="detail-value">${ratingDisplay(woman.ratings.intelligence)}</span>
+                    </div>
+                </div>
+                
+                <div class="detail-section">
+                    <h4>Body</h4>
+                    <div class="detail-item">
+                        <span>Tits</span>
+                        <span class="detail-value">${ratingDisplay(woman.ratings.tits)}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Ass</span>
+                        <span class="detail-value">${ratingDisplay(woman.ratings.ass)}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Height</span>
+                        <span class="detail-value">${ratingDisplay(woman.ratings.height)}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Face</span>
+                        <span class="detail-value">${ratingDisplay(woman.ratings.face)}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Hair</span>
+                        <span class="detail-value">${ratingDisplay(woman.ratings.hair)}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Nails</span>
+                        <span class="detail-value">${ratingDisplay(woman.ratings.nails)}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Tummy</span>
+                        <span class="detail-value">${ratingDisplay(woman.ratings.tummy)}</span>
+                    </div>
+                </div>
+                
+                <div class="detail-section">
+                    <h4>Fashion and Class</h4>
+                    <div class="detail-item">
+                        <span>Clothing</span>
+                        <span class="detail-value">${ratingDisplay(woman.ratings.clothing)}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Money</span>
+                        <span class="detail-value">${ratingDisplay(woman.ratings.money)}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Classy</span>
+                        <span class="detail-value">${ratingDisplay(woman.ratings.classy)}</span>
+                    </div>
+                </div>
+                
+                <div class="detail-section">
+                    <h4>Overall</h4>
+                    <div class="detail-item">
+                        <span>Adds to my status</span>
+                        <span class="detail-value">${ratingDisplay(woman.ratings.status)}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Do I think she's hot</span>
+                        <span class="detail-value">${ratingDisplay(woman.ratings.hot)}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Do I like her</span>
+                        <span class="detail-value">${ratingDisplay(woman.ratings.like)}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Can I see long term</span>
+                        <span class="detail-value">${ratingDisplay(woman.ratings.longTerm)}</span>
+                    </div>
+                </div>
+                
+                ${woman.notes ? `
+                    <div class="detail-section">
+                        <h4>Notes</h4>
+                        <p style="color: #666; font-size: 14px;">${woman.notes}</p>
+                    </div>
+                ` : ''}
+
+                ${woman.status === 'active' ? `
+                    <button onclick="makePassive('${woman.firebaseKey}')" class="action-button" style="background: #FF9800;">
+                        Move to Passive
+                    </button>
+                ` : `
+                    <button onclick="makeActive('${woman.firebaseKey}')" class="action-button">
+                        Move to Active
+                    </button>
+                `}
+            `;
+
+            document.getElementById('womanDetail').innerHTML = detail;
+            document.getElementById('womanDetail').style.display = 'block';
+            document.querySelector('.women-tabs').style.display = 'none';
+            document.getElementById('activeWomen').style.display = 'none';
+            document.getElementById('passiveWomen').style.display = 'none';
+            document.querySelector('#womenPage .action-button').style.display = 'none';
+        }
+
+        window.closeWomanDetail = function() {
+            document.getElementById('womanDetail').style.display = 'none';
+            document.querySelector('.women-tabs').style.display = 'flex';
+            const activeTab = document.querySelector('.women-tab.active').textContent.trim().toLowerCase();
+            if (activeTab === 'active') {
+                document.getElementById('activeWomen').style.display = 'block';
+            } else {
+                document.getElementById('passiveWomen').style.display = 'block';
+            }
+            document.querySelector('#womenPage .action-button').style.display = 'block';
+        }
+
+        window.makePassive = async function(womanId) {
+            const recontact = confirm('Do you want to contact her again?');
+            
+            if (recontact) {
+                const timeOptions = [
+                    { label: '1 week', days: 7 },
+                    { label: '1 month', days: 30 },
+                    { label: '3 months', days: 90 },
+                    { label: '6 months', days: 180 },
+                    { label: '1 year', days: 365 }
+                ];
+                
+                const choice = prompt(
+                    'When should you recontact?\n' +
+                    '1 = 1 week\n' +
+                    '2 = 1 month\n' +
+                    '3 = 3 months\n' +
+                    '4 = 6 months\n' +
+                    '5 = 1 year',
+                    '2'
+                );
+                
+                const index = parseInt(choice) - 1;
+                if (index >= 0 && index < timeOptions.length) {
+                    const recontactDate = new Date();
+                    recontactDate.setDate(recontactDate.getDate() + timeOptions[index].days);
+                    
+                    await update(ref(database, `users/${window.currentUser.uid}/women/${womanId}`), {
+                        status: 'passive',
+                        recontact: true,
+                        recontactDate: recontactDate.toISOString(),
+                        updatedAt: new Date().toISOString()
+                    });
+                }
+            } else {
+                await update(ref(database, `users/${window.currentUser.uid}/women/${womanId}`), {
+                    status: 'passive',
+                    recontact: false,
+                    recontactDate: null,
+                    updatedAt: new Date().toISOString()
+                });
+            }
+            
+            closeWomanDetail();
+        }
+
+        window.makeActive = async function(womanId) {
+            await update(ref(database, `users/${window.currentUser.uid}/women/${womanId}`), {
+                status: 'active',
+                recontact: null,
+                recontactDate: null,
+                updatedAt: new Date().toISOString()
+            });
+            
+            closeWomanDetail();
+        }
+
+        window.switchWomenTab = function(tab) {
+            document.querySelectorAll('.women-tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            if (tab === 'active') {
+                document.getElementById('activeWomen').style.display = 'block';
+                document.getElementById('passiveWomen').style.display = 'none';
+            } else {
+                document.getElementById('activeWomen').style.display = 'none';
+                document.getElementById('passiveWomen').style.display = 'block';
+            }
         }
 
         // Save approach to Firebase
@@ -764,7 +1675,6 @@
             };
             
             try {
-                // Save to Firebase
                 const approachesRef = ref(database, `users/${window.currentUser.uid}/approaches`);
                 await push(approachesRef, approach);
                 
@@ -808,7 +1718,7 @@
             }
         }
 
-        // UI Functions (same as before but using window.approaches)
+        // UI Functions
         window.updateWeekDisplay = function() {
             const now = new Date();
             const monday = new Date(now);
@@ -945,6 +1855,12 @@
                 document.getElementById('avgPerWeek').textContent = '0';
                 document.getElementById('monthlyStats').innerHTML = '<p style="text-align: center; color: #999;">No data yet</p>';
             }
+
+            // Women stats
+            const activeWomen = window.women.filter(w => w.status === 'active');
+            const passiveWomen = window.women.filter(w => w.status === 'passive');
+            document.getElementById('activeCount').textContent = activeWomen.length;
+            document.getElementById('passiveCount').textContent = passiveWomen.length;
         }
 
         window.switchTab = function(tab) {
@@ -963,6 +1879,10 @@
                 case 'history':
                     document.getElementById('historyPage').classList.add('active');
                     updateHistory();
+                    break;
+                case 'women':
+                    document.getElementById('womenPage').classList.add('active');
+                    updateWomenList();
                     break;
                 case 'stats':
                     document.getElementById('statsPage').classList.add('active');
