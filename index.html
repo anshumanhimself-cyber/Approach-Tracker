@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>💪 Approach Tracker</title>
+    <title>💪 Dating Tracker</title>
     <style>
         * {
             margin: 0;
@@ -18,13 +18,13 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             color: #333;
-            padding-bottom: 60px;
         }
 
-        .container {
-            max-width: 400px;
+        .main-container {
+            max-width: 450px;
             margin: 0 auto;
             padding: 20px;
+            padding-bottom: 80px;
         }
 
         .header {
@@ -35,7 +35,7 @@
         }
 
         .header h1 {
-            font-size: 32px;
+            font-size: 28px;
             margin-bottom: 10px;
         }
 
@@ -75,6 +75,41 @@
             100% { opacity: 1; }
         }
 
+        /* Section Selector */
+        .section-selector {
+            background: rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 10px;
+            margin-bottom: 30px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .section-btn {
+            padding: 12px;
+            background: rgba(255,255,255,0.3);
+            color: white;
+            border: 2px solid transparent;
+            border-radius: 15px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .section-btn.active {
+            background: white;
+            color: #667eea;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .section-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Auth Styles */
         .auth-container {
             background: white;
             border-radius: 20px;
@@ -115,18 +150,8 @@
             color: white;
         }
 
-        .sign-out {
-            background: #f44336;
-            color: white;
-            padding: 8px 15px;
-            border: none;
-            border-radius: 8px;
-            font-size: 14px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .score-card {
+        /* Card Styles */
+        .card {
             background: white;
             border-radius: 20px;
             padding: 20px;
@@ -134,77 +159,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
-        .score-display {
-            display: flex;
-            justify-content: space-around;
-            margin-bottom: 20px;
-        }
-
-        .score-item {
-            text-align: center;
-        }
-
-        .score-item .label {
-            font-size: 12px;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .score-item .value {
-            font-size: 36px;
-            font-weight: bold;
-            color: #667eea;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 30px;
-            background: #f0f0f0;
-            border-radius: 15px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            transition: width 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-        }
-
-        .action-button {
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            border-radius: 15px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transition: transform 0.2s;
-        }
-
-        .action-button:active {
-            transform: scale(0.95);
-        }
-
-        .form-container {
-            display: none;
-            background: white;
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
+        /* Form Styles */
         .form-group {
             margin-bottom: 15px;
         }
@@ -214,6 +169,7 @@
             margin-bottom: 5px;
             font-weight: 600;
             color: #333;
+            font-size: 14px;
         }
 
         .form-group input, .form-group textarea, .form-group select {
@@ -235,6 +191,274 @@
             min-height: 60px;
         }
 
+        /* Button Styles */
+        .btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-success {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .btn-danger {
+            background: #f44336;
+            color: white;
+        }
+
+        .btn-warning {
+            background: #FF9800;
+            color: white;
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        .btn-full {
+            width: 100%;
+        }
+
+        /* Rating Visualization */
+        .rating-display {
+            display: inline-flex;
+            gap: 3px;
+        }
+
+        .rating-dash {
+            width: 20px;
+            height: 4px;
+            border-radius: 2px;
+            background: #e0e0e0;
+        }
+
+        .rating-dash.low { background: #f44336; }
+        .rating-dash.medium { background: #FFC107; }
+        .rating-dash.high { background: #4CAF50; }
+        .rating-dash.inactive { background: #e0e0e0; }
+
+        /* Women Management Styles */
+        .filter-bar {
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .filter-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .filter-chip {
+            padding: 6px 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 20px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 14px;
+        }
+
+        .filter-chip.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .woman-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .woman-card {
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.2s;
+            position: relative;
+        }
+
+        .woman-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .woman-score {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .woman-status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        .status-current { background: #4CAF50; color: white; }
+        .status-in-process { background: #2196F3; color: white; }
+        .status-passive { background: #FF9800; color: white; }
+        .status-archived { background: #9E9E9E; color: white; }
+
+        /* Date Scheduling Styles */
+        .date-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .date-card {
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid #667eea;
+        }
+
+        .date-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .date-time {
+            font-weight: 600;
+            color: #667eea;
+            font-size: 16px;
+        }
+
+        .date-woman {
+            background: #f0f0f0;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: block;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            max-width: 450px;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .close-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #f0f0f0;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-item {
+            flex: 1;
+            text-align: center;
+            padding: 5px;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s;
+        }
+
+        .nav-item.active {
+            color: #667eea;
+        }
+
+        .nav-icon {
+            font-size: 24px;
+            margin-bottom: 2px;
+        }
+
+        .nav-label {
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        /* Approach specific styles */
         .effort-options {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -258,185 +482,47 @@
             border-color: #667eea;
         }
 
-        .form-buttons {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .form-buttons button {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        .save-btn {
-            background: #4CAF50;
-            color: white;
-        }
-
-        .cancel-btn {
-            background: #f44336;
-            color: white;
-        }
-
-        .history-container {
+        .approach-item {
             background: white;
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .history-item {
+            border-radius: 15px;
             padding: 15px;
-            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
         }
 
-        .history-item:last-child {
-            border-bottom: none;
-        }
-
-        .history-header {
+        .approach-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
 
-        .history-date {
+        .approach-date {
             font-weight: 600;
             color: #667eea;
         }
 
-        .history-effort {
-            padding: 2px 8px;
-            border-radius: 5px;
-            font-size: 12px;
-            font-weight: bold;
+        .photo-upload-area {
+            border: 2px dashed #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 15px;
         }
 
-        .effort-high { background: #4CAF50; color: white; }
-        .effort-medium { background: #FFC107; color: white; }
-        .effort-low { background: #FF9800; color: white; }
-
-        .history-location {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 10px;
-        }
-
-        .feedback-section {
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: 1px dashed #e0e0e0;
-        }
-
-        .feedback-item {
-            margin: 5px 0;
-            font-size: 14px;
-        }
-
-        .feedback-good {
-            color: #4CAF50;
-        }
-
-        .feedback-bad {
-            color: #f44336;
-        }
-
-        /* Women Management Styles */
-        .women-tabs {
+        .photo-preview-container {
             display: flex;
             gap: 10px;
-            margin-bottom: 20px;
+            flex-wrap: wrap;
+            margin-top: 10px;
         }
 
-        .women-tab {
-            flex: 1;
-            padding: 10px;
-            background: white;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .women-tab.active {
-            background: #667eea;
-            color: white;
-            border-color: #667eea;
-        }
-
-        .woman-card {
-            background: white;
-            border-radius: 20px;
-            padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            position: relative;
-            cursor: pointer;
-        }
-
-        .woman-score {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 18px;
-        }
-
-        .woman-photos {
-            display: flex;
-            gap: 5px;
-            margin-bottom: 10px;
-            overflow-x: auto;
-        }
-
-        .woman-photo {
-            width: 60px;
-            height: 60px;
+        .photo-preview {
+            width: 80px;
+            height: 80px;
             border-radius: 10px;
             object-fit: cover;
-            border: 2px solid #e0e0e0;
-        }
-
-        .woman-name {
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 5px;
-        }
-
-        .woman-status {
-            display: inline-block;
-            padding: 3px 8px;
-            border-radius: 5px;
-            font-size: 12px;
-            margin-bottom: 10px;
-        }
-
-        .status-active {
-            background: #4CAF50;
-            color: white;
-        }
-
-        .status-passive {
-            background: #FF9800;
-            color: white;
-        }
-
-        .woman-highlights {
-            font-size: 14px;
-            color: #666;
+            border: 2px solid #667eea;
         }
 
         .rating-section {
@@ -482,78 +568,6 @@
             border-color: #667eea;
         }
 
-        .photo-upload-area {
-            border: 2px dashed #e0e0e0;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            margin-bottom: 15px;
-        }
-
-        .photo-preview-container {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-top: 10px;
-        }
-
-        .photo-preview {
-            width: 80px;
-            height: 80px;
-            border-radius: 10px;
-            object-fit: cover;
-            border: 2px solid #667eea;
-        }
-
-        .passive-options {
-            background: #f9f9f9;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 15px;
-        }
-
-        .tab-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: white;
-            display: flex;
-            justify-content: space-around;
-            padding: 10px 0;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-        }
-
-        .tab-item {
-            flex: 1;
-            text-align: center;
-            padding: 5px;
-            cursor: pointer;
-            color: #666;
-            transition: color 0.3s;
-        }
-
-        .tab-item.active {
-            color: #667eea;
-        }
-
-        .tab-icon {
-            font-size: 24px;
-            margin-bottom: 2px;
-        }
-
-        .tab-label {
-            font-size: 12px;
-        }
-
-        .page {
-            display: none;
-        }
-
-        .page.active {
-            display: block;
-        }
-
         .loading {
             text-align: center;
             color: white;
@@ -567,64 +581,65 @@
             margin-top: 5px;
         }
 
-        .woman-detail-view {
-            background: white;
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        .sign-out {
+            background: #f44336;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 10px;
         }
 
-        .detail-photos {
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #999;
+        }
+
+        .empty-state-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: #f0f0f0;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            margin-top: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .edit-actions {
             display: flex;
             gap: 10px;
-            overflow-x: auto;
-            margin-bottom: 20px;
+            margin-top: 10px;
         }
 
-        .detail-photo {
-            width: 100px;
-            height: 100px;
-            border-radius: 10px;
-            object-fit: cover;
-            border: 2px solid #e0e0e0;
-        }
-
-        .detail-section {
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        .detail-section:last-child {
-            border-bottom: none;
-        }
-
-        .detail-section h4 {
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-
-        .detail-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 5px 0;
-            font-size: 14px;
-        }
-
-        .detail-value {
-            font-weight: 600;
-            color: #667eea;
-        }
-
-        .back-btn {
-            padding: 10px 20px;
-            background: #667eea;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            margin-bottom: 10px;
+        .woman-link-select {
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -634,10 +649,9 @@
         <span id="syncText">Synced</span>
     </div>
 
-    <div class="container">
+    <div class="main-container">
         <div class="header">
-            <h1>💪 Approach Tracker</h1>
-            <p id="weekDisplay">Week of Nov 4, 2024</p>
+            <h1>💪 Dating Tracker</h1>
             <div class="user-info" id="userInfo"></div>
         </div>
 
@@ -670,383 +684,431 @@
             </p>
         </div>
 
-        <!-- Dashboard Page -->
-        <div id="dashboardPage" class="page" style="display: none;">
-            <div class="score-card">
-                <div class="score-display">
-                    <div class="score-item">
-                        <div class="label">This Week</div>
-                        <div class="value" id="weekScore">0</div>
+        <!-- Main App Content -->
+        <div id="appContent" style="display: none;">
+            <!-- Section Selector -->
+            <div class="section-selector">
+                <button class="section-btn active" onclick="switchSection('approaches')">
+                    📊 Approaches
+                </button>
+                <button class="section-btn" onclick="switchSection('dates')">
+                    📅 Dates
+                </button>
+                <button class="section-btn" onclick="switchSection('wms')">
+                    👩 WMS
+                </button>
+            </div>
+
+            <!-- Cold Approach Section -->
+            <div id="approachesSection" class="section active">
+                <!-- Score Card -->
+                <div class="card">
+                    <div style="display: flex; justify-content: space-around; margin-bottom: 20px;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 12px; color: #666; text-transform: uppercase;">This Week</div>
+                            <div style="font-size: 36px; font-weight: bold; color: #667eea;" id="weekScore">0</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 12px; color: #666; text-transform: uppercase;">Target</div>
+                            <div style="font-size: 36px; font-weight: bold; color: #667eea;">5</div>
+                        </div>
                     </div>
-                    <div class="score-item">
-                        <div class="label">Target</div>
-                        <div class="value">5</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressBar" style="width: 0%">0%</div>
                     </div>
                 </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progressBar" style="width: 0%">
-                        0%
-                    </div>
+
+                <button class="btn btn-primary btn-full" onclick="showApproachForm()" style="margin-bottom: 20px;">
+                    + Log New Approach
+                </button>
+
+                <div class="card">
+                    <h3 style="margin-bottom: 15px; color: #667eea;">Recent Approaches</h3>
+                    <div id="approachList"></div>
                 </div>
             </div>
 
-            <button class="action-button" onclick="showForm()">
-                + Log New Approach
-            </button>
+            <!-- Date Scheduling Section -->
+            <div id="datesSection" class="section">
+                <button class="btn btn-primary btn-full" onclick="showDateForm()" style="margin-bottom: 20px;">
+                    + Schedule New Date
+                </button>
 
-            <div class="form-container" id="approachForm">
-                <h2 style="margin-bottom: 20px; color: #667eea;">Log Your Approach</h2>
-                
-                <div class="form-group">
-                    <label>Date & Time</label>
-                    <input type="datetime-local" id="approachDate" required>
+                <div class="card">
+                    <h3 style="margin-bottom: 15px; color: #667eea;">Upcoming Dates</h3>
+                    <div id="upcomingDates"></div>
                 </div>
 
-                <div class="form-group">
-                    <label>Location/Setting</label>
-                    <input type="text" id="location" placeholder="e.g., Coffee shop, Street, Gym" required>
+                <div class="card" style="margin-top: 20px;">
+                    <h3 style="margin-bottom: 15px; color: #667eea;">Past Dates</h3>
+                    <div id="pastDates"></div>
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label>Effort Level (affects score)</label>
-                    <div class="effort-options">
-                        <div class="effort-btn" onclick="selectEffort(this, 'low', 0.5)">
-                            Low<br><small>+0.5</small>
-                        </div>
-                        <div class="effort-btn" onclick="selectEffort(this, 'medium', 1)">
-                            Medium<br><small>+1</small>
-                        </div>
-                        <div class="effort-btn selected" onclick="selectEffort(this, 'high', 1.5)">
-                            High<br><small>+1.5</small>
-                        </div>
+            <!-- Woman Management System Section -->
+            <div id="wmsSection" class="section">
+                <button class="btn btn-primary btn-full" onclick="showWomanForm()" style="margin-bottom: 20px;">
+                    + Add New Woman
+                </button>
+
+                <div class="filter-bar">
+                    <input type="text" class="search-input" placeholder="Search by name..." id="wmsSearch" oninput="filterWomen()">
+                    <div class="filter-chips">
+                        <div class="filter-chip" onclick="toggleFilter(this, 'current')">Current</div>
+                        <div class="filter-chip" onclick="toggleFilter(this, 'in-process')">In Process</div>
+                        <div class="filter-chip" onclick="toggleFilter(this, 'passive')">Passive</div>
+                        <div class="filter-chip" onclick="toggleFilter(this, 'archived')">Archived</div>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label>What did I do well? (Required)</label>
-                    <textarea id="goodFeedback" placeholder="At least one thing you did well..." required></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label>What could I improve? (Required)</label>
-                    <textarea id="badFeedback" placeholder="At least one area for improvement..." required></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label>Outcome (optional, doesn't affect score)</label>
-                    <select id="outcome">
-                        <option value="">Select outcome...</option>
-                        <option value="number">Got number</option>
-                        <option value="social">Good conversation</option>
-                        <option value="date">Instant date</option>
-                        <option value="rejection">Polite rejection</option>
-                        <option value="ignored">Ignored</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>Notes (optional)</label>
-                    <textarea id="notes" placeholder="Any additional thoughts..."></textarea>
-                </div>
-
-                <div class="form-buttons">
-                    <button class="save-btn" onclick="saveApproach()">Save</button>
-                    <button class="cancel-btn" onclick="hideForm()">Cancel</button>
-                </div>
+                <div class="woman-grid" id="womanGrid"></div>
             </div>
 
             <button class="sign-out" onclick="signOut()">Sign Out</button>
         </div>
+    </div>
 
-        <!-- History Page -->
-        <div id="historyPage" class="page">
-            <div class="history-container">
-                <h2 style="margin-bottom: 20px; color: #667eea;">Approach History</h2>
-                <div id="historyList"></div>
-            </div>
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav" id="bottomNav" style="display: none;">
+        <div class="nav-item active" onclick="switchTab('dashboard')">
+            <div class="nav-icon">📊</div>
+            <div class="nav-label">Dashboard</div>
         </div>
-
-        <!-- Women Page -->
-        <div id="womenPage" class="page">
-            <button class="action-button" onclick="showWomanForm()">
-                + Add New Woman
-            </button>
-
-            <div class="women-tabs">
-                <div class="women-tab active" onclick="switchWomenTab('active')">
-                    Active
-                </div>
-                <div class="women-tab" onclick="switchWomenTab('passive')">
-                    Passive
-                </div>
-            </div>
-
-            <div id="activeWomen" class="women-list">
-                <!-- Active women cards will be here -->
-            </div>
-
-            <div id="passiveWomen" class="women-list" style="display: none;">
-                <!-- Passive women cards will be here -->
-            </div>
-
-            <!-- Add/Edit Woman Form -->
-            <div class="form-container" id="womanForm">
-                <h2 style="margin-bottom: 20px; color: #667eea;">Woman Profile</h2>
-                
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" id="womanName" placeholder="Her name" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Photos (up to 5)</label>
-                    <div class="photo-upload-area">
-                        <input type="file" id="photoUpload" accept="image/*" multiple onchange="handlePhotoUpload(event)" style="display: none;">
-                        <button onclick="document.getElementById('photoUpload').click()" class="action-button" style="margin: 0;">
-                            Select Photos
-                        </button>
-                        <div class="photo-preview-container" id="photoPreview"></div>
-                    </div>
-                </div>
-
-                <!-- Rating Sections -->
-                <div class="rating-section">
-                    <h3>Personality</h3>
-                    <div class="rating-item">
-                        <label>Funny</label>
-                        <div class="rating-buttons">
-                            <button class="rating-btn" onclick="setRating('funny', 'low', this)">Low</button>
-                            <button class="rating-btn" onclick="setRating('funny', 'medium', this)">Med</button>
-                            <button class="rating-btn" onclick="setRating('funny', 'high', this)">High</button>
-                        </div>
-                    </div>
-                    <div class="rating-item">
-                        <label>Sweet & Submissive</label>
-                        <div class="rating-buttons">
-                            <button class="rating-btn" onclick="setRating('sweet', 'low', this)">Low</button>
-                            <button class="rating-btn" onclick="setRating('sweet', 'medium', this)">Med</button>
-                            <button class="rating-btn" onclick="setRating('sweet', 'high', this)">High</button>
-                        </div>
-                    </div>
-                    <div class="rating-item">
-                        <label>Low Maintenance</label>
-                        <div class="rating-buttons">
-                            <button class="rating-btn" onclick="setRating('lowMaintenance', 'low', this)">Low</button>
-                            <button class="rating-btn" onclick="setRating('lowMaintenance', 'medium', this)">Med</button>
-                            <button class="rating-btn" onclick="setRating('lowMaintenance', 'high', this)">High</button>
-                        </div>
-                    </div>
-                    <div class="rating-item">
-                        <label>Loyal</label>
-                        <div class="rating-buttons">
-                            <button class="rating-btn" onclick="setRating('loyal', 'low', this)">Low</button>
-                            <button class="rating-btn" onclick="setRating('loyal', 'medium', this)">Med</button>
-                            <button class="rating-btn" onclick="setRating('loyal', 'high', this)">High</button>
-                        </div>
-                    </div>
-                    <div class="rating-item">
-                        <label>Intelligence</label>
-                        <div class="rating-buttons">
-                            <button class="rating-btn" onclick="setRating('intelligence', 'low', this)">Low</button>
-                            <button class="rating-btn" onclick="setRating('intelligence', 'medium', this)">Med</button>
-                            <button class="rating-btn" onclick="setRating('intelligence', 'high', this)">High</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="rating-section">
-                    <h3>Body</h3>
-                    <div class="rating-item">
-                        <label>Tits</label>
-                        <div class="rating-buttons">
-                            <button class="rating-btn" onclick="setRating('tits', 'low', this)">Low</button>
-                            <button class="rating-btn" onclick="setRating('tits', 'medium', this)">Med</button>
-                            <button class="rating-btn" onclick="setRating('tits', 'high', this)">High</button>
-                        </div>
-                    </div>
-                    <div class="rating-item">
-                        <label>Ass</label>
-                        <div class="rating-buttons">
-                            <button class="rating-btn" onclick="setRating('ass', 'low', this)">Low</button>
-                            <button class="rating-btn" onclick="setRating('ass', 'medium', this)">Med</button>
-                            <button class="rating-btn" onclick="setRating('ass', 'high', this)">High</button>
-                        </div>
-                    </div>
-                    <div class="rating-item">
-                        <label>Height</label>
-                        <div class="rating-buttons">
-                            <button class="rating-btn" onclick="setRating('height', 'low', this)">Low</button>
-                            <button class="rating-btn" onclick="setRating('height', 'medium', this)">Med</button>
-                            <button class="rating-btn" onclick="setRating('height', 'high', this)">High</button>
-                        </div>
-                    </div>
-                    <div class="rating-item">
-                        <label>Face</label>
-                        <div class="rating-buttons">
-                            <button class="rating-btn" onclick="setRating('face', 'low', this)">Low</button>
-                            <button class="rating-btn" onclick="setRating('face', 'medium', this)">Med</button>
-                            <button class="rating-btn" onclick="setRating('face', 'high', this)">High</button>
-                        </div>
-                    </div>
-                    <div class="rating-item">
-                        <label>Hair</label>
-                        <div class="rating-buttons">
-                            <button class="rating-btn" onclick="setRating('hair', 'low', this)">Low</button>
-                            <button class="rating-btn" onclick="setRating('hair', 'medium', this)">Med</button>
-                            <button class="rating-btn" onclick="setRating('hair', 'high', this)">High</button>
-                        </div>
-                    </div>
-                    <div class="rating-item">
-                        <label>Nails</label>
-                        <div class="rating-buttons">
-                            <button class="rating-btn" onclick="setRating('nails', 'low', this)">Low</button>
-                            <button class="rating-btn" onclick="setRating('nails', 'medium', this)">Med</button>
-                            <button class="rating-btn" onclick="setRating('nails', 'high', this)">High</button>
-                        </div>
-                    </div>
-                    <div class="rating-item">
-                        <label>Tummy</label>
-                        <div class="rating-buttons">
-                            <button class="rating-btn" onclick="setRating('tummy', 'low', this)">Low</button>
-                            <button class="rating-btn" onclick="setRating('tummy', 'medium', this)">Med</button>
-                            <button class="rating-btn" onclick="setRating('tummy', 'high', this)">High</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="rating-section">
-                    <h3>Fashion and Class</h3>
-                    <div class="rating-item">
-                        <label>Clothing</label>
-                        <div class="rating-buttons">
-                            <button class="rating-btn" onclick="setRating('clothing', 'low', this)">Low</button>
-                            <button class="rating-btn" onclick="setRating('clothing', 'medium', this)">Med</button>
-                            <button class="rating-btn" onclick="setRating('clothing', 'high', this)">High</button>
-                        </div>
-                    </div>
-                    <div class="rating-item">
-                        <label>Money</label>
-                        <div class="rating-buttons">
-                            <button class="rating-btn" onclick="setRating('money', 'low', this)">Low</button>
-                            <button class="rating-btn" onclick="setRating('money', 'medium', this)">Med</button>
-                            <button class="rating-btn" onclick="setRating('money', 'high', this)">High</button>
-                        </div>
-                    </div>
-                    <div class="rating-item">
-                        <label>Classy</label>
-                        <div class="rating-buttons">
-                            <button class="rating-btn" onclick="setRating('classy', 'low', this)">Low</button>
-                            <button class="rating-btn" onclick="setRating('classy', 'medium', this)">Med</button>
-                            <button class="rating-btn" onclick="setRating('classy', 'high', this)">High</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="rating-section">
-                    <h3>Overall</h3>
-                    <div class="rating-item">
-                        <label>Adds to my status</label>
-                        <div class="rating-buttons">
-                            <button class="rating-btn" onclick="setRating('status', 'low', this)">Low</button>
-                            <button class="rating-btn" onclick="setRating('status', 'medium', this)">Med</button>
-                            <button class="rating-btn" onclick="setRating('status', 'high', this)">High</button>
-                        </div>
-                    </div>
-                    <div class="rating-item">
-                        <label>Do I think she's hot</label>
-                        <div class="rating-buttons">
-                            <button class="rating-btn" onclick="setRating('hot', 'low', this)">Low</button>
-                            <button class="rating-btn" onclick="setRating('hot', 'medium', this)">Med</button>
-                            <button class="rating-btn" onclick="setRating('hot', 'high', this)">High</button>
-                        </div>
-                    </div>
-                    <div class="rating-item">
-                        <label>Do I like her</label>
-                        <div class="rating-buttons">
-                            <button class="rating-btn" onclick="setRating('like', 'low', this)">Low</button>
-                            <button class="rating-btn" onclick="setRating('like', 'medium', this)">Med</button>
-                            <button class="rating-btn" onclick="setRating('like', 'high', this)">High</button>
-                        </div>
-                    </div>
-                    <div class="rating-item">
-                        <label>Can I see long term</label>
-                        <div class="rating-buttons">
-                            <button class="rating-btn" onclick="setRating('longTerm', 'low', this)">Low</button>
-                            <button class="rating-btn" onclick="setRating('longTerm', 'medium', this)">Med</button>
-                            <button class="rating-btn" onclick="setRating('longTerm', 'high', this)">High</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>Other Notes</label>
-                    <textarea id="womanNotes" placeholder="Any other thoughts..." rows="4"></textarea>
-                </div>
-
-                <div class="form-buttons">
-                    <button class="save-btn" onclick="saveWoman()">Save</button>
-                    <button class="cancel-btn" onclick="hideWomanForm()">Cancel</button>
-                </div>
-            </div>
-
-            <!-- Woman Detail View -->
-            <div id="womanDetail" class="woman-detail-view" style="display: none;">
-                <!-- Details will be populated here -->
-            </div>
+        <div class="nav-item" onclick="switchTab('history')">
+            <div class="nav-icon">📜</div>
+            <div class="nav-label">History</div>
         </div>
+        <div class="nav-item" onclick="switchTab('stats')">
+            <div class="nav-icon">📈</div>
+            <div class="nav-label">Stats</div>
+        </div>
+    </div>
 
-        <!-- Stats Page -->
-        <div id="statsPage" class="page">
-            <div class="score-card">
-                <h2 style="margin-bottom: 20px; color: #667eea;">Statistics</h2>
-                <div class="score-display">
-                    <div class="score-item">
-                        <div class="label">Total</div>
-                        <div class="value" id="totalApproaches">0</div>
+    <!-- Modals -->
+    <!-- Approach Form Modal -->
+    <div id="approachModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Log Approach</h2>
+                <button class="close-btn" onclick="closeModal('approachModal')">×</button>
+            </div>
+
+            <div class="form-group">
+                <label>Date & Time</label>
+                <input type="datetime-local" id="approachDate">
+            </div>
+
+            <div class="form-group">
+                <label>Location/Setting</label>
+                <input type="text" id="location" placeholder="e.g., Coffee shop, Street, Gym">
+            </div>
+
+            <div class="form-group">
+                <label>Link to Woman (Optional)</label>
+                <select id="approachWomanLink">
+                    <option value="">None</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Effort Level</label>
+                <div class="effort-options">
+                    <div class="effort-btn" onclick="selectEffort(this, 'low', 0.5)">
+                        Low<br><small>+0.5</small>
                     </div>
-                    <div class="score-item">
-                        <div class="label">Avg/Week</div>
-                        <div class="value" id="avgPerWeek">0</div>
+                    <div class="effort-btn" onclick="selectEffort(this, 'medium', 1)">
+                        Medium<br><small>+1</small>
+                    </div>
+                    <div class="effort-btn selected" onclick="selectEffort(this, 'high', 1.5)">
+                        High<br><small>+1.5</small>
                     </div>
                 </div>
             </div>
-            
-            <div class="score-card" style="margin-top: 20px;">
-                <h3 style="margin-bottom: 15px; color: #667eea;">This Month</h3>
-                <div id="monthlyStats"></div>
+
+            <div class="form-group">
+                <label>What did I do well?</label>
+                <textarea id="goodFeedback" placeholder="At least one thing you did well..."></textarea>
             </div>
 
-            <div class="score-card" style="margin-top: 20px;">
-                <h3 style="margin-bottom: 15px; color: #667eea;">Women Stats</h3>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-                    <span>Active Women:</span>
-                    <span style="font-weight: bold;" id="activeCount">0</span>
-                </div>
-                <div style="display: flex; justify-content: space-between;">
-                    <span>Passive Women:</span>
-                    <span style="font-weight: bold;" id="passiveCount">0</span>
-                </div>
+            <div class="form-group">
+                <label>What could I improve?</label>
+                <textarea id="badFeedback" placeholder="At least one area for improvement..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Outcome</label>
+                <select id="outcome">
+                    <option value="">Select outcome...</option>
+                    <option value="number">Got number</option>
+                    <option value="social">Good conversation</option>
+                    <option value="date">Instant date</option>
+                    <option value="rejection">Polite rejection</option>
+                    <option value="ignored">Ignored</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Notes</label>
+                <textarea id="notes" placeholder="Any additional thoughts..."></textarea>
+            </div>
+
+            <div style="display: flex; gap: 10px;">
+                <button class="btn btn-success" onclick="saveApproach()" style="flex: 1;">Save</button>
+                <button class="btn btn-danger" onclick="closeModal('approachModal')" style="flex: 1;">Cancel</button>
             </div>
         </div>
     </div>
 
-    <div class="tab-bar" id="tabBar" style="display: none;">
-        <div class="tab-item active" onclick="switchTab('dashboard')">
-            <div class="tab-icon">🏠</div>
-            <div class="tab-label">Home</div>
+    <!-- Date Form Modal -->
+    <div id="dateModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Schedule Date</h2>
+                <button class="close-btn" onclick="closeModal('dateModal')">×</button>
+            </div>
+
+            <div class="form-group">
+                <label>Woman</label>
+                <select id="dateWoman">
+                    <option value="">Select woman...</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Date & Time</label>
+                <input type="datetime-local" id="dateTime">
+            </div>
+
+            <div class="form-group">
+                <label>Venue</label>
+                <input type="text" id="dateVenue" placeholder="e.g., Italian restaurant, Coffee shop">
+            </div>
+
+            <div class="form-group">
+                <label>Notes</label>
+                <textarea id="dateNotes" placeholder="Plans, things to remember, etc..."></textarea>
+            </div>
+
+            <div style="display: flex; gap: 10px;">
+                <button class="btn btn-success" onclick="saveDate()" style="flex: 1;">Save</button>
+                <button class="btn btn-danger" onclick="closeModal('dateModal')" style="flex: 1;">Cancel</button>
+            </div>
         </div>
-        <div class="tab-item" onclick="switchTab('history')">
-            <div class="tab-icon">📊</div>
-            <div class="tab-label">History</div>
-        </div>
-        <div class="tab-item" onclick="switchTab('women')">
-            <div class="tab-icon">👩</div>
-            <div class="tab-label">Women</div>
-        </div>
-        <div class="tab-item" onclick="switchTab('stats')">
-            <div class="tab-icon">📈</div>
-            <div class="tab-label">Stats</div>
+    </div>
+
+    <!-- Woman Form Modal -->
+    <div id="womanModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Woman Profile</h2>
+                <button class="close-btn" onclick="closeModal('womanModal')">×</button>
+            </div>
+
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" id="womanName" placeholder="Her name">
+            </div>
+
+            <div class="form-group">
+                <label>Status</label>
+                <select id="womanStatus">
+                    <option value="current">Current</option>
+                    <option value="in-process">In Process</option>
+                    <option value="passive">Passive</option>
+                    <option value="archived">Archived</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Photos (up to 5)</label>
+                <div class="photo-upload-area">
+                    <input type="file" id="photoUpload" accept="image/*" multiple onchange="handlePhotoUpload(event)" style="display: none;">
+                    <button onclick="document.getElementById('photoUpload').click()" class="btn btn-primary btn-full">
+                        Select Photos
+                    </button>
+                    <div class="photo-preview-container" id="photoPreview"></div>
+                </div>
+            </div>
+
+            <!-- Rating Sections -->
+            <div class="rating-section">
+                <h3>Personality</h3>
+                <div class="rating-item">
+                    <label>Funny</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('funny', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('funny', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('funny', 'high', this)">High</button>
+                    </div>
+                </div>
+                <div class="rating-item">
+                    <label>Sweet & Submissive</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('sweet', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('sweet', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('sweet', 'high', this)">High</button>
+                    </div>
+                </div>
+                <div class="rating-item">
+                    <label>Low Maintenance</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('lowMaintenance', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('lowMaintenance', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('lowMaintenance', 'high', this)">High</button>
+                    </div>
+                </div>
+                <div class="rating-item">
+                    <label>Loyal</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('loyal', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('loyal', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('loyal', 'high', this)">High</button>
+                    </div>
+                </div>
+                <div class="rating-item">
+                    <label>Intelligence</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('intelligence', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('intelligence', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('intelligence', 'high', this)">High</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rating-section">
+                <h3>Body</h3>
+                <div class="rating-item">
+                    <label>Tits</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('tits', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('tits', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('tits', 'high', this)">High</button>
+                    </div>
+                </div>
+                <div class="rating-item">
+                    <label>Ass</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('ass', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('ass', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('ass', 'high', this)">High</button>
+                    </div>
+                </div>
+                <div class="rating-item">
+                    <label>Height</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('height', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('height', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('height', 'high', this)">High</button>
+                    </div>
+                </div>
+                <div class="rating-item">
+                    <label>Face</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('face', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('face', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('face', 'high', this)">High</button>
+                    </div>
+                </div>
+                <div class="rating-item">
+                    <label>Hair</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('hair', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('hair', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('hair', 'high', this)">High</button>
+                    </div>
+                </div>
+                <div class="rating-item">
+                    <label>Nails</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('nails', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('nails', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('nails', 'high', this)">High</button>
+                    </div>
+                </div>
+                <div class="rating-item">
+                    <label>Tummy</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('tummy', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('tummy', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('tummy', 'high', this)">High</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rating-section">
+                <h3>Fashion and Class</h3>
+                <div class="rating-item">
+                    <label>Clothing</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('clothing', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('clothing', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('clothing', 'high', this)">High</button>
+                    </div>
+                </div>
+                <div class="rating-item">
+                    <label>Money</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('money', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('money', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('money', 'high', this)">High</button>
+                    </div>
+                </div>
+                <div class="rating-item">
+                    <label>Classy</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('classy', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('classy', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('classy', 'high', this)">High</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rating-section">
+                <h3>Overall</h3>
+                <div class="rating-item">
+                    <label>Adds to my status</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('status', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('status', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('status', 'high', this)">High</button>
+                    </div>
+                </div>
+                <div class="rating-item">
+                    <label>Do I think she's hot</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('hot', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('hot', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('hot', 'high', this)">High</button>
+                    </div>
+                </div>
+                <div class="rating-item">
+                    <label>Do I like her</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('like', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('like', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('like', 'high', this)">High</button>
+                    </div>
+                </div>
+                <div class="rating-item">
+                    <label>Can I see long term</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('longTerm', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('longTerm', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('longTerm', 'high', this)">High</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Other Notes</label>
+                <textarea id="womanNotes" placeholder="Any other thoughts..." rows="4"></textarea>
+            </div>
+
+            <div style="display: flex; gap: 10px;">
+                <button class="btn btn-success" onclick="saveWoman()" style="flex: 1;">Save</button>
+                <button class="btn btn-danger" onclick="closeModal('womanModal')" style="flex: 1;">Cancel</button>
+            </div>
         </div>
     </div>
 
@@ -1071,42 +1133,34 @@
             remove,
             update
         } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js';
-        import {
-            getStorage,
-            ref as storageRef,
-            uploadString,
-            getDownloadURL
-        } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js';
 
-        // Your Firebase configuration - REPLACE WITH YOUR CONFIG
-
-	const firebaseConfig = {
-  		apiKey: "AIzaSyCaQwlzC_QhVJA_NhgJHrQFR-8f6aYyiIA",
-  		authDomain: "approach-tracker.firebaseapp.com",
-  		databaseURL: "https://approach-tracker-default-rtdb.firebaseio.com",
-  		projectId: "approach-tracker",
-  		storageBucket: "approach-tracker.firebasestorage.app",
-  		messagingSenderId: "175879600021",
-  		appId: "1:175879600021:web:2c7b64f9a4eb32f473e89c"
-		};
-       
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCaQwlzC_QhVJA_NhgJHrQFR-8f6aYyiIA",
+            authDomain: "approach-tracker.firebaseapp.com",
+            databaseURL: "https://approach-tracker-default-rtdb.firebaseio.com",
+            projectId: "approach-tracker",
+            storageBucket: "approach-tracker.firebasestorage.app",
+            messagingSenderId: "175879600021",
+            appId: "1:175879600021:web:2c7b64f9a4eb32f473e89c"
+        };
 
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const database = getDatabase(app);
-        const storage = getStorage(app);
         const googleProvider = new GoogleAuthProvider();
 
-        // Global variables
+        // Global state
         window.currentUser = null;
         window.approaches = [];
         window.women = [];
+        window.dates = [];
         window.selectedEffort = { level: 'high', score: 1.5 };
         window.currentRatings = {};
         window.currentPhotos = [];
-        window.editingWomanId = null;
-        window.unsubscribe = null;
+        window.editingId = null;
+        window.activeFilters = [];
 
         // Auth functions
         window.signInWithGoogle = async () => {
@@ -1150,37 +1204,31 @@
                 window.currentUser = user;
                 document.getElementById('loadingScreen').style.display = 'none';
                 document.getElementById('authScreen').style.display = 'none';
-                document.getElementById('dashboardPage').style.display = 'block';
-                document.getElementById('tabBar').style.display = 'flex';
+                document.getElementById('appContent').style.display = 'block';
+                document.getElementById('bottomNav').style.display = 'flex';
                 
                 // Show user info
                 const userInfo = document.getElementById('userInfo');
                 if (user.email) {
-                    userInfo.textContent = `Signed in as: ${user.email}`;
+                    userInfo.textContent = `${user.email}`;
                 } else {
-                    userInfo.textContent = 'Signed in anonymously';
+                    userInfo.textContent = 'Anonymous User';
                 }
                 
                 // Set up real-time sync
                 setupRealtimeSync(user.uid);
                 
                 // Initialize UI
-                updateWeekDisplay();
                 const now = new Date();
                 document.getElementById('approachDate').value = now.toISOString().slice(0, 16);
+                document.getElementById('dateTime').value = now.toISOString().slice(0, 16);
                 
             } else {
                 window.currentUser = null;
                 document.getElementById('loadingScreen').style.display = 'none';
                 document.getElementById('authScreen').style.display = 'block';
-                document.getElementById('dashboardPage').style.display = 'none';
-                document.getElementById('tabBar').style.display = 'none';
-                
-                // Unsubscribe from real-time updates
-                if (window.unsubscribe) {
-                    window.unsubscribe();
-                    window.unsubscribe = null;
-                }
+                document.getElementById('appContent').style.display = 'none';
+                document.getElementById('bottomNav').style.display = 'none';
             }
         });
 
@@ -1188,6 +1236,7 @@
         function setupRealtimeSync(userId) {
             const approachesRef = ref(database, `users/${userId}/approaches`);
             const womenRef = ref(database, `users/${userId}/women`);
+            const datesRef = ref(database, `users/${userId}/dates`);
             
             // Listen for approaches changes
             onValue(approachesRef, (snapshot) => {
@@ -1199,10 +1248,7 @@
                 } else {
                     window.approaches = [];
                 }
-                
-                updateDashboard();
-                updateHistory();
-                updateStats();
+                updateApproachesUI();
                 updateSyncStatus('synced');
             });
 
@@ -1215,33 +1261,501 @@
                 } else {
                     window.women = [];
                 }
-                
-                updateWomenList();
-                updateStats();
+                updateWomenUI();
+                updateDropdowns();
+                updateSyncStatus('synced');
+            });
+
+            // Listen for dates changes
+            onValue(datesRef, (snapshot) => {
+                const data = snapshot.val();
+                if (data) {
+                    window.dates = Object.entries(data)
+                        .map(([key, value]) => ({ ...value, firebaseKey: key }))
+                        .sort((a, b) => new Date(a.dateTime) - new Date(b.dateTime));
+                } else {
+                    window.dates = [];
+                }
+                updateDatesUI();
                 updateSyncStatus('synced');
             });
         }
 
-        // Women Management Functions
-        window.showWomanForm = function() {
-            document.getElementById('womanForm').style.display = 'block';
-            document.querySelector('#womenPage .action-button').style.display = 'none';
-            window.editingWomanId = null;
-            window.currentRatings = {};
-            window.currentPhotos = [];
-            document.getElementById('photoPreview').innerHTML = '';
+        // Section switching
+        window.switchSection = function(section) {
+            // Update buttons
+            document.querySelectorAll('.section-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Update sections
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(`${section}Section`).classList.add('active');
         }
 
-        window.hideWomanForm = function() {
-            document.getElementById('womanForm').style.display = 'none';
-            document.querySelector('#womenPage .action-button').style.display = 'block';
-            // Reset form
-            document.getElementById('womanName').value = '';
-            document.getElementById('womanNotes').value = '';
-            document.getElementById('photoPreview').innerHTML = '';
-            document.querySelectorAll('.rating-btn').forEach(btn => btn.classList.remove('selected'));
+        // Modal functions
+        window.showApproachForm = function(approachId = null) {
+            window.editingId = approachId;
+            
+            if (approachId) {
+                const approach = window.approaches.find(a => a.firebaseKey === approachId);
+                if (approach) {
+                    document.getElementById('approachDate').value = approach.date;
+                    document.getElementById('location').value = approach.location;
+                    document.getElementById('approachWomanLink').value = approach.womanId || '';
+                    document.getElementById('goodFeedback').value = approach.goodFeedback;
+                    document.getElementById('badFeedback').value = approach.badFeedback;
+                    document.getElementById('outcome').value = approach.outcome || '';
+                    document.getElementById('notes').value = approach.notes || '';
+                    window.selectedEffort = { level: approach.effortLevel, score: approach.effortScore };
+                    
+                    // Update effort buttons
+                    document.querySelectorAll('.effort-btn').forEach(btn => {
+                        btn.classList.remove('selected');
+                        if (btn.textContent.toLowerCase().includes(approach.effortLevel)) {
+                            btn.classList.add('selected');
+                        }
+                    });
+                }
+            } else {
+                // Reset form for new entry
+                document.getElementById('approachDate').value = new Date().toISOString().slice(0, 16);
+                document.getElementById('location').value = '';
+                document.getElementById('approachWomanLink').value = '';
+                document.getElementById('goodFeedback').value = '';
+                document.getElementById('badFeedback').value = '';
+                document.getElementById('outcome').value = '';
+                document.getElementById('notes').value = '';
+            }
+            
+            document.getElementById('approachModal').classList.add('active');
+        }
+
+        window.showDateForm = function(dateId = null) {
+            window.editingId = dateId;
+            
+            if (dateId) {
+                const date = window.dates.find(d => d.firebaseKey === dateId);
+                if (date) {
+                    document.getElementById('dateWoman').value = date.womanId;
+                    document.getElementById('dateTime').value = date.dateTime;
+                    document.getElementById('dateVenue').value = date.venue;
+                    document.getElementById('dateNotes').value = date.notes || '';
+                }
+            } else {
+                document.getElementById('dateWoman').value = '';
+                document.getElementById('dateTime').value = new Date().toISOString().slice(0, 16);
+                document.getElementById('dateVenue').value = '';
+                document.getElementById('dateNotes').value = '';
+            }
+            
+            document.getElementById('dateModal').classList.add('active');
+        }
+
+        window.showWomanForm = function(womanId = null) {
+            window.editingId = womanId;
             window.currentRatings = {};
             window.currentPhotos = [];
+            
+            if (womanId) {
+                const woman = window.women.find(w => w.firebaseKey === womanId);
+                if (woman) {
+                    document.getElementById('womanName').value = woman.name;
+                    document.getElementById('womanStatus').value = woman.status;
+                    document.getElementById('womanNotes').value = woman.notes || '';
+                    window.currentRatings = woman.ratings || {};
+                    window.currentPhotos = woman.photos || [];
+                    
+                    // Update rating buttons
+                    Object.entries(woman.ratings || {}).forEach(([key, value]) => {
+                        const btns = document.querySelectorAll(`[onclick*="setRating('${key}',"]`);
+                        btns.forEach(btn => {
+                            btn.classList.remove('selected');
+                            if (btn.onclick.toString().includes(value)) {
+                                btn.classList.add('selected');
+                            }
+                        });
+                    });
+                    
+                    // Update photo preview
+                    const preview = document.getElementById('photoPreview');
+                    preview.innerHTML = window.currentPhotos.map(photo => 
+                        `<img src="${photo}" class="photo-preview">`
+                    ).join('');
+                }
+            } else {
+                document.getElementById('womanName').value = '';
+                document.getElementById('womanStatus').value = 'in-process';
+                document.getElementById('womanNotes').value = '';
+                document.getElementById('photoPreview').innerHTML = '';
+                document.querySelectorAll('.rating-btn').forEach(btn => btn.classList.remove('selected'));
+            }
+            
+            document.getElementById('womanModal').classList.add('active');
+        }
+
+        window.closeModal = function(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            window.editingId = null;
+        }
+
+        // Save functions
+        window.saveApproach = async function() {
+            if (!window.currentUser) {
+                alert('Please sign in first');
+                return;
+            }
+            
+            const date = document.getElementById('approachDate').value;
+            const location = document.getElementById('location').value;
+            const womanId = document.getElementById('approachWomanLink').value;
+            const goodFeedback = document.getElementById('goodFeedback').value;
+            const badFeedback = document.getElementById('badFeedback').value;
+            const outcome = document.getElementById('outcome').value;
+            const notes = document.getElementById('notes').value;
+            
+            if (!date || !location || !goodFeedback || !badFeedback) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            updateSyncStatus('syncing');
+            
+            const approach = {
+                date,
+                location,
+                womanId,
+                effortLevel: window.selectedEffort.level,
+                effortScore: window.selectedEffort.score,
+                goodFeedback,
+                badFeedback,
+                outcome,
+                notes,
+                timestamp: new Date().toISOString()
+            };
+            
+            try {
+                const approachesRef = ref(database, `users/${window.currentUser.uid}/approaches`);
+                
+                if (window.editingId) {
+                    await update(ref(database, `users/${window.currentUser.uid}/approaches/${window.editingId}`), approach);
+                } else {
+                    await push(approachesRef, approach);
+                }
+                
+                closeModal('approachModal');
+                updateSyncStatus('synced');
+            } catch (error) {
+                console.error('Error saving approach:', error);
+                alert('Error saving. Please try again.');
+                updateSyncStatus('offline');
+            }
+        }
+
+        window.saveDate = async function() {
+            if (!window.currentUser) {
+                alert('Please sign in first');
+                return;
+            }
+            
+            const womanId = document.getElementById('dateWoman').value;
+            const dateTime = document.getElementById('dateTime').value;
+            const venue = document.getElementById('dateVenue').value;
+            const notes = document.getElementById('dateNotes').value;
+            
+            if (!womanId || !dateTime || !venue) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            updateSyncStatus('syncing');
+            
+            const dateObj = {
+                womanId,
+                dateTime,
+                venue,
+                notes,
+                createdAt: new Date().toISOString()
+            };
+            
+            try {
+                const datesRef = ref(database, `users/${window.currentUser.uid}/dates`);
+                
+                if (window.editingId) {
+                    await update(ref(database, `users/${window.currentUser.uid}/dates/${window.editingId}`), dateObj);
+                } else {
+                    await push(datesRef, dateObj);
+                }
+                
+                closeModal('dateModal');
+                updateSyncStatus('synced');
+            } catch (error) {
+                console.error('Error saving date:', error);
+                alert('Error saving. Please try again.');
+                updateSyncStatus('offline');
+            }
+        }
+
+        window.saveWoman = async function() {
+            if (!window.currentUser) {
+                alert('Please sign in first');
+                return;
+            }
+
+            const name = document.getElementById('womanName').value;
+            const status = document.getElementById('womanStatus').value;
+            const notes = document.getElementById('womanNotes').value;
+
+            if (!name) {
+                alert('Please enter a name');
+                return;
+            }
+
+            updateSyncStatus('syncing');
+
+            const score = calculateScore(window.currentRatings);
+
+            const woman = {
+                name,
+                status,
+                ratings: window.currentRatings,
+                notes,
+                photos: window.currentPhotos,
+                score,
+                updatedAt: new Date().toISOString()
+            };
+
+            try {
+                const womenRef = ref(database, `users/${window.currentUser.uid}/women`);
+                
+                if (window.editingId) {
+                    await update(ref(database, `users/${window.currentUser.uid}/women/${window.editingId}`), woman);
+                } else {
+                    woman.createdAt = new Date().toISOString();
+                    await push(womenRef, woman);
+                }
+
+                closeModal('womanModal');
+                updateSyncStatus('synced');
+            } catch (error) {
+                console.error('Error saving woman:', error);
+                alert('Error saving. Please try again.');
+                updateSyncStatus('offline');
+            }
+        }
+
+        // Delete functions
+        window.deleteApproach = async function(approachId) {
+            if (!confirm('Are you sure you want to delete this approach?')) return;
+            
+            try {
+                await remove(ref(database, `users/${window.currentUser.uid}/approaches/${approachId}`));
+            } catch (error) {
+                console.error('Error deleting approach:', error);
+                alert('Error deleting. Please try again.');
+            }
+        }
+
+        window.deleteDate = async function(dateId) {
+            if (!confirm('Are you sure you want to delete this date?')) return;
+            
+            try {
+                await remove(ref(database, `users/${window.currentUser.uid}/dates/${dateId}`));
+            } catch (error) {
+                console.error('Error deleting date:', error);
+                alert('Error deleting. Please try again.');
+            }
+        }
+
+        window.deleteWoman = async function(womanId) {
+            if (!confirm('Are you sure you want to delete this profile?')) return;
+            
+            try {
+                await remove(ref(database, `users/${window.currentUser.uid}/women/${womanId}`));
+            } catch (error) {
+                console.error('Error deleting woman:', error);
+                alert('Error deleting. Please try again.');
+            }
+        }
+
+        // UI Update functions
+        function updateApproachesUI() {
+            // Update week score
+            const weekScore = getWeekScore();
+            document.getElementById('weekScore').textContent = weekScore.toFixed(1);
+            
+            const percentage = Math.min((weekScore / 5) * 100, 100);
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = percentage + '%';
+            progressBar.textContent = Math.round(percentage) + '%';
+            
+            // Update approach list
+            const list = document.getElementById('approachList');
+            if (window.approaches.length === 0) {
+                list.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📊</div>No approaches yet</div>';
+                return;
+            }
+            
+            list.innerHTML = window.approaches.slice(0, 10).map(approach => {
+                const date = new Date(approach.date);
+                const woman = approach.womanId ? window.women.find(w => w.firebaseKey === approach.womanId) : null;
+                
+                return `
+                    <div class="approach-item" onclick="showApproachForm('${approach.firebaseKey}')">
+                        <div class="approach-header">
+                            <span class="approach-date">${date.toLocaleDateString()}</span>
+                            <span style="background: ${approach.effortLevel === 'high' ? '#4CAF50' : approach.effortLevel === 'medium' ? '#FFC107' : '#FF9800'}; color: white; padding: 2px 8px; border-radius: 5px; font-size: 12px;">
+                                ${approach.effortLevel.toUpperCase()} +${approach.effortScore}
+                            </span>
+                        </div>
+                        <div style="color: #666; font-size: 14px; margin: 5px 0;">📍 ${approach.location}</div>
+                        ${woman ? `<div style="color: #667eea; font-size: 14px;">👩 ${woman.name}</div>` : ''}
+                        <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #f0f0f0;">
+                            <div style="color: #4CAF50; font-size: 14px;">✅ ${approach.goodFeedback}</div>
+                            <div style="color: #f44336; font-size: 14px; margin-top: 5px;">📝 ${approach.badFeedback}</div>
+                        </div>
+                        <div class="edit-actions">
+                            <button class="btn btn-warning" onclick="event.stopPropagation(); showApproachForm('${approach.firebaseKey}')" style="flex: 1;">Edit</button>
+                            <button class="btn btn-danger" onclick="event.stopPropagation(); deleteApproach('${approach.firebaseKey}')" style="flex: 1;">Delete</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function updateDatesUI() {
+            const now = new Date();
+            const upcoming = window.dates.filter(d => new Date(d.dateTime) >= now);
+            const past = window.dates.filter(d => new Date(d.dateTime) < now);
+            
+            // Update upcoming dates
+            const upcomingList = document.getElementById('upcomingDates');
+            if (upcoming.length === 0) {
+                upcomingList.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📅</div>No upcoming dates</div>';
+            } else {
+                upcomingList.innerHTML = upcoming.map(date => {
+                    const woman = window.women.find(w => w.firebaseKey === date.womanId);
+                    const dateObj = new Date(date.dateTime);
+                    
+                    return `
+                        <div class="date-card">
+                            <div class="date-header">
+                                <span class="date-time">${dateObj.toLocaleDateString()} ${dateObj.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+                                <span class="date-woman">${woman ? woman.name : 'Unknown'}</span>
+                            </div>
+                            <div style="color: #666; margin: 10px 0;">📍 ${date.venue}</div>
+                            ${date.notes ? `<div style="color: #999; font-size: 14px;">📝 ${date.notes}</div>` : ''}
+                            <div class="edit-actions">
+                                <button class="btn btn-warning" onclick="showDateForm('${date.firebaseKey}')" style="flex: 1;">Edit</button>
+                                <button class="btn btn-danger" onclick="deleteDate('${date.firebaseKey}')" style="flex: 1;">Delete</button>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+            
+            // Update past dates
+            const pastList = document.getElementById('pastDates');
+            if (past.length === 0) {
+                pastList.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📜</div>No past dates</div>';
+            } else {
+                pastList.innerHTML = past.slice(0, 5).map(date => {
+                    const woman = window.women.find(w => w.firebaseKey === date.womanId);
+                    const dateObj = new Date(date.dateTime);
+                    
+                    return `
+                        <div class="date-card" style="opacity: 0.8;">
+                            <div class="date-header">
+                                <span class="date-time">${dateObj.toLocaleDateString()}</span>
+                                <span class="date-woman">${woman ? woman.name : 'Unknown'}</span>
+                            </div>
+                            <div style="color: #666;">📍 ${date.venue}</div>
+                        </div>
+                    `;
+                }).join('');
+            }
+        }
+
+        function updateWomenUI() {
+            filterWomen();
+        }
+
+        window.filterWomen = function() {
+            const searchTerm = document.getElementById('wmsSearch').value.toLowerCase();
+            let filtered = window.women;
+            
+            // Apply status filters
+            if (window.activeFilters.length > 0) {
+                filtered = filtered.filter(w => window.activeFilters.includes(w.status));
+            }
+            
+            // Apply search
+            if (searchTerm) {
+                filtered = filtered.filter(w => w.name.toLowerCase().includes(searchTerm));
+            }
+            
+            // Sort by score
+            filtered.sort((a, b) => b.score - a.score);
+            
+            const grid = document.getElementById('womanGrid');
+            if (filtered.length === 0) {
+                grid.innerHTML = '<div class="empty-state"><div class="empty-state-icon">👩</div>No women found</div>';
+                return;
+            }
+            
+            grid.innerHTML = filtered.map(woman => {
+                const photoHtml = woman.photos && woman.photos.length > 0 
+                    ? `<img src="${woman.photos[0]}" style="width: 60px; height: 60px; border-radius: 10px; object-fit: cover; margin-right: 10px;">`
+                    : '<div style="width: 60px; height: 60px; border-radius: 10px; background: #f0f0f0; margin-right: 10px; display: flex; align-items: center; justify-content: center;">👩</div>';
+                
+                return `
+                    <div class="woman-card" onclick="showWomanForm('${woman.firebaseKey}')">
+                        <div class="woman-score">${woman.score}</div>
+                        <div style="display: flex; align-items: center;">
+                            ${photoHtml}
+                            <div style="flex: 1;">
+                                <div style="font-weight: 600; font-size: 16px; margin-bottom: 5px;">${woman.name}</div>
+                                <span class="woman-status-badge status-${woman.status.replace(' ', '-')}">${woman.status}</span>
+                                <div style="margin-top: 10px;">
+                                    ${createRatingDisplay(woman.ratings.hot)} Hot<br>
+                                    ${createRatingDisplay(woman.ratings.like)} Like<br>
+                                    ${createRatingDisplay(woman.ratings.longTerm)} LTR
+                                </div>
+                            </div>
+                        </div>
+                        <div class="edit-actions">
+                            <button class="btn btn-warning" onclick="event.stopPropagation(); showWomanForm('${woman.firebaseKey}')" style="flex: 1;">Edit</button>
+                            <button class="btn btn-danger" onclick="event.stopPropagation(); deleteWoman('${woman.firebaseKey}')" style="flex: 1;">Delete</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function updateDropdowns() {
+            // Update woman select in approach form
+            const approachSelect = document.getElementById('approachWomanLink');
+            approachSelect.innerHTML = '<option value="">None</option>' + 
+                window.women.map(w => `<option value="${w.firebaseKey}">${w.name}</option>`).join('');
+            
+            // Update woman select in date form
+            const dateSelect = document.getElementById('dateWoman');
+            dateSelect.innerHTML = '<option value="">Select woman...</option>' + 
+                window.women.filter(w => w.status === 'current' || w.status === 'in-process')
+                    .map(w => `<option value="${w.firebaseKey}">${w.name}</option>`).join('');
+        }
+
+        // Helper functions
+        window.selectEffort = function(btn, level, score) {
+            document.querySelectorAll('.effort-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            window.selectedEffort = { level, score };
+        }
+
+        window.setRating = function(category, value, btn) {
+            const parent = btn.parentElement;
+            parent.querySelectorAll('.rating-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            window.currentRatings[category] = value;
         }
 
         window.handlePhotoUpload = function(event) {
@@ -1266,16 +1780,36 @@
             });
         }
 
-        window.setRating = function(category, value, btn) {
-            // Remove selected class from siblings
-            const parent = btn.parentElement;
-            parent.querySelectorAll('.rating-btn').forEach(b => b.classList.remove('selected'));
-            btn.classList.add('selected');
+        window.toggleFilter = function(chip, status) {
+            chip.classList.toggle('active');
             
-            window.currentRatings[category] = value;
+            if (chip.classList.contains('active')) {
+                window.activeFilters.push(status);
+            } else {
+                const index = window.activeFilters.indexOf(status);
+                if (index > -1) {
+                    window.activeFilters.splice(index, 1);
+                }
+            }
+            
+            filterWomen();
         }
 
-        window.calculateScore = function(ratings) {
+        function createRatingDisplay(value) {
+            const html = '<div class="rating-display">';
+            
+            if (value === 'low') {
+                return html + '<span class="rating-dash low"></span><span class="rating-dash inactive"></span><span class="rating-dash inactive"></span></div>';
+            } else if (value === 'medium') {
+                return html + '<span class="rating-dash medium"></span><span class="rating-dash medium"></span><span class="rating-dash inactive"></span></div>';
+            } else if (value === 'high') {
+                return html + '<span class="rating-dash high"></span><span class="rating-dash high"></span><span class="rating-dash high"></span></div>';
+            }
+            
+            return html + '<span class="rating-dash inactive"></span><span class="rating-dash inactive"></span><span class="rating-dash inactive"></span></div>';
+        }
+
+        function calculateScore(ratings) {
             const weights = {
                 // Personality (25%)
                 funny: 0.05,
@@ -1313,390 +1847,17 @@
             return Math.round(totalScore * 10) / 10;
         }
 
-        window.saveWoman = async function() {
-            if (!window.currentUser) {
-                alert('Please sign in first');
-                return;
-            }
-
-            const name = document.getElementById('womanName').value;
-            const notes = document.getElementById('womanNotes').value;
-
-            if (!name) {
-                alert('Please enter a name');
-                return;
-            }
-
-            updateSyncStatus('syncing');
-
-            const score = calculateScore(window.currentRatings);
-
-            const woman = {
-                name,
-                ratings: window.currentRatings,
-                notes,
-                photos: window.currentPhotos,
-                score,
-                status: 'active',
-                createdAt: new Date().toISOString(),
-                updatedAt: new Date().toISOString()
-            };
-
-            try {
-                const womenRef = ref(database, `users/${window.currentUser.uid}/women`);
-                
-                if (window.editingWomanId) {
-                    await update(ref(database, `users/${window.currentUser.uid}/women/${window.editingWomanId}`), woman);
-                } else {
-                    await push(womenRef, woman);
-                }
-
-                hideWomanForm();
-                updateSyncStatus('synced');
-            } catch (error) {
-                console.error('Error saving woman:', error);
-                alert('Error saving. Please try again.');
-                updateSyncStatus('offline');
-            }
+        function getWeekScore() {
+            const now = new Date();
+            const monday = new Date(now);
+            monday.setDate(now.getDate() - now.getDay() + 1);
+            monday.setHours(0, 0, 0, 0);
+            
+            return window.approaches
+                .filter(a => new Date(a.date) >= monday)
+                .reduce((sum, a) => sum + a.effortScore, 0);
         }
 
-        window.updateWomenList = function() {
-            const activeWomen = window.women.filter(w => w.status === 'active')
-                .sort((a, b) => b.score - a.score);
-            const passiveWomen = window.women.filter(w => w.status === 'passive')
-                .sort((a, b) => b.score - a.score);
-
-            // Update active women
-            const activeContainer = document.getElementById('activeWomen');
-            if (activeWomen.length === 0) {
-                activeContainer.innerHTML = '<p style="text-align: center; color: #999; padding: 20px;">No active women yet</p>';
-            } else {
-                activeContainer.innerHTML = activeWomen.map(woman => createWomanCard(woman)).join('');
-            }
-
-            // Update passive women
-            const passiveContainer = document.getElementById('passiveWomen');
-            if (passiveWomen.length === 0) {
-                passiveContainer.innerHTML = '<p style="text-align: center; color: #999; padding: 20px;">No passive women yet</p>';
-            } else {
-                passiveContainer.innerHTML = passiveWomen.map(woman => createWomanCard(woman)).join('');
-            }
-        }
-
-        function createWomanCard(woman) {
-            const photos = woman.photos && woman.photos.length > 0 
-                ? woman.photos.slice(0, 3).map(photo => 
-                    `<img src="${photo}" class="woman-photo" alt="${woman.name}">`
-                ).join('') 
-                : '<div class="woman-photo" style="background: #f0f0f0; display: flex; align-items: center; justify-content: center;">📷</div>';
-
-            const highlights = [];
-            if (woman.ratings.hot === 'high') highlights.push('🔥 Hot');
-            if (woman.ratings.like === 'high') highlights.push('❤️ Like');
-            if (woman.ratings.longTerm === 'high') highlights.push('💍 LTR');
-
-            return `
-                <div class="woman-card" onclick="viewWomanDetail('${woman.firebaseKey}')">
-                    <div class="woman-score">${woman.score}</div>
-                    <div class="woman-photos">${photos}</div>
-                    <div class="woman-name">${woman.name}</div>
-                    <div class="woman-status status-${woman.status}">${woman.status.toUpperCase()}</div>
-                    <div class="woman-highlights">${highlights.join(' • ') || 'Tap to view details'}</div>
-                    ${woman.status === 'active' ? `
-                        <button onclick="event.stopPropagation(); makePassive('${woman.firebaseKey}')" 
-                                style="margin-top: 10px; padding: 8px; background: #FF9800; color: white; border: none; border-radius: 8px; cursor: pointer; width: 100%;">
-                            Move to Passive
-                        </button>
-                    ` : woman.recontactDate ? `
-                        <div style="margin-top: 10px; padding: 8px; background: #f0f0f0; border-radius: 8px; font-size: 12px; text-align: center;">
-                            Recontact: ${new Date(woman.recontactDate).toLocaleDateString()}
-                        </div>
-                    ` : ''}
-                </div>
-            `;
-        }
-
-        window.viewWomanDetail = function(womanId) {
-            const woman = window.women.find(w => w.firebaseKey === womanId);
-            if (!woman) return;
-
-            const photos = woman.photos && woman.photos.length > 0
-                ? woman.photos.map(photo => 
-                    `<img src="${photo}" class="detail-photo" alt="${woman.name}">`
-                ).join('')
-                : '<p style="color: #999;">No photos</p>';
-
-            const ratingDisplay = (value) => {
-                const map = { low: '⭐', medium: '⭐⭐', high: '⭐⭐⭐' };
-                return map[value] || '⭐⭐';
-            };
-
-            const detail = `
-                <button class="back-btn" onclick="closeWomanDetail()">← Back</button>
-                <h2 style="color: #667eea; margin-bottom: 10px;">${woman.name}</h2>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
-                    <span class="woman-status status-${woman.status}">${woman.status.toUpperCase()}</span>
-                    <span class="woman-score" style="position: static;">${woman.score}/10</span>
-                </div>
-                
-                <div class="detail-photos">${photos}</div>
-                
-                <div class="detail-section">
-                    <h4>Personality</h4>
-                    <div class="detail-item">
-                        <span>Funny</span>
-                        <span class="detail-value">${ratingDisplay(woman.ratings.funny)}</span>
-                    </div>
-                    <div class="detail-item">
-                        <span>Sweet & Submissive</span>
-                        <span class="detail-value">${ratingDisplay(woman.ratings.sweet)}</span>
-                    </div>
-                    <div class="detail-item">
-                        <span>Low Maintenance</span>
-                        <span class="detail-value">${ratingDisplay(woman.ratings.lowMaintenance)}</span>
-                    </div>
-                    <div class="detail-item">
-                        <span>Loyal</span>
-                        <span class="detail-value">${ratingDisplay(woman.ratings.loyal)}</span>
-                    </div>
-                    <div class="detail-item">
-                        <span>Intelligence</span>
-                        <span class="detail-value">${ratingDisplay(woman.ratings.intelligence)}</span>
-                    </div>
-                </div>
-                
-                <div class="detail-section">
-                    <h4>Body</h4>
-                    <div class="detail-item">
-                        <span>Tits</span>
-                        <span class="detail-value">${ratingDisplay(woman.ratings.tits)}</span>
-                    </div>
-                    <div class="detail-item">
-                        <span>Ass</span>
-                        <span class="detail-value">${ratingDisplay(woman.ratings.ass)}</span>
-                    </div>
-                    <div class="detail-item">
-                        <span>Height</span>
-                        <span class="detail-value">${ratingDisplay(woman.ratings.height)}</span>
-                    </div>
-                    <div class="detail-item">
-                        <span>Face</span>
-                        <span class="detail-value">${ratingDisplay(woman.ratings.face)}</span>
-                    </div>
-                    <div class="detail-item">
-                        <span>Hair</span>
-                        <span class="detail-value">${ratingDisplay(woman.ratings.hair)}</span>
-                    </div>
-                    <div class="detail-item">
-                        <span>Nails</span>
-                        <span class="detail-value">${ratingDisplay(woman.ratings.nails)}</span>
-                    </div>
-                    <div class="detail-item">
-                        <span>Tummy</span>
-                        <span class="detail-value">${ratingDisplay(woman.ratings.tummy)}</span>
-                    </div>
-                </div>
-                
-                <div class="detail-section">
-                    <h4>Fashion and Class</h4>
-                    <div class="detail-item">
-                        <span>Clothing</span>
-                        <span class="detail-value">${ratingDisplay(woman.ratings.clothing)}</span>
-                    </div>
-                    <div class="detail-item">
-                        <span>Money</span>
-                        <span class="detail-value">${ratingDisplay(woman.ratings.money)}</span>
-                    </div>
-                    <div class="detail-item">
-                        <span>Classy</span>
-                        <span class="detail-value">${ratingDisplay(woman.ratings.classy)}</span>
-                    </div>
-                </div>
-                
-                <div class="detail-section">
-                    <h4>Overall</h4>
-                    <div class="detail-item">
-                        <span>Adds to my status</span>
-                        <span class="detail-value">${ratingDisplay(woman.ratings.status)}</span>
-                    </div>
-                    <div class="detail-item">
-                        <span>Do I think she's hot</span>
-                        <span class="detail-value">${ratingDisplay(woman.ratings.hot)}</span>
-                    </div>
-                    <div class="detail-item">
-                        <span>Do I like her</span>
-                        <span class="detail-value">${ratingDisplay(woman.ratings.like)}</span>
-                    </div>
-                    <div class="detail-item">
-                        <span>Can I see long term</span>
-                        <span class="detail-value">${ratingDisplay(woman.ratings.longTerm)}</span>
-                    </div>
-                </div>
-                
-                ${woman.notes ? `
-                    <div class="detail-section">
-                        <h4>Notes</h4>
-                        <p style="color: #666; font-size: 14px;">${woman.notes}</p>
-                    </div>
-                ` : ''}
-
-                ${woman.status === 'active' ? `
-                    <button onclick="makePassive('${woman.firebaseKey}')" class="action-button" style="background: #FF9800;">
-                        Move to Passive
-                    </button>
-                ` : `
-                    <button onclick="makeActive('${woman.firebaseKey}')" class="action-button">
-                        Move to Active
-                    </button>
-                `}
-            `;
-
-            document.getElementById('womanDetail').innerHTML = detail;
-            document.getElementById('womanDetail').style.display = 'block';
-            document.querySelector('.women-tabs').style.display = 'none';
-            document.getElementById('activeWomen').style.display = 'none';
-            document.getElementById('passiveWomen').style.display = 'none';
-            document.querySelector('#womenPage .action-button').style.display = 'none';
-        }
-
-        window.closeWomanDetail = function() {
-            document.getElementById('womanDetail').style.display = 'none';
-            document.querySelector('.women-tabs').style.display = 'flex';
-            const activeTab = document.querySelector('.women-tab.active').textContent.trim().toLowerCase();
-            if (activeTab === 'active') {
-                document.getElementById('activeWomen').style.display = 'block';
-            } else {
-                document.getElementById('passiveWomen').style.display = 'block';
-            }
-            document.querySelector('#womenPage .action-button').style.display = 'block';
-        }
-
-        window.makePassive = async function(womanId) {
-            const recontact = confirm('Do you want to contact her again?');
-            
-            if (recontact) {
-                const timeOptions = [
-                    { label: '1 week', days: 7 },
-                    { label: '1 month', days: 30 },
-                    { label: '3 months', days: 90 },
-                    { label: '6 months', days: 180 },
-                    { label: '1 year', days: 365 }
-                ];
-                
-                const choice = prompt(
-                    'When should you recontact?\n' +
-                    '1 = 1 week\n' +
-                    '2 = 1 month\n' +
-                    '3 = 3 months\n' +
-                    '4 = 6 months\n' +
-                    '5 = 1 year',
-                    '2'
-                );
-                
-                const index = parseInt(choice) - 1;
-                if (index >= 0 && index < timeOptions.length) {
-                    const recontactDate = new Date();
-                    recontactDate.setDate(recontactDate.getDate() + timeOptions[index].days);
-                    
-                    await update(ref(database, `users/${window.currentUser.uid}/women/${womanId}`), {
-                        status: 'passive',
-                        recontact: true,
-                        recontactDate: recontactDate.toISOString(),
-                        updatedAt: new Date().toISOString()
-                    });
-                }
-            } else {
-                await update(ref(database, `users/${window.currentUser.uid}/women/${womanId}`), {
-                    status: 'passive',
-                    recontact: false,
-                    recontactDate: null,
-                    updatedAt: new Date().toISOString()
-                });
-            }
-            
-            closeWomanDetail();
-        }
-
-        window.makeActive = async function(womanId) {
-            await update(ref(database, `users/${window.currentUser.uid}/women/${womanId}`), {
-                status: 'active',
-                recontact: null,
-                recontactDate: null,
-                updatedAt: new Date().toISOString()
-            });
-            
-            closeWomanDetail();
-        }
-
-        window.switchWomenTab = function(tab) {
-            document.querySelectorAll('.women-tab').forEach(t => t.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            if (tab === 'active') {
-                document.getElementById('activeWomen').style.display = 'block';
-                document.getElementById('passiveWomen').style.display = 'none';
-            } else {
-                document.getElementById('activeWomen').style.display = 'none';
-                document.getElementById('passiveWomen').style.display = 'block';
-            }
-        }
-
-        // Save approach to Firebase
-        window.saveApproach = async () => {
-            if (!window.currentUser) {
-                alert('Please sign in first');
-                return;
-            }
-            
-            const date = document.getElementById('approachDate').value;
-            const location = document.getElementById('location').value;
-            const goodFeedback = document.getElementById('goodFeedback').value;
-            const badFeedback = document.getElementById('badFeedback').value;
-            const outcome = document.getElementById('outcome').value;
-            const notes = document.getElementById('notes').value;
-            
-            if (!date || !location || !goodFeedback || !badFeedback) {
-                alert('Please fill in all required fields');
-                return;
-            }
-            
-            updateSyncStatus('syncing');
-            
-            const approach = {
-                date,
-                location,
-                effortLevel: window.selectedEffort.level,
-                effortScore: window.selectedEffort.score,
-                goodFeedback,
-                badFeedback,
-                outcome,
-                notes,
-                timestamp: new Date().toISOString()
-            };
-            
-            try {
-                const approachesRef = ref(database, `users/${window.currentUser.uid}/approaches`);
-                await push(approachesRef, approach);
-                
-                // Reset form
-                document.getElementById('location').value = '';
-                document.getElementById('goodFeedback').value = '';
-                document.getElementById('badFeedback').value = '';
-                document.getElementById('outcome').value = '';
-                document.getElementById('notes').value = '';
-                
-                hideForm();
-                showSuccessMessage();
-                updateSyncStatus('synced');
-                
-            } catch (error) {
-                console.error('Error saving approach:', error);
-                alert('Error saving. Please try again.');
-                updateSyncStatus('offline');
-            }
-        };
-
-        // Update sync status indicator
         function updateSyncStatus(status) {
             const indicator = document.getElementById('syncIndicator');
             const text = document.getElementById('syncText');
@@ -1718,177 +1879,10 @@
             }
         }
 
-        // UI Functions
-        window.updateWeekDisplay = function() {
-            const now = new Date();
-            const monday = new Date(now);
-            monday.setDate(now.getDate() - now.getDay() + 1);
-            const sunday = new Date(monday);
-            sunday.setDate(monday.getDate() + 6);
-            
-            const options = { month: 'short', day: 'numeric', year: 'numeric' };
-            document.getElementById('weekDisplay').textContent = 
-                `Week of ${monday.toLocaleDateString('en-US', options)}`;
-        }
-
-        window.getWeekScore = function() {
-            const now = new Date();
-            const monday = new Date(now);
-            monday.setDate(now.getDate() - now.getDay() + 1);
-            monday.setHours(0, 0, 0, 0);
-            
-            return window.approaches
-                .filter(a => new Date(a.date) >= monday)
-                .reduce((sum, a) => sum + a.effortScore, 0);
-        }
-
-        window.updateDashboard = function() {
-            const weekScore = getWeekScore();
-            document.getElementById('weekScore').textContent = weekScore.toFixed(1);
-            
-            const percentage = Math.min((weekScore / 5) * 100, 100);
-            const progressBar = document.getElementById('progressBar');
-            progressBar.style.width = percentage + '%';
-            progressBar.textContent = Math.round(percentage) + '%';
-            
-            if (percentage >= 100) {
-                progressBar.style.background = 'linear-gradient(90deg, #4CAF50, #8BC34A)';
-            }
-        }
-
-        window.showForm = function() {
-            document.getElementById('approachForm').style.display = 'block';
-            document.querySelector('.action-button').style.display = 'none';
-        }
-
-        window.hideForm = function() {
-            document.getElementById('approachForm').style.display = 'none';
-            document.querySelector('.action-button').style.display = 'block';
-        }
-
-        window.selectEffort = function(btn, level, score) {
-            document.querySelectorAll('.effort-btn').forEach(b => b.classList.remove('selected'));
-            btn.classList.add('selected');
-            window.selectedEffort = { level, score };
-        }
-
-        window.showSuccessMessage = function() {
-            const weekScore = getWeekScore();
-            let message = 'Approach logged! ';
-            
-            if (weekScore >= 5) {
-                message += '🎉 Weekly goal achieved!';
-            } else {
-                message += `${(5 - weekScore).toFixed(1)} points to weekly goal`;
-            }
-            
-            alert(message);
-        }
-
-        window.updateHistory = function() {
-            const historyList = document.getElementById('historyList');
-            
-            if (window.approaches.length === 0) {
-                historyList.innerHTML = '<p style="text-align: center; color: #999;">No approaches logged yet</p>';
-                return;
-            }
-            
-            historyList.innerHTML = window.approaches.slice(0, 10).map(approach => {
-                const date = new Date(approach.date);
-                const dateStr = date.toLocaleDateString('en-US', { 
-                    month: 'short', 
-                    day: 'numeric', 
-                    hour: 'numeric', 
-                    minute: '2-digit'
-                });
-                
-                return `
-                    <div class="history-item">
-                        <div class="history-header">
-                            <span class="history-date">${dateStr}</span>
-                            <span class="history-effort effort-${approach.effortLevel}">
-                                ${approach.effortLevel.toUpperCase()} +${approach.effortScore}
-                            </span>
-                        </div>
-                        <div class="history-location">📍 ${approach.location}</div>
-                        <div class="feedback-section">
-                            <div class="feedback-item feedback-good">✅ ${approach.goodFeedback}</div>
-                            <div class="feedback-item feedback-bad">📝 ${approach.badFeedback}</div>
-                            ${approach.outcome ? `<div class="feedback-item">🎯 ${approach.outcome}</div>` : ''}
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        window.updateStats = function() {
-            document.getElementById('totalApproaches').textContent = window.approaches.length;
-            
-            if (window.approaches.length > 0) {
-                const firstDate = new Date(window.approaches[window.approaches.length - 1].date);
-                const now = new Date();
-                const weeks = Math.max(1, Math.ceil((now - firstDate) / (7 * 24 * 60 * 60 * 1000)));
-                const avgPerWeek = (window.approaches.length / weeks).toFixed(1);
-                document.getElementById('avgPerWeek').textContent = avgPerWeek;
-                
-                // Monthly breakdown
-                const thisMonth = new Date().getMonth();
-                const thisYear = new Date().getFullYear();
-                const monthlyApproaches = window.approaches.filter(a => {
-                    const d = new Date(a.date);
-                    return d.getMonth() === thisMonth && d.getFullYear() === thisYear;
-                });
-                
-                document.getElementById('monthlyStats').innerHTML = `
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-                        <span>Approaches:</span>
-                        <span style="font-weight: bold;">${monthlyApproaches.length}</span>
-                    </div>
-                    <div style="display: flex; justify-content: space-between;">
-                        <span>Score:</span>
-                        <span style="font-weight: bold;">
-                            ${monthlyApproaches.reduce((sum, a) => sum + a.effortScore, 0).toFixed(1)}
-                        </span>
-                    </div>
-                `;
-            } else {
-                document.getElementById('avgPerWeek').textContent = '0';
-                document.getElementById('monthlyStats').innerHTML = '<p style="text-align: center; color: #999;">No data yet</p>';
-            }
-
-            // Women stats
-            const activeWomen = window.women.filter(w => w.status === 'active');
-            const passiveWomen = window.women.filter(w => w.status === 'passive');
-            document.getElementById('activeCount').textContent = activeWomen.length;
-            document.getElementById('passiveCount').textContent = passiveWomen.length;
-        }
-
         window.switchTab = function(tab) {
-            // Update tab bar
-            document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
-            event.target.closest('.tab-item').classList.add('active');
-            
-            // Update pages
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            
-            switch(tab) {
-                case 'dashboard':
-                    document.getElementById('dashboardPage').classList.add('active');
-                    updateDashboard();
-                    break;
-                case 'history':
-                    document.getElementById('historyPage').classList.add('active');
-                    updateHistory();
-                    break;
-                case 'women':
-                    document.getElementById('womenPage').classList.add('active');
-                    updateWomenList();
-                    break;
-                case 'stats':
-                    document.getElementById('statsPage').classList.add('active');
-                    updateStats();
-                    break;
-            }
+            // This is for the bottom nav if you want to add more views later
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            event.target.closest('.nav-item').classList.add('active');
         }
     </script>
 </body>
