@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Tracker</title>
+    <title>💪 Dating Tracker</title>
     <style>
         * {
             margin: 0;
@@ -38,9 +38,13 @@
         }
 
         .header h1 {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 300;
-            letter-spacing: 2px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #c0c0c0, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 10px;
         }
 
@@ -80,126 +84,6 @@
             0% { opacity: 1; }
             50% { opacity: 0.3; }
             100% { opacity: 1; }
-        }
-
-        /* PIN Entry Styles */
-        .pin-container {
-            background: rgba(20, 20, 20, 0.8);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 40px 30px;
-            margin-bottom: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            text-align: center;
-        }
-
-        .pin-title {
-            font-size: 20px;
-            font-weight: 300;
-            color: #f0f0f0;
-            margin-bottom: 30px;
-            letter-spacing: 1px;
-        }
-
-        .pin-dots {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .pin-dot {
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s;
-        }
-
-        .pin-dot.filled {
-            background: #667eea;
-            border-color: #667eea;
-        }
-
-        .pin-pad {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            max-width: 250px;
-            margin: 0 auto;
-        }
-
-        .pin-btn {
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            color: #e0e0e0;
-            font-size: 20px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .pin-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: scale(1.05);
-        }
-
-        .pin-btn:active {
-            transform: scale(0.95);
-        }
-
-        .pin-btn.delete {
-            grid-column: span 2;
-            background: rgba(239, 68, 68, 0.1);
-        }
-
-        /* Auth Styles */
-        .auth-container {
-            background: rgba(20, 20, 20, 0.8);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 40px 30px;
-            margin-bottom: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            text-align: center;
-        }
-
-        .auth-button {
-            width: 100%;
-            padding: 15px;
-            margin: 10px 0;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            font-size: 14px;
-            font-weight: 400;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .auth-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
-        }
-
-        .auth-button:active {
-            transform: scale(0.98);
-        }
-
-        .google-signin {
-            background: rgba(255, 255, 255, 0.05);
-            color: #e0e0e0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .google-signin:hover {
-            background: rgba(255, 255, 255, 0.08);
         }
 
         /* Section Selector */
@@ -251,32 +135,56 @@
             opacity: 0.8;
         }
 
-        /* Settings Button */
-        .settings-btn {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            padding: 8px;
-            background: rgba(30, 30, 30, 0.8);
-            backdrop-filter: blur(10px);
+        /* Auth Styles */
+        .auth-container {
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        .auth-button {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 10px;
-            color: #888;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
             cursor: pointer;
             transition: all 0.3s;
+        }
+
+        .auth-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+        }
+
+        .auth-button:active {
+            transform: scale(0.98);
+        }
+
+        .google-signin {
+            background: rgba(255, 255, 255, 0.05);
+            color: #e0e0e0;
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 10px;
         }
 
-        .settings-btn:hover {
-            color: #fff;
-            background: rgba(40, 40, 40, 0.8);
+        .google-signin:hover {
+            background: rgba(255, 255, 255, 0.08);
         }
 
-        .settings-btn svg {
-            width: 20px;
-            height: 20px;
+        .anonymous-signin {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            color: #e0e0e0;
         }
 
         /* Card Styles */
@@ -315,178 +223,186 @@
         .form-group input, .form-group textarea, .form-group select {
             width: 100%;
             padding: 12px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 8px;
-            color: #e0e0e0;
             font-size: 14px;
+            color: #e0e0e0;
             transition: all 0.3s;
         }
 
         .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.2);
             outline: none;
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
         }
 
         /* Button Styles */
         .btn {
-            padding: 12px 20px;
-            border: none;
+            padding: 12px 24px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 8px;
+            font-size: 13px;
             font-weight: 400;
-            font-size: 14px;
+            letter-spacing: 1px;
             cursor: pointer;
             transition: all 0.3s;
-            letter-spacing: 0.5px;
             text-transform: uppercase;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            color: #fff;
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
         }
 
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: #e0e0e0;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .btn-success {
+            background: rgba(0, 255, 136, 0.1);
+            color: #00ff88;
+            border-color: rgba(0, 255, 136, 0.3);
         }
 
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.15);
+        .btn-success:hover {
+            background: rgba(0, 255, 136, 0.15);
         }
 
         .btn-danger {
-            background: linear-gradient(135deg, #f93b1d, #ea1e63);
-            color: white;
+            background: rgba(255, 51, 102, 0.1);
+            color: #ff3366;
+            border-color: rgba(255, 51, 102, 0.3);
+        }
+
+        .btn-danger:hover {
+            background: rgba(255, 51, 102, 0.15);
         }
 
         .btn-warning {
-            background: linear-gradient(135deg, #f7b731, #f39c12);
-            color: white;
+            background: rgba(255, 170, 0, 0.1);
+            color: #ffaa00;
+            border-color: rgba(255, 170, 0, 0.3);
         }
 
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-bottom: 30px;
+        .btn-warning:hover {
+            background: rgba(255, 170, 0, 0.15);
         }
 
-        .stat-card {
-            background: rgba(30, 30, 30, 0.6);
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-full {
+            width: 100%;
+        }
+
+        /* Rating Visualization */
+        .rating-display {
+            display: inline-flex;
+            gap: 3px;
+        }
+
+        .rating-dash {
+            width: 25px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rating-dash.low { 
+            background: linear-gradient(90deg, #ff3366 0%, rgba(255, 51, 102, 0.3) 100%);
+        }
+        .rating-dash.medium { 
+            background: linear-gradient(90deg, #ffaa00 0%, #ffaa00 50%, rgba(255, 170, 0, 0.3) 100%);
+        }
+        .rating-dash.high { 
+            background: #00ff88;
+            box-shadow: 0 0 5px rgba(0, 255, 136, 0.5);
+        }
+        .rating-dash.inactive { 
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Women Management Styles */
+        .filter-bar {
+            background: rgba(20, 20, 20, 0.6);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 32px;
-            font-weight: 200;
-            color: #fff;
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            font-size: 11px;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Effort Selection */
-        .effort-selection {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+            border-radius: 15px;
+            padding: 15px;
             margin-bottom: 20px;
         }
 
-        .effort-btn {
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.05);
+        .search-input {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 8px;
-            color: #888;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-align: center;
-        }
-
-        .effort-btn.selected {
-            background: rgba(102, 126, 234, 0.2);
-            border-color: #667eea;
-            color: #fff;
-        }
-
-        .effort-btn:hover {
-            background: rgba(255, 255, 255, 0.08);
-            color: #fff;
-        }
-
-        .effort-label {
-            display: block;
             font-size: 14px;
-            margin-bottom: 5px;
-        }
-
-        .effort-points {
-            font-size: 11px;
-            opacity: 0.7;
-        }
-
-        /* List Items */
-        .list-item {
-            background: rgba(30, 30, 30, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 15px;
-        }
-
-        .list-item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            color: #e0e0e0;
             margin-bottom: 10px;
         }
 
-        .list-item-date {
-            font-size: 12px;
+        .search-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .search-input::placeholder {
+            color: #666;
+        }
+
+        .filter-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .filter-chip {
+            padding: 6px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.03);
             color: #888;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .list-item-score {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 4px 10px;
-            border-radius: 15px;
-            font-size: 11px;
-            font-weight: 500;
+        .filter-chip:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
         }
 
-        /* Woman Management Specific */
+        .filter-chip.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
         .woman-grid {
             display: grid;
             gap: 15px;
         }
 
         .woman-card {
-            background: rgba(30, 30, 30, 0.6);
+            background: rgba(20, 20, 20, 0.6);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 15px;
-            padding: 20px;
+            padding: 15px;
             cursor: pointer;
             transition: all 0.3s;
             position: relative;
@@ -494,204 +410,119 @@
 
         .woman-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         .woman-score {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 16px;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 8px;
+            font-weight: 300;
+            font-size: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .woman-status-badge {
             display: inline-block;
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 11px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 8px;
-        }
-
-        .status-Current { background: #4ade80; color: #0a0a0a; }
-        .status-In-Process { background: #60a5fa; color: #0a0a0a; }
-        .status-Ex { background: #f472b6; color: #0a0a0a; }
-        .status-Ghost { background: #9ca3af; color: #0a0a0a; }
-        .status-ONS { background: #a78bfa; color: #0a0a0a; }
-        .status-Rejected { background: #ef4444; color: white; }
-
-        /* Search and Filter Bar */
-        .search-filter-bar {
-            margin-bottom: 20px;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 12px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            color: #e0e0e0;
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-
-        .filter-chips {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .filter-chip {
-            padding: 6px 14px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            font-size: 12px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .filter-chip.active {
-            background: rgba(102, 126, 234, 0.2);
-            border-color: #667eea;
-            color: #fff;
-        }
-
-        /* Rating System */
-        .rating-section {
-            margin: 20px 0;
-        }
-
-        .rating-group {
-            margin-bottom: 15px;
-        }
-
-        .rating-buttons {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            margin-top: 8px;
-        }
-
-        .rating-btn {
-            padding: 8px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 4px 10px;
             border-radius: 6px;
-            color: #888;
-            cursor: pointer;
-            font-size: 12px;
-            transition: all 0.3s;
+            font-size: 10px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
         }
 
-        .rating-btn.selected {
-            background: rgba(102, 126, 234, 0.2);
-            border-color: #667eea;
-            color: #fff;
+        .status-current { 
+            background: rgba(0, 255, 136, 0.15);
+            color: #00ff88;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+        }
+        .status-in-process { 
+            background: rgba(33, 150, 243, 0.15);
+            color: #64b5f6;
+            border: 1px solid rgba(33, 150, 243, 0.3);
+        }
+        .status-passive { 
+            background: rgba(255, 170, 0, 0.15);
+            color: #ffaa00;
+            border: 1px solid rgba(255, 170, 0, 0.3);
+        }
+        .status-archived { 
+            background: rgba(158, 158, 158, 0.15);
+            color: #9e9e9e;
+            border: 1px solid rgba(158, 158, 158, 0.3);
         }
 
-        .rating-display {
-            display: inline-flex;
-            gap: 3px;
-            margin-right: 8px;
+        /* Date Scheduling Styles */
+        .date-list {
+            display: grid;
+            gap: 15px;
         }
 
-        .rating-dash {
-            width: 15px;
-            height: 3px;
-            border-radius: 2px;
+        .date-card {
+            background: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px;
+            border-left: 2px solid rgba(255, 255, 255, 0.3);
         }
 
-        .rating-dash.low { background: #ef4444; }
-        .rating-dash.medium { background: #f59e0b; }
-        .rating-dash.high { background: #10b981; }
-        .rating-dash.inactive { background: rgba(255, 255, 255, 0.1); }
-
-        /* Photo Management */
-        .photo-upload-area {
-            border: 2px dashed rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            margin-bottom: 15px;
-            transition: all 0.3s;
-        }
-
-        .photo-upload-area:hover {
-            border-color: rgba(255, 255, 255, 0.4);
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        .photo-preview-container {
+        .date-header {
             display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-top: 15px;
-        }
-
-        .photo-preview-item {
-            position: relative;
-        }
-
-        .photo-preview {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        .photo-delete-btn {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: #ef4444;
-            color: white;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 18px;
-            line-height: 1;
+            margin-bottom: 10px;
         }
 
-        /* Modal */
+        .date-time {
+            font-weight: 300;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .date-woman {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            right: 0;
+            bottom: 0;
             background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(5px);
             z-index: 1000;
+            padding: 20px;
             overflow-y: auto;
         }
 
+        .modal.active {
+            display: block;
+        }
+
         .modal-content {
-            max-width: 500px;
-            margin: 40px auto;
-            padding: 30px;
-            background: #1a1a1a;
-            border-radius: 20px;
+            background: rgba(15, 15, 15, 0.95);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px 20px;
+            max-width: 450px;
+            margin: 20px auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
         }
 
         .modal-header {
@@ -702,96 +533,379 @@
         }
 
         .modal-title {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 300;
+            color: #fff;
             letter-spacing: 1px;
-            color: #f0f0f0;
         }
 
-        .modal-close {
-            background: none;
-            border: none;
-            color: #888;
-            font-size: 28px;
-            cursor: pointer;
-            padding: 0;
+        .close-btn {
             width: 30px;
             height: 30px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            font-size: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: #666;
+            transition: all 0.3s;
         }
 
-        .modal-close:hover {
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
             color: #fff;
         }
 
-        /* Empty State */
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+        }
+
+        .nav-item {
+            flex: 1;
+            text-align: center;
+            padding: 5px;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s;
+        }
+
+        .nav-item.active {
+            color: #fff;
+        }
+
+        .nav-icon {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .nav-label {
+            font-size: 10px;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Approach specific styles */
+        .effort-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .effort-btn {
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.03);
+            color: #888;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .effort-btn.selected {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .approach-item {
+            background: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .approach-item:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateX(3px);
+        }
+
+        .approach-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .approach-date {
+            font-weight: 300;
+            color: #fff;
+        }
+
+        .photo-upload-area {
+            border: 1px dashed rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .photo-preview-container {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .photo-preview-item {
+            position: relative;
+            display: inline-block;
+        }
+
+        .photo-preview {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .photo-delete-btn {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(255, 51, 102, 0.9);
+            color: white;
+            border: 1px solid rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            transition: all 0.2s;
+        }
+
+        .photo-delete-btn:hover {
+            background: #ff3366;
+            transform: scale(1.1);
+        }
+
+        .rating-section {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .rating-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .rating-section h3 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 14px;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .rating-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .rating-item label {
+            flex: 1;
+            font-size: 13px;
+            color: #aaa;
+        }
+
+        .rating-buttons {
+            display: flex;
+            gap: 5px;
+        }
+
+        .rating-btn {
+            padding: 5px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.03);
+            color: #666;
+            cursor: pointer;
+            font-size: 11px;
+            transition: all 0.2s;
+            text-transform: uppercase;
+        }
+
+        .rating-btn:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #aaa;
+        }
+
+        .rating-btn.selected {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .loading {
+            text-align: center;
+            color: #666;
+            padding: 20px;
+        }
+
+        .user-info {
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+            margin-top: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .sign-out {
+            background: rgba(255, 51, 102, 0.1);
+            color: #ff3366;
+            padding: 8px 15px;
+            border: 1px solid rgba(255, 51, 102, 0.3);
+            border-radius: 8px;
+            font-size: 12px;
+            cursor: pointer;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+
+        .sign-out:hover {
+            background: rgba(255, 51, 102, 0.2);
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
         .empty-state {
             text-align: center;
-            padding: 60px 20px;
+            padding: 40px 20px;
             color: #666;
         }
 
         .empty-state-icon {
             font-size: 48px;
-            margin-bottom: 15px;
-            opacity: 0.5;
+            margin-bottom: 10px;
+            opacity: 0.3;
         }
 
-        .empty-state-icon svg {
-            width: 48px;
-            height: 48px;
-            opacity: 0.5;
-        }
-
-        /* Edit Actions */
-        .edit-actions {
-            display: flex;
-            gap: 10px;
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
             margin-top: 15px;
         }
 
-        /* Hide elements */
-        .hidden {
-            display: none !important;
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, rgba(0, 255, 136, 0.8), rgba(0, 255, 136, 0.3));
+            transition: width 0.3s ease;
+            position: relative;
+        }
+
+        .progress-fill::after {
+            content: attr(data-percentage);
+            position: absolute;
+            right: -30px;
+            top: 6px;
+            font-size: 10px;
+            color: #666;
+        }
+
+        .edit-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .woman-link-select {
+            margin-top: 10px;
+        }
+
+        select {
+            background: rgba(255, 255, 255, 0.03);
+            color: #e0e0e0;
+        }
+
+        select option {
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        /* PIN Entry Styles */
+        .pin-btn {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #e0e0e0;
+            font-size: 20px;
+            font-weight: 300;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .pin-btn:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .pin-btn:active {
+            transform: scale(0.95);
+            background: rgba(255, 255, 255, 0.08);
         }
     </style>
 </head>
 <body>
+    <div class="sync-status">
+        <span class="sync-indicator" id="syncIndicator"></span>
+        <span id="syncText">Synced</span>
+    </div>
+
     <div class="main-container">
-        <!-- Header for PIN screen -->
-        <div class="header" id="pinHeader">
-            <h1>Tracker</h1>
+        <div class="header">
+            <h1>TRACKER</h1>
+            <div class="user-info" id="userInfo"></div>
         </div>
 
-        <!-- PIN Entry Container -->
-        <div class="pin-container" id="pinContainer">
-            <div class="pin-title">Enter PIN</div>
-            <div class="pin-dots">
-                <div class="pin-dot" id="dot1"></div>
-                <div class="pin-dot" id="dot2"></div>
-                <div class="pin-dot" id="dot3"></div>
-                <div class="pin-dot" id="dot4"></div>
-            </div>
-            <div class="pin-pad">
-                <button class="pin-btn" onclick="addPinDigit(1)">1</button>
-                <button class="pin-btn" onclick="addPinDigit(2)">2</button>
-                <button class="pin-btn" onclick="addPinDigit(3)">3</button>
-                <button class="pin-btn" onclick="addPinDigit(4)">4</button>
-                <button class="pin-btn" onclick="addPinDigit(5)">5</button>
-                <button class="pin-btn" onclick="addPinDigit(6)">6</button>
-                <button class="pin-btn" onclick="addPinDigit(7)">7</button>
-                <button class="pin-btn" onclick="addPinDigit(8)">8</button>
-                <button class="pin-btn" onclick="addPinDigit(9)">9</button>
-                <button class="pin-btn" onclick="addPinDigit(0)">0</button>
-                <button class="pin-btn delete" onclick="clearPin()">Clear</button>
-            </div>
+        <!-- Loading Screen -->
+        <div id="loadingScreen" class="loading">
+            <p>Initializing...</p>
         </div>
 
-        <!-- Auth Container (Hidden until PIN is entered) -->
-        <div class="auth-container hidden" id="authContainer">
-            <h2 style="margin-bottom: 30px; font-weight: 300; color: #f0f0f0;">Sign In</h2>
+        <!-- Auth Screen -->
+        <div id="authScreen" class="auth-container" style="display: none;">
+            <h2 style="margin-bottom: 20px; color: #667eea;">Welcome!</h2>
+            <p style="margin-bottom: 20px; color: #666;">Sign in to sync your data across devices</p>
+            
             <button class="auth-button google-signin" onclick="signInWithGoogle()">
                 <svg width="20" height="20" viewBox="0 0 24 24">
                     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -801,288 +915,562 @@
                 </svg>
                 Sign in with Google
             </button>
+            
+            <button class="auth-button anonymous-signin" onclick="signInAnonymously()">
+                Sign in Anonymously
+            </button>
+            
+            <p style="margin-top: 15px; font-size: 12px; color: #999;">
+                Anonymous data syncs to this device only
+            </p>
         </div>
 
-        <!-- Main App (Hidden until authenticated) -->
-        <div id="mainApp" class="hidden">
-            <!-- Header for main app -->
-            <div class="header">
-                <button class="settings-btn" onclick="showSettings()">
-                    <svg fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+        <!-- Main App Content -->
+        <div id="appContent" style="display: none;">
+            <!-- PIN Lock Screen -->
+            <div id="pinLockScreen" class="section active" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 90vh;">
+                <!-- PIN Entry -->
+                <div class="card" style="max-width: 300px; text-align: center;">
+                    <h3 style="margin-bottom: 20px; font-weight: 300; letter-spacing: 2px;">ENTER PIN</h3>
+                    <div id="pinDisplay" style="margin-bottom: 20px; font-size: 24px; letter-spacing: 10px; color: #666;">
+                        ••••
+                    </div>
+                    <div id="pinError" style="color: #ff3366; font-size: 12px; margin-bottom: 15px; display: none;">
+                        Incorrect PIN
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                        <button class="pin-btn" onclick="addPin('1')">1</button>
+                        <button class="pin-btn" onclick="addPin('2')">2</button>
+                        <button class="pin-btn" onclick="addPin('3')">3</button>
+                        <button class="pin-btn" onclick="addPin('4')">4</button>
+                        <button class="pin-btn" onclick="addPin('5')">5</button>
+                        <button class="pin-btn" onclick="addPin('6')">6</button>
+                        <button class="pin-btn" onclick="addPin('7')">7</button>
+                        <button class="pin-btn" onclick="addPin('8')">8</button>
+                        <button class="pin-btn" onclick="addPin('9')">9</button>
+                        <button class="pin-btn" onclick="clearPin()" style="font-size: 12px;">CLEAR</button>
+                        <button class="pin-btn" onclick="addPin('0')">0</button>
+                        <button class="pin-btn" onclick="submitPin()" style="font-size: 12px;">ENTER</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main App (Hidden until PIN is correct) -->
+            <div id="mainApp" style="display: none;">
+                <!-- Section Selector -->
+                <div class="section-selector">
+                    <button class="section-btn active" onclick="switchSection('approaches')">
+                        <svg fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+                        </svg>
+                        APPROACH
+                    </button>
+                    <button class="section-btn" onclick="switchSection('dates')">
+                        <svg fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                        </svg>
+                        DATES
+                    </button>
+                    <button class="section-btn" onclick="switchSection('wms')">
+                        <svg fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+                        </svg>
+                        WMS
+                    </button>
+                </div>
+
+                <!-- Settings Button (floating top right) -->
+                <button onclick="openSettings()" style="position: fixed; top: 70px; right: 20px; width: 40px; height: 40px; border-radius: 50%; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #666; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s; z-index: 100;">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/>
                     </svg>
                 </button>
-                <div class="sync-status">
-                    <div class="sync-indicator" id="syncIndicator"></div>
-                    <span id="syncText">Synced</span>
-                </div>
-                <h1>Tracker</h1>
-            </div>
 
-            <!-- Section Selector -->
-            <div class="section-selector">
-                <button class="section-btn active" onclick="showSection('approaches')">
-                    <svg fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
-                        <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 1 1 0 000 2H6a2 2 0 100 4h2a2 2 0 100-4 1 1 0 000-2H6a2 2 0 00-2 2v6a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2H6a2 2 0 00-2 2v1z" clip-rule="evenodd"/>
-                    </svg>
-                    Approaches
+                <!-- Cold Approach Section -->
+                <div id="approachesSection" class="section active">
+                <!-- Score Card -->
+                <div class="card">
+                    <div style="display: flex; justify-content: space-around; margin-bottom: 20px;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;">This Week</div>
+                            <div style="font-size: 36px; font-weight: 200; color: #fff;" id="weekScore">0</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;">Target</div>
+                            <div style="font-size: 36px; font-weight: 200; color: #fff;">5</div>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressBar" style="width: 0%" data-percentage="0%"></div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary btn-full" onclick="showApproachForm()" style="margin-bottom: 20px;">
+                    + NEW APPROACH
                 </button>
-                <button class="section-btn" onclick="showSection('dates')">
-                    <svg fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
-                    </svg>
-                    Dates
+
+                <div class="card">
+                    <h3 style="margin-bottom: 15px;">RECENT APPROACHES</h3>
+                    <div id="approachList"></div>
+                </div>
+            </div>
+
+            <!-- Date Scheduling Section -->
+            <div id="datesSection" class="section">
+                <button class="btn btn-primary btn-full" onclick="showDateForm()" style="margin-bottom: 20px;">
+                    + SCHEDULE DATE
                 </button>
-                <button class="section-btn" onclick="showSection('women')">
-                    <svg fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
-                    </svg>
-                    Women
+
+                <div class="card">
+                    <h3 style="margin-bottom: 15px;">UPCOMING DATES</h3>
+                    <div id="upcomingDates"></div>
+                </div>
+
+                <div class="card" style="margin-top: 20px;">
+                    <h3 style="margin-bottom: 15px;">PAST DATES</h3>
+                    <div id="pastDates"></div>
+                </div>
+            </div>
+
+            <!-- Woman Management System Section -->
+            <div id="wmsSection" class="section">
+                <button class="btn btn-primary btn-full" onclick="showWomanForm()" style="margin-bottom: 20px;">
+                    + ADD WOMAN
                 </button>
-            </div>
 
-            <!-- Stats Grid -->
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-value" id="weekScore">0</div>
-                    <div class="stat-label">Week Score</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="totalApproaches">0</div>
-                    <div class="stat-label">Total Approaches</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="totalDates">0</div>
-                    <div class="stat-label">Total Dates</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="totalWomen">0</div>
-                    <div class="stat-label">Total Women</div>
-                </div>
-            </div>
-
-            <!-- Approaches Section -->
-            <div id="approachesSection" class="section">
-                <div class="card">
-                    <h3>Log Cold Approach</h3>
-                    <form id="approachForm" onsubmit="saveApproach(event)">
-                        <div class="form-group">
-                            <label>Location</label>
-                            <input type="text" id="approachLocation" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Effort Level</label>
-                            <div class="effort-selection">
-                                <div class="effort-btn" onclick="selectEffort(this, 'low', 1)">
-                                    <span class="effort-label">Low</span>
-                                    <span class="effort-points">1 point</span>
-                                </div>
-                                <div class="effort-btn" onclick="selectEffort(this, 'medium', 2)">
-                                    <span class="effort-label">Medium</span>
-                                    <span class="effort-points">2 points</span>
-                                </div>
-                                <div class="effort-btn" onclick="selectEffort(this, 'high', 3)">
-                                    <span class="effort-label">High</span>
-                                    <span class="effort-points">3 points</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Notes</label>
-                            <textarea id="approachNotes" rows="3"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Link to Woman (Optional)</label>
-                            <select id="approachWomanLink">
-                                <option value="">None</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Save Approach</button>
-                    </form>
-                </div>
-
-                <div class="card">
-                    <h3>Recent Approaches</h3>
-                    <div id="approachesList"></div>
-                </div>
-            </div>
-
-            <!-- Dates Section -->
-            <div id="datesSection" class="section hidden">
-                <div class="card">
-                    <h3>Log Date</h3>
-                    <form id="dateForm" onsubmit="saveDate(event)">
-                        <div class="form-group">
-                            <label>Date & Time</label>
-                            <input type="datetime-local" id="dateTime" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Woman</label>
-                            <select id="dateWoman">
-                                <option value="">No specific woman</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Location</label>
-                            <input type="text" id="dateLocation" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Activity</label>
-                            <input type="text" id="dateActivity" placeholder="e.g., Coffee, Dinner, Walk">
-                        </div>
-                        <div class="form-group">
-                            <label>Notes</label>
-                            <textarea id="dateNotes" rows="3"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Save Date</button>
-                    </form>
-                </div>
-
-                <div class="card">
-                    <h3>Upcoming Dates</h3>
-                    <div id="datesList"></div>
-                </div>
-            </div>
-
-            <!-- Women Management Section -->
-            <div id="womenSection" class="section hidden">
-                <div class="card">
-                    <button class="btn btn-primary" onclick="showWomanForm()" style="width: 100%; margin-bottom: 20px;">Add New Woman</button>
-                    
-                    <div class="search-filter-bar">
-                        <input type="text" class="search-input" placeholder="Search by name..." onkeyup="filterWomen()">
-                        <div class="filter-chips">
-                            <div class="filter-chip" onclick="toggleFilter(this, 'Current')">Current</div>
-                            <div class="filter-chip" onclick="toggleFilter(this, 'In Process')">In Process</div>
-                            <div class="filter-chip" onclick="toggleFilter(this, 'Ex')">Ex</div>
-                            <div class="filter-chip" onclick="toggleFilter(this, 'Ghost')">Ghost</div>
-                            <div class="filter-chip" onclick="toggleFilter(this, 'ONS')">ONS</div>
-                            <div class="filter-chip" onclick="toggleFilter(this, 'Rejected')">Rejected</div>
-                        </div>
+                <div class="filter-bar">
+                    <input type="text" class="search-input" placeholder="Search by name..." id="wmsSearch" oninput="filterWomen()">
+                    <div class="filter-chips">
+                        <div class="filter-chip" onclick="toggleFilter(this, 'current')">Current</div>
+                        <div class="filter-chip" onclick="toggleFilter(this, 'in-process')">In Process</div>
+                        <div class="filter-chip" onclick="toggleFilter(this, 'passive')">Passive</div>
+                        <div class="filter-chip" onclick="toggleFilter(this, 'archived')">Archived</div>
                     </div>
                 </div>
 
                 <div class="woman-grid" id="womanGrid"></div>
             </div>
+
+            <button class="sign-out" onclick="signOut()">Sign Out</button>
+            </div> <!-- End mainApp -->
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav" id="bottomNav" style="display: none;">
+        <div class="nav-item active" onclick="switchTab('dashboard')">
+            <div class="nav-icon">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+                </svg>
+            </div>
+            <div class="nav-label">Dashboard</div>
+        </div>
+        <div class="nav-item" onclick="switchTab('history')">
+            <div class="nav-icon">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/>
+                </svg>
+            </div>
+            <div class="nav-label">History</div>
+        </div>
+        <div class="nav-item" onclick="switchTab('stats')">
+            <div class="nav-icon">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                </svg>
+            </div>
+            <div class="nav-label">Stats</div>
+        </div>
+        <div class="nav-item" onclick="openSettings()">
+            <div class="nav-icon">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/>
+                </svg>
+            </div>
+            <div class="nav-label">Settings</div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <!-- Approach Form Modal -->
+    <div id="approachModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Log Approach</h2>
+                <button class="close-btn" onclick="closeModal('approachModal')">×</button>
+            </div>
+
+            <div class="form-group">
+                <label>Date & Time</label>
+                <input type="datetime-local" id="approachDate">
+            </div>
+
+            <div class="form-group">
+                <label>Location/Setting</label>
+                <input type="text" id="location" placeholder="e.g., Coffee shop, Street, Gym">
+            </div>
+
+            <div class="form-group">
+                <label>Link to Woman (Optional)</label>
+                <select id="approachWomanLink">
+                    <option value="">None</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Effort Level</label>
+                <div class="effort-options">
+                    <div class="effort-btn" onclick="selectEffort(this, 'low', 0.5)">
+                        Low<br><small>+0.5</small>
+                    </div>
+                    <div class="effort-btn" onclick="selectEffort(this, 'medium', 1)">
+                        Medium<br><small>+1</small>
+                    </div>
+                    <div class="effort-btn selected" onclick="selectEffort(this, 'high', 1.5)">
+                        High<br><small>+1.5</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>What did I do well?</label>
+                <textarea id="goodFeedback" placeholder="At least one thing you did well..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>What could I improve?</label>
+                <textarea id="badFeedback" placeholder="At least one area for improvement..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Outcome</label>
+                <select id="outcome">
+                    <option value="">Select outcome...</option>
+                    <option value="number">Got number</option>
+                    <option value="social">Good conversation</option>
+                    <option value="date">Instant date</option>
+                    <option value="rejection">Polite rejection</option>
+                    <option value="ignored">Ignored</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Notes</label>
+                <textarea id="notes" placeholder="Any additional thoughts..."></textarea>
+            </div>
+
+            <div style="display: flex; gap: 10px;">
+                <button type="button" class="btn btn-success" onclick="saveApproach()" style="flex: 1;">Save</button>
+                <button type="button" class="btn btn-danger" onclick="closeModal('approachModal')" style="flex: 1;">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Date Form Modal -->
+    <div id="dateModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Schedule Date</h2>
+                <button class="close-btn" onclick="closeModal('dateModal')">×</button>
+            </div>
+
+            <div class="form-group">
+                <label>Woman (Optional)</label>
+                <select id="dateWoman">
+                    <option value="">No specific woman</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Date & Time</label>
+                <input type="datetime-local" id="dateTime">
+            </div>
+
+            <div class="form-group">
+                <label>Venue</label>
+                <input type="text" id="dateVenue" placeholder="e.g., Italian restaurant, Coffee shop">
+            </div>
+
+            <div class="form-group">
+                <label>Notes</label>
+                <textarea id="dateNotes" placeholder="Plans, things to remember, etc..."></textarea>
+            </div>
+
+            <div style="display: flex; gap: 10px;">
+                <button type="button" class="btn btn-success" onclick="saveDate()" style="flex: 1;">Save</button>
+                <button type="button" class="btn btn-danger" onclick="closeModal('dateModal')" style="flex: 1;">Cancel</button>
+            </div>
         </div>
     </div>
 
     <!-- Woman Form Modal -->
-    <div class="modal" id="womanModal">
+    <div id="womanModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title" id="womanModalTitle">Add New Woman</h2>
-                <button class="modal-close" onclick="closeWomanModal()">&times;</button>
+                <h2 class="modal-title">Woman Profile</h2>
+                <button class="close-btn" onclick="closeModal('womanModal')">×</button>
             </div>
-            <form id="womanForm" onsubmit="saveWoman(event)">
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" id="womanName" required>
-                </div>
-                
-                <div class="form-group">
-                    <label>Phone</label>
-                    <input type="tel" id="womanPhone">
-                </div>
-                
-                <div class="form-group">
-                    <label>Status</label>
-                    <select id="womanStatus">
-                        <option value="In Process">In Process</option>
-                        <option value="Current">Current</option>
-                        <option value="Ex">Ex</option>
-                        <option value="Ghost">Ghost</option>
-                        <option value="ONS">ONS</option>
-                        <option value="Rejected">Rejected</option>
-                    </select>
-                </div>
 
-                <div class="form-group">
-                    <label>Photos (Max 5)</label>
-                    <div class="photo-upload-area" onclick="document.getElementById('photoInput').click()">
-                        <span>Click to upload photos</span>
-                        <input type="file" id="photoInput" accept="image/*" multiple style="display: none;" onchange="handlePhotoUpload(event)">
-                    </div>
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" id="womanName" placeholder="Her name">
+            </div>
+
+            <div class="form-group">
+                <label>Status</label>
+                <select id="womanStatus">
+                    <option value="current">Current</option>
+                    <option value="in-process">In Process</option>
+                    <option value="passive">Passive</option>
+                    <option value="archived">Archived</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Photos (up to 5)</label>
+                <div class="photo-upload-area">
+                    <input type="file" id="photoUpload" accept="image/*" multiple onchange="handlePhotoUpload(event)" style="display: none;">
+                    <button type="button" onclick="document.getElementById('photoUpload').click()" class="btn btn-primary btn-full">
+                        Select Photos
+                    </button>
+                    <p style="font-size: 12px; color: #999; margin-top: 10px; text-align: center;">
+                        Click the × on any photo to remove it
+                    </p>
                     <div class="photo-preview-container" id="photoPreview"></div>
                 </div>
+            </div>
 
-                <div class="rating-section">
-                    <h4 style="margin-bottom: 15px; color: #f0f0f0;">Ratings</h4>
-                    
-                    <!-- Overall Ratings -->
-                    <div class="rating-group">
-                        <label>Hot</label>
-                        <div class="rating-buttons">
-                            <button type="button" class="rating-btn" onclick="setRating('hot', 'low', this)">Low</button>
-                            <button type="button" class="rating-btn selected" onclick="setRating('hot', 'medium', this)">Med</button>
-                            <button type="button" class="rating-btn" onclick="setRating('hot', 'high', this)">High</button>
-                        </div>
-                    </div>
-                    
-                    <div class="rating-group">
-                        <label>Like</label>
-                        <div class="rating-buttons">
-                            <button type="button" class="rating-btn" onclick="setRating('like', 'low', this)">Low</button>
-                            <button type="button" class="rating-btn selected" onclick="setRating('like', 'medium', this)">Med</button>
-                            <button type="button" class="rating-btn" onclick="setRating('like', 'high', this)">High</button>
-                        </div>
-                    </div>
-                    
-                    <div class="rating-group">
-                        <label>Long Term</label>
-                        <div class="rating-buttons">
-                            <button type="button" class="rating-btn" onclick="setRating('longTerm', 'low', this)">Low</button>
-                            <button type="button" class="rating-btn selected" onclick="setRating('longTerm', 'medium', this)">Med</button>
-                            <button type="button" class="rating-btn" onclick="setRating('longTerm', 'high', this)">High</button>
-                        </div>
+            <!-- Rating Sections -->
+            <div class="rating-section">
+                <h3>Personality</h3>
+                <div class="rating-item">
+                    <label>Funny</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('funny', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('funny', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('funny', 'high', this)">High</button>
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <label>Notes</label>
-                    <textarea id="womanNotes" rows="3"></textarea>
+                <div class="rating-item">
+                    <label>Sweet & Submissive</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('sweet', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('sweet', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('sweet', 'high', this)">High</button>
+                    </div>
                 </div>
+                <div class="rating-item">
+                    <label>Low Maintenance</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('lowMaintenance', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('lowMaintenance', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('lowMaintenance', 'high', this)">High</button>
+                    </div>
+                </div>
+                <div class="rating-item">
+                    <label>Loyal</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('loyal', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('loyal', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('loyal', 'high', this)">High</button>
+                    </div>
+                </div>
+                <div class="rating-item">
+                    <label>Intelligence</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('intelligence', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('intelligence', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('intelligence', 'high', this)">High</button>
+                    </div>
+                </div>
+            </div>
 
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Save Woman</button>
-            </form>
+            <div class="rating-section">
+                <h3>Body</h3>
+                <div class="rating-item">
+                    <label>Tits</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('tits', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('tits', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('tits', 'high', this)">High</button>
+                    </div>
+                </div>
+                <div class="rating-item">
+                    <label>Ass</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('ass', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('ass', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('ass', 'high', this)">High</button>
+                    </div>
+                </div>
+                <div class="rating-item">
+                    <label>Height</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('height', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('height', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('height', 'high', this)">High</button>
+                    </div>
+                </div>
+                <div class="rating-item">
+                    <label>Face</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('face', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('face', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('face', 'high', this)">High</button>
+                    </div>
+                </div>
+                <div class="rating-item">
+                    <label>Hair</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('hair', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('hair', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('hair', 'high', this)">High</button>
+                    </div>
+                </div>
+                <div class="rating-item">
+                    <label>Nails</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('nails', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('nails', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('nails', 'high', this)">High</button>
+                    </div>
+                </div>
+                <div class="rating-item">
+                    <label>Tummy</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('tummy', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('tummy', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('tummy', 'high', this)">High</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rating-section">
+                <h3>Fashion and Class</h3>
+                <div class="rating-item">
+                    <label>Clothing</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('clothing', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('clothing', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('clothing', 'high', this)">High</button>
+                    </div>
+                </div>
+                <div class="rating-item">
+                    <label>Money</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('money', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('money', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('money', 'high', this)">High</button>
+                    </div>
+                </div>
+                <div class="rating-item">
+                    <label>Classy</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('classy', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('classy', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('classy', 'high', this)">High</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rating-section">
+                <h3>Overall</h3>
+                <div class="rating-item">
+                    <label>Adds to my status</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('status', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('status', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('status', 'high', this)">High</button>
+                    </div>
+                </div>
+                <div class="rating-item">
+                    <label>Do I think she's hot</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('hot', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('hot', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('hot', 'high', this)">High</button>
+                    </div>
+                </div>
+                <div class="rating-item">
+                    <label>Do I like her</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('like', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('like', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('like', 'high', this)">High</button>
+                    </div>
+                </div>
+                <div class="rating-item">
+                    <label>Can I see long term</label>
+                    <div class="rating-buttons">
+                        <button class="rating-btn" onclick="setRating('longTerm', 'low', this)">Low</button>
+                        <button class="rating-btn" onclick="setRating('longTerm', 'medium', this)">Med</button>
+                        <button class="rating-btn" onclick="setRating('longTerm', 'high', this)">High</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Other Notes</label>
+                <textarea id="womanNotes" placeholder="Any other thoughts..." rows="4"></textarea>
+            </div>
+
+            <div style="display: flex; gap: 10px;">
+                <button type="button" class="btn btn-success" onclick="saveWoman()" style="flex: 1;">Save</button>
+                <button type="button" class="btn btn-danger" onclick="closeModal('womanModal')" style="flex: 1;">Cancel</button>
+            </div>
         </div>
     </div>
 
     <!-- Settings Modal -->
-    <div class="modal" id="settingsModal">
+    <div id="settingsModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title">Settings</h2>
-                <button class="modal-close" onclick="closeSettingsModal()">&times;</button>
+                <h2 class="modal-title">SETTINGS</h2>
+                <button class="close-btn" onclick="closeModal('settingsModal')">×</button>
             </div>
-            <div class="card">
-                <h3>Change PIN</h3>
-                <form id="changePinForm" onsubmit="changePin(event)">
-                    <div class="form-group">
-                        <label>New PIN (4 digits)</label>
-                        <input type="password" id="newPin" pattern="[0-9]{4}" maxlength="4" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Confirm New PIN</label>
-                        <input type="password" id="confirmPin" pattern="[0-9]{4}" maxlength="4" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Update PIN</button>
-                </form>
+
+            <div class="form-group">
+                <label>Change PIN</label>
+                <input type="text" id="newPin" placeholder="Enter new 4-digit PIN" maxlength="4" pattern="\d{4}">
             </div>
-            <div class="card">
-                <h3>Account</h3>
-                <button class="btn btn-danger" onclick="signOut()" style="width: 100%;">Sign Out</button>
+
+            <div class="form-group">
+                <label>Confirm New PIN</label>
+                <input type="text" id="confirmPin" placeholder="Confirm new 4-digit PIN" maxlength="4" pattern="\d{4}">
+            </div>
+
+            <button type="button" class="btn btn-primary btn-full" onclick="updatePin()">UPDATE PIN</button>
+
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                <button type="button" class="btn btn-danger btn-full" onclick="lockApp()">LOCK APP</button>
             </div>
         </div>
     </div>
 
-    <!-- Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <!-- Firebase SDKs -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { 
+            getAuth, 
+            signInWithPopup, 
+            signInAnonymously as firebaseSignInAnonymously,
+            GoogleAuthProvider,
+            onAuthStateChanged,
+            signOut as firebaseSignOut
+        } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+        import { 
+            getDatabase, 
+            ref, 
+            set, 
+            get, 
+            onValue, 
+            push,
+            remove,
+            update
+        } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js';
 
-    <script>
         // Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyCaQwlzC_QhVJA_NhgJHrQFR-8f6aYyiIA",
@@ -1095,437 +1483,859 @@
         };
 
         // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
-        const database = firebase.database();
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const database = getDatabase(app);
+        const googleProvider = new GoogleAuthProvider();
 
         // Global state
         window.currentUser = null;
         window.approaches = [];
-        window.dates = [];
         window.women = [];
-        window.selectedEffort = null;
-        window.currentRatings = {
-            hot: 'medium',
-            like: 'medium',
-            longTerm: 'medium'
-        };
+        window.dates = [];
+        window.selectedEffort = { level: 'high', score: 1.5 };
+        window.currentRatings = {};
         window.currentPhotos = [];
-        window.editingWomanKey = null;
+        window.editingId = null;
         window.activeFilters = [];
-        window.enteredPin = '';
-        window.correctPin = localStorage.getItem('appPin') || '1234'; // Default PIN
-        window.pinPassed = false;
 
-        // PIN functions
-        window.addPinDigit = function(digit) {
+        // PIN Management
+        window.enteredPin = '';
+        window.appPin = localStorage.getItem('appPin') || '1234'; // Default PIN is 1234
+
+        window.addPin = function(digit) {
             if (window.enteredPin.length < 4) {
                 window.enteredPin += digit;
-                updatePinDots();
-                
-                if (window.enteredPin.length === 4) {
-                    checkPin();
-                }
+                updatePinDisplay();
             }
         }
 
         window.clearPin = function() {
             window.enteredPin = '';
-            updatePinDots();
+            updatePinDisplay();
+            document.getElementById('pinError').style.display = 'none';
         }
 
-        function updatePinDots() {
-            for (let i = 1; i <= 4; i++) {
-                const dot = document.getElementById(`dot${i}`);
-                if (i <= window.enteredPin.length) {
-                    dot.classList.add('filled');
-                } else {
-                    dot.classList.remove('filled');
-                }
-            }
-        }
-
-        function checkPin() {
-            if (window.enteredPin === window.correctPin) {
-                // PIN correct - show auth or main app
-                window.pinPassed = true;
-                document.getElementById('pinContainer').classList.add('hidden');
-                document.getElementById('pinHeader').classList.add('hidden');
-                
-                // Check if user is already signed in
-                const user = auth.currentUser;
-                if (user) {
-                    // User is signed in, show main app
-                    document.getElementById('authContainer').classList.add('hidden');
-                    document.getElementById('mainApp').classList.remove('hidden');
-                } else {
-                    // No user, show auth
-                    document.getElementById('authContainer').classList.remove('hidden');
-                }
+        window.submitPin = function() {
+            if (window.enteredPin === window.appPin) {
+                // Correct PIN - unlock app
+                document.getElementById('pinLockScreen').style.display = 'none';
+                document.getElementById('mainApp').style.display = 'block';
+                document.getElementById('pinError').style.display = 'none';
+                window.enteredPin = '';
             } else {
-                // PIN incorrect
-                alert('Incorrect PIN');
-                clearPin();
+                // Wrong PIN
+                document.getElementById('pinError').style.display = 'block';
+                window.enteredPin = '';
+                updatePinDisplay();
+                // Vibrate if available
+                if (navigator.vibrate) {
+                    navigator.vibrate(200);
+                }
             }
         }
 
-        // Settings functions
-        window.showSettings = function() {
-            document.getElementById('settingsModal').style.display = 'block';
+        function updatePinDisplay() {
+            const display = document.getElementById('pinDisplay');
+            let dots = '';
+            for (let i = 0; i < 4; i++) {
+                if (i < window.enteredPin.length) {
+                    dots += '●';
+                } else {
+                    dots += '○';
+                }
+            }
+            display.textContent = dots;
+            
+            // Auto-submit when 4 digits entered
+            if (window.enteredPin.length === 4) {
+                setTimeout(submitPin, 100);
+            }
         }
 
-        window.closeSettingsModal = function() {
-            document.getElementById('settingsModal').style.display = 'none';
+        window.openSettings = function() {
+            document.getElementById('settingsModal').classList.add('active');
         }
 
-        window.changePin = function(event) {
-            event.preventDefault();
+        window.updatePin = function() {
             const newPin = document.getElementById('newPin').value;
             const confirmPin = document.getElementById('confirmPin').value;
-            
-            if (newPin !== confirmPin) {
-                alert('PINs do not match');
-                return;
-            }
             
             if (newPin.length !== 4 || !/^\d{4}$/.test(newPin)) {
                 alert('PIN must be exactly 4 digits');
                 return;
             }
             
+            if (newPin !== confirmPin) {
+                alert('PINs do not match');
+                return;
+            }
+            
+            window.appPin = newPin;
             localStorage.setItem('appPin', newPin);
-            window.correctPin = newPin;
+            
+            document.getElementById('newPin').value = '';
+            document.getElementById('confirmPin').value = '';
+            
             alert('PIN updated successfully');
-            closeSettingsModal();
-            document.getElementById('changePinForm').reset();
+            closeModal('settingsModal');
+        }
+
+        window.lockApp = function() {
+            // Lock the app and show PIN screen
+            document.getElementById('mainApp').style.display = 'none';
+            document.getElementById('pinLockScreen').style.display = 'flex';
+            closeModal('settingsModal');
+            window.enteredPin = '';
+            updatePinDisplay();
+        }
+
+        // Quote Library
+        window.quoteLibrary = [
+            // Success & Ambition
+            { text: "The man who moves a mountain begins by carrying away small stones.", author: "Confucius" },
+            { text: "Discipline is choosing between what you want now and what you want most.", author: "Abraham Lincoln" },
+            { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
+            { text: "Success is walking from failure to failure with no loss of enthusiasm.", author: "Winston Churchill" },
+            { text: "Your limitation is only your imagination.", author: "Unknown" },
+            { text: "Great things never come from comfort zones.", author: "Unknown" },
+            { text: "Don't wait for opportunity. Create it.", author: "Unknown" },
+            { text: "The harder you work for something, the greater you'll feel when you achieve it.", author: "Unknown" },
+            
+            // Masculinity & Strength
+            { text: "The superior man is modest in his speech but exceeds in his actions.", author: "Confucius" },
+            { text: "A man who conquers himself is greater than one who conquers a thousand men in battle.", author: "Buddha" },
+            { text: "The successful warrior is the average man with laser-like focus.", author: "Bruce Lee" },
+            { text: "Do not pray for an easy life, pray for the strength to endure a difficult one.", author: "Bruce Lee" },
+            { text: "He who is not courageous enough to take risks will accomplish nothing in life.", author: "Muhammad Ali" },
+            { text: "A lion doesn't concern himself with the opinions of sheep.", author: "Unknown" },
+            { text: "The wolf on the hill is never as hungry as the wolf climbing the hill.", author: "Unknown" },
+            { text: "Smooth seas do not make skillful sailors.", author: "African Proverb" },
+            
+            // Dating & Attraction
+            { text: "Become the man you'd want your daughter to marry.", author: "Unknown" },
+            { text: "Your value doesn't decrease based on someone's inability to see your worth.", author: "Unknown" },
+            { text: "Be the type of energy that no matter where you go, you always add value.", author: "Unknown" },
+            { text: "Confidence is not 'they will like me'. Confidence is 'I'll be fine if they don't'.", author: "Unknown" },
+            { text: "The man who does not value himself, cannot value anything or anyone.", author: "Ayn Rand" },
+            { text: "Make yourself so interesting that you become your own entertainment.", author: "Unknown" },
+            { text: "Attraction isn't a choice. Excellence is.", author: "Unknown" },
+            { text: "The quality of your life is the quality of your relationships.", author: "Tony Robbins" },
+            
+            // Stoic Philosophy
+            { text: "You have power over your mind, not outside events. Realize this, and you will find strength.", author: "Marcus Aurelius" },
+            { text: "The best revenge is massive success.", author: "Frank Sinatra" },
+            { text: "What we think, we become.", author: "Buddha" },
+            { text: "The obstacle is the way.", author: "Marcus Aurelius" },
+            { text: "Be yourself; everyone else is already taken.", author: "Oscar Wilde" },
+            { text: "How long are you going to wait before you demand the best for yourself?", author: "Epictetus" },
+            { text: "It is not death that a man should fear, but never beginning to live.", author: "Marcus Aurelius" },
+            { text: "First say to yourself what you would be; and then do what you have to do.", author: "Epictetus" },
+            
+            // Power & Influence
+            { text: "Everyone sees what you appear to be, few experience what you really are.", author: "Niccolò Machiavelli" },
+            { text: "Power is not revealed by striking hard or often, but by striking true.", author: "Honoré de Balzac" },
+            { text: "The lion cannot protect himself from traps, and the fox cannot defend himself from wolves.", author: "Niccolò Machiavelli" },
+            { text: "Mastering others is strength. Mastering yourself is true power.", author: "Lao Tzu" },
+            { text: "Never interrupt your enemy when he is making a mistake.", author: "Napoleon Bonaparte" },
+            { text: "In the midst of chaos, there is also opportunity.", author: "Sun Tzu" },
+            { text: "The supreme art of war is to subdue the enemy without fighting.", author: "Sun Tzu" },
+            { text: "I would rather die on my feet than live on my knees.", author: "Emiliano Zapata" },
+            
+            // Modern Success
+            { text: "Work in silence, let success make the noise.", author: "Unknown" },
+            { text: "Obsessed is a word the lazy use to describe the dedicated.", author: "Unknown" },
+            { text: "You didn't come this far to only come this far.", author: "Unknown" },
+            { text: "Be so good they can't ignore you.", author: "Steve Martin" },
+            { text: "Success is the sum of small efforts repeated day in and day out.", author: "Robert Collier" },
+            { text: "The man at the top of the mountain didn't fall there.", author: "Vince Lombardi" },
+            { text: "Winners focus on winning. Losers focus on winners.", author: "Unknown" },
+            { text: "Your network is your net worth.", author: "Porter Gale" },
+            
+            // Self-Improvement
+            { text: "Every morning you have two choices: continue to sleep with your dreams, or wake up and chase them.", author: "Unknown" },
+            { text: "The only person you should try to be better than is who you were yesterday.", author: "Unknown" },
+            { text: "Don't decrease the goal. Increase the effort.", author: "Unknown" },
+            { text: "If you want something you've never had, you must do something you've never done.", author: "Thomas Jefferson" },
+            { text: "The pain of discipline weighs ounces while the pain of regret weighs tons.", author: "Jim Rohn" },
+            { text: "One day or day one. You decide.", author: "Unknown" },
+            { text: "The comfort zone is a beautiful place, but nothing ever grows there.", author: "Unknown" },
+            { text: "You are confined only by the walls you build yourself.", author: "Unknown" }
+        ];
+
+        // Quote management
+        window.dislikedQuotes = JSON.parse(localStorage.getItem('dislikedQuotes') || '[]');
+        window.likedQuotes = JSON.parse(localStorage.getItem('likedQuotes') || '[]');
+        window.currentQuoteIndex = null;
+
+        function getFilteredQuotes() {
+            return window.quoteLibrary.filter((quote, index) => 
+                !window.dislikedQuotes.includes(index)
+            );
+        }
+
+        function selectDailyQuote() {
+            const availableQuotes = getFilteredQuotes();
+            if (availableQuotes.length === 0) {
+                // Reset if all quotes are disliked
+                window.dislikedQuotes = [];
+                localStorage.setItem('dislikedQuotes', '[]');
+                return selectDailyQuote();
+            }
+
+            // Weight liked quotes higher
+            let quotePool = [];
+            availableQuotes.forEach(quote => {
+                const originalIndex = window.quoteLibrary.indexOf(quote);
+                quotePool.push(originalIndex);
+                if (window.likedQuotes.includes(originalIndex)) {
+                    // Add liked quotes twice more to the pool (3x chance)
+                    quotePool.push(originalIndex, originalIndex);
+                }
+            });
+
+            // Select random from weighted pool
+            const randomIndex = Math.floor(Math.random() * quotePool.length);
+            window.currentQuoteIndex = quotePool[randomIndex];
+            
+            const selectedQuote = window.quoteLibrary[window.currentQuoteIndex];
+            document.getElementById('quoteText').textContent = `"${selectedQuote.text}"`;
+            document.getElementById('quoteAuthor').textContent = `— ${selectedQuote.author}`;
+        }
+
+        window.likeQuote = function() {
+            if (window.currentQuoteIndex !== null) {
+                if (!window.likedQuotes.includes(window.currentQuoteIndex)) {
+                    window.likedQuotes.push(window.currentQuoteIndex);
+                    localStorage.setItem('likedQuotes', JSON.stringify(window.likedQuotes));
+                }
+                // Show next quote
+                selectDailyQuote();
+            }
+        }
+
+        window.dislikeQuote = function() {
+            if (window.currentQuoteIndex !== null) {
+                if (!window.dislikedQuotes.includes(window.currentQuoteIndex)) {
+                    window.dislikedQuotes.push(window.currentQuoteIndex);
+                    localStorage.setItem('dislikedQuotes', JSON.stringify(window.dislikedQuotes));
+                }
+                // Remove from liked if it was liked
+                const likedIndex = window.likedQuotes.indexOf(window.currentQuoteIndex);
+                if (likedIndex > -1) {
+                    window.likedQuotes.splice(likedIndex, 1);
+                    localStorage.setItem('likedQuotes', JSON.stringify(window.likedQuotes));
+                }
+                // Show next quote
+                selectDailyQuote();
+            }
+        }
+
+        function updateGreeting() {
+            const hour = new Date().getHours();
+            let greeting;
+            
+            if (hour < 5) {
+                greeting = "LATE NIGHT HUSTLE, ANSHUMAN";
+            } else if (hour < 12) {
+                greeting = "GOOD MORNING ANSHUMAN";
+            } else if (hour < 17) {
+                greeting = "GOOD AFTERNOON ANSHUMAN";
+            } else if (hour < 21) {
+                greeting = "GOOD EVENING ANSHUMAN";
+            } else {
+                greeting = "GOOD NIGHT ANSHUMAN";
+            }
+            
+            document.getElementById('greeting').textContent = greeting;
+        }
+
+        // New navigation function for home screen
+        window.switchToSection = function(section) {
+            document.getElementById('homeScreen').style.display = 'none';
+            document.getElementById('sectionSelector').style.display = 'grid';
+            
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            
+            // Show selected section
+            document.getElementById(`${section}Section`).classList.add('active');
+            
+            // Update section selector buttons
+            document.querySelectorAll('.section-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.section-btn[onclick*="${section}"]`).classList.add('active');
         }
 
         // Auth functions
-        window.signInWithGoogle = function() {
-            const provider = new firebase.auth.GoogleAuthProvider();
-            auth.signInWithPopup(provider).catch((error) => {
+        window.signInWithGoogle = async () => {
+            try {
+                updateSyncStatus('syncing');
+                const result = await signInWithPopup(auth, googleProvider);
+                console.log('Signed in with Google:', result.user.email);
+            } catch (error) {
                 console.error('Error signing in with Google:', error);
-                alert('Error signing in: ' + error.message);
-            });
-        }
-
-        window.signOut = function() {
-            if (confirm('Are you sure you want to sign out?')) {
-                auth.signOut().then(() => {
-                    // Reset to auth screen, not PIN screen
-                    document.getElementById('authContainer').classList.remove('hidden');
-                    document.getElementById('mainApp').classList.add('hidden');
-                    closeSettingsModal();
-                });
+                alert('Error signing in. Please try again.');
+                updateSyncStatus('offline');
             }
-        }
+        };
 
-        // Auth state observer
-        auth.onAuthStateChanged((user) => {
-            if (user && window.pinPassed) {
+        window.signInAnonymously = async () => {
+            try {
+                updateSyncStatus('syncing');
+                const result = await firebaseSignInAnonymously(auth);
+                console.log('Signed in anonymously');
+            } catch (error) {
+                console.error('Error signing in anonymously:', error);
+                alert('Error signing in. Please try again.');
+                updateSyncStatus('offline');
+            }
+        };
+
+        window.signOut = async () => {
+            if (confirm('Are you sure you want to sign out?')) {
+                try {
+                    await firebaseSignOut(auth);
+                    console.log('Signed out');
+                } catch (error) {
+                    console.error('Error signing out:', error);
+                }
+            }
+        };
+
+        // Monitor auth state
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
                 window.currentUser = user;
-                document.getElementById('authContainer').classList.add('hidden');
-                document.getElementById('mainApp').classList.remove('hidden');
-                loadData();
-                updateSyncStatus('synced');
-            } else if (!user && window.pinPassed) {
+                document.getElementById('loadingScreen').style.display = 'none';
+                document.getElementById('authScreen').style.display = 'none';
+                document.getElementById('appContent').style.display = 'block';
+                
+                // Show user info
+                const userInfo = document.getElementById('userInfo');
+                if (user.email) {
+                    userInfo.textContent = `${user.email}`;
+                } else {
+                    userInfo.textContent = 'Anonymous User';
+                }
+                
+                // Show PIN screen first
+                document.getElementById('pinLockScreen').style.display = 'flex';
+                document.getElementById('mainApp').style.display = 'none';
+                window.enteredPin = '';
+                updatePinDisplay();
+                
+                // Set up real-time sync
+                setupRealtimeSync(user.uid);
+                
+                // Initialize UI
+                const now = new Date();
+                document.getElementById('approachDate').value = now.toISOString().slice(0, 16);
+                document.getElementById('dateTime').value = now.toISOString().slice(0, 16);
+                
+            } else {
                 window.currentUser = null;
-                document.getElementById('authContainer').classList.remove('hidden');
-                document.getElementById('mainApp').classList.add('hidden');
+                document.getElementById('loadingScreen').style.display = 'none';
+                document.getElementById('authScreen').style.display = 'block';
+                document.getElementById('appContent').style.display = 'none';
             }
         });
 
-        // Load data from Firebase
-        function loadData() {
-            if (!window.currentUser) return;
+        // Set up real-time sync with Firebase
+        function setupRealtimeSync(userId) {
+            const approachesRef = ref(database, `users/${userId}/approaches`);
+            const womenRef = ref(database, `users/${userId}/women`);
+            const datesRef = ref(database, `users/${userId}/dates`);
             
-            const userId = window.currentUser.uid;
-            
-            // Load approaches
-            database.ref(`users/${userId}/approaches`).on('value', (snapshot) => {
-                window.approaches = [];
-                snapshot.forEach((child) => {
-                    window.approaches.push({ firebaseKey: child.key, ...child.val() });
-                });
-                updateApproachesList();
-                updateStats();
+            // Listen for approaches changes
+            onValue(approachesRef, (snapshot) => {
+                const data = snapshot.val();
+                if (data) {
+                    window.approaches = Object.entries(data)
+                        .map(([key, value]) => ({ ...value, firebaseKey: key }))
+                        .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                } else {
+                    window.approaches = [];
+                }
+                updateApproachesUI();
+                updateSyncStatus('synced');
             });
-            
-            // Load dates
-            database.ref(`users/${userId}/dates`).on('value', (snapshot) => {
-                window.dates = [];
-                snapshot.forEach((child) => {
-                    window.dates.push({ firebaseKey: child.key, ...child.val() });
-                });
-                updateDatesList();
-                updateStats();
-            });
-            
-            // Load women with status normalization
-            database.ref(`users/${userId}/women`).on('value', (snapshot) => {
-                window.women = [];
-                snapshot.forEach((child) => {
-                    const womanData = child.val();
-                    // Normalize status to ensure consistency
-                    if (womanData.status === 'In-Process') {
-                        womanData.status = 'In Process';
-                    }
-                    window.women.push({ firebaseKey: child.key, ...womanData });
-                });
-                filterWomen();
+
+            // Listen for women changes
+            onValue(womenRef, (snapshot) => {
+                const data = snapshot.val();
+                if (data) {
+                    window.women = Object.entries(data)
+                        .map(([key, value]) => ({ ...value, firebaseKey: key }));
+                } else {
+                    window.women = [];
+                }
+                updateWomenUI();
                 updateDropdowns();
-                updateStats();
+                updateSyncStatus('synced');
             });
-        }
 
-        // Save functions
-        window.saveApproach = function(event) {
-            event.preventDefault();
-            
-            if (!window.selectedEffort) {
-                alert('Please select an effort level');
-                return;
-            }
-            
-            const approach = {
-                location: document.getElementById('approachLocation').value,
-                effort: window.selectedEffort.level,
-                effortScore: window.selectedEffort.score,
-                notes: document.getElementById('approachNotes').value,
-                womanLink: document.getElementById('approachWomanLink').value,
-                date: new Date().toISOString()
-            };
-            
-            updateSyncStatus('syncing');
-            database.ref(`users/${window.currentUser.uid}/approaches`).push(approach)
-                .then(() => {
-                    updateSyncStatus('synced');
-                    document.getElementById('approachForm').reset();
-                    window.selectedEffort = null;
-                    document.querySelectorAll('.effort-btn').forEach(b => b.classList.remove('selected'));
-                });
-        }
-
-        window.saveDate = function(event) {
-            event.preventDefault();
-            
-            const date = {
-                dateTime: document.getElementById('dateTime').value,
-                woman: document.getElementById('dateWoman').value,
-                location: document.getElementById('dateLocation').value,
-                activity: document.getElementById('dateActivity').value,
-                notes: document.getElementById('dateNotes').value,
-                createdAt: new Date().toISOString()
-            };
-            
-            updateSyncStatus('syncing');
-            database.ref(`users/${window.currentUser.uid}/dates`).push(date)
-                .then(() => {
-                    updateSyncStatus('synced');
-                    document.getElementById('dateForm').reset();
-                });
-        }
-
-        window.saveWoman = function(event) {
-            event.preventDefault();
-            
-            const woman = {
-                name: document.getElementById('womanName').value,
-                phone: document.getElementById('womanPhone').value,
-                status: document.getElementById('womanStatus').value,
-                notes: document.getElementById('womanNotes').value,
-                photos: window.currentPhotos,
-                ratings: window.currentRatings
-            };
-            
-            // Calculate score
-            woman.score = calculateScore(woman.ratings);
-            
-            updateSyncStatus('syncing');
-            
-            if (window.editingWomanKey) {
-                database.ref(`users/${window.currentUser.uid}/women/${window.editingWomanKey}`).set(woman)
-                    .then(() => {
-                        updateSyncStatus('synced');
-                        closeWomanModal();
-                    });
-            } else {
-                database.ref(`users/${window.currentUser.uid}/women`).push(woman)
-                    .then(() => {
-                        updateSyncStatus('synced');
-                        closeWomanModal();
-                    });
-            }
-        }
-
-        // Delete functions
-        window.deleteApproach = function(key) {
-            if (confirm('Are you sure you want to delete this approach?')) {
-                database.ref(`users/${window.currentUser.uid}/approaches/${key}`).remove();
-            }
-        }
-
-        window.deleteDate = function(key) {
-            if (confirm('Are you sure you want to delete this date?')) {
-                database.ref(`users/${window.currentUser.uid}/dates/${key}`).remove();
-            }
-        }
-
-        window.deleteWoman = function(key) {
-            if (confirm('Are you sure you want to delete this woman?')) {
-                database.ref(`users/${window.currentUser.uid}/women/${key}`).remove();
-            }
-        }
-
-        // UI Update functions
-        function updateApproachesList() {
-            const list = document.getElementById('approachesList');
-            const recent = window.approaches.slice(-10).reverse();
-            
-            if (recent.length === 0) {
-                list.innerHTML = `<div class="empty-state">
-                    <div class="empty-state-icon">
-                        <svg fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.293l-3-3a1 1 0 00-1.414 1.414L10.586 9.5H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clip-rule="evenodd"/>
-                        </svg>
-                    </div>
-                    No approaches yet
-                </div>`;
-                return;
-            }
-            
-            list.innerHTML = recent.map(approach => `
-                <div class="list-item">
-                    <div class="list-item-header">
-                        <div>
-                            <strong>${approach.location}</strong>
-                            <div class="list-item-date">${new Date(approach.date).toLocaleDateString()}</div>
-                        </div>
-                        <div class="list-item-score">${approach.effortScore} pts</div>
-                    </div>
-                    ${approach.notes ? `<div style="margin-top: 10px; color: #aaa;">${approach.notes}</div>` : ''}
-                    <button class="btn btn-danger" onclick="deleteApproach('${approach.firebaseKey}')" style="margin-top: 10px;">Delete</button>
-                </div>
-            `).join('');
-        }
-
-        function updateDatesList() {
-            const list = document.getElementById('datesList');
-            const upcoming = window.dates
-                .filter(d => new Date(d.dateTime) >= new Date())
-                .sort((a, b) => new Date(a.dateTime) - new Date(b.dateTime));
-            
-            if (upcoming.length === 0) {
-                list.innerHTML = `<div class="empty-state">
-                    <div class="empty-state-icon">
-                        <svg fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
-                        </svg>
-                    </div>
-                    No upcoming dates
-                </div>`;
-                return;
-            }
-            
-            list.innerHTML = upcoming.map(date => {
-                const woman = window.women.find(w => w.firebaseKey === date.woman);
-                return `
-                    <div class="list-item">
-                        <div class="list-item-header">
-                            <div>
-                                <strong>${date.activity || 'Date'}</strong>
-                                ${woman ? `<div>with ${woman.name}</div>` : ''}
-                                <div class="list-item-date">${new Date(date.dateTime).toLocaleString()}</div>
-                            </div>
-                        </div>
-                        <div style="margin-top: 10px; color: #aaa;">
-                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20" style="display: inline; margin-right: 4px;">
-                                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
-                            </svg>
-                            ${date.location}
-                        </div>
-                        ${date.notes ? `<div style="margin-top: 5px; color: #aaa;">${date.notes}</div>` : ''}
-                        <button class="btn btn-danger" onclick="deleteDate('${date.firebaseKey}')" style="margin-top: 10px;">Delete</button>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        function updateStats() {
-            document.getElementById('weekScore').textContent = getWeekScore();
-            document.getElementById('totalApproaches').textContent = window.approaches.length;
-            document.getElementById('totalDates').textContent = window.dates.length;
-            document.getElementById('totalWomen').textContent = window.women.length;
+            // Listen for dates changes
+            onValue(datesRef, (snapshot) => {
+                const data = snapshot.val();
+                if (data) {
+                    window.dates = Object.entries(data)
+                        .map(([key, value]) => ({ ...value, firebaseKey: key }))
+                        .sort((a, b) => new Date(a.dateTime) - new Date(b.dateTime));
+                } else {
+                    window.dates = [];
+                }
+                updateDatesUI();
+                updateSyncStatus('synced');
+            });
         }
 
         // Section switching
-        window.showSection = function(section) {
-            document.querySelectorAll('.section').forEach(s => s.classList.add('hidden'));
-            document.querySelectorAll('.section-btn').forEach(b => b.classList.remove('active'));
+        window.switchSection = function(section) {
+            // Update buttons
+            document.querySelectorAll('.section-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.section-btn[onclick*="${section}"]`).classList.add('active');
             
-            document.getElementById(`${section}Section`).classList.remove('hidden');
-            event.target.closest('.section-btn').classList.add('active');
+            // Update sections
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(`${section}Section`).classList.add('active');
         }
 
-        // Woman Modal functions
-        window.showWomanForm = function(firebaseKey = null) {
-            window.editingWomanKey = firebaseKey;
-            window.currentPhotos = [];
-            window.currentRatings = {
-                hot: 'medium',
-                like: 'medium',
-                longTerm: 'medium'
-            };
+        // Modal functions
+        window.showApproachForm = function(approachId = null) {
+            window.editingId = approachId;
             
-            if (firebaseKey) {
-                const woman = window.women.find(w => w.firebaseKey === firebaseKey);
+            // Update dropdowns first to ensure women are populated
+            updateDropdowns();
+            
+            if (approachId) {
+                const approach = window.approaches.find(a => a.firebaseKey === approachId);
+                if (approach) {
+                    document.getElementById('approachDate').value = approach.date;
+                    document.getElementById('location').value = approach.location;
+                    document.getElementById('approachWomanLink').value = approach.womanId || '';
+                    document.getElementById('goodFeedback').value = approach.goodFeedback;
+                    document.getElementById('badFeedback').value = approach.badFeedback;
+                    document.getElementById('outcome').value = approach.outcome || '';
+                    document.getElementById('notes').value = approach.notes || '';
+                    window.selectedEffort = { level: approach.effortLevel, score: approach.effortScore };
+                    
+                    // Update effort buttons
+                    document.querySelectorAll('.effort-btn').forEach(btn => {
+                        btn.classList.remove('selected');
+                        if (btn.textContent.toLowerCase().includes(approach.effortLevel)) {
+                            btn.classList.add('selected');
+                        }
+                    });
+                }
+            } else {
+                // Reset form for new entry
+                document.getElementById('approachDate').value = new Date().toISOString().slice(0, 16);
+                document.getElementById('location').value = '';
+                document.getElementById('approachWomanLink').value = '';
+                document.getElementById('goodFeedback').value = '';
+                document.getElementById('badFeedback').value = '';
+                document.getElementById('outcome').value = '';
+                document.getElementById('notes').value = '';
+            }
+            
+            document.getElementById('approachModal').classList.add('active');
+        }
+
+        window.showDateForm = function(dateId = null) {
+            window.editingId = dateId;
+            
+            // Update dropdowns first to ensure women are populated
+            updateDropdowns();
+            
+            if (dateId) {
+                const date = window.dates.find(d => d.firebaseKey === dateId);
+                if (date) {
+                    document.getElementById('dateWoman').value = date.womanId || '';
+                    document.getElementById('dateTime').value = date.dateTime;
+                    document.getElementById('dateVenue').value = date.venue;
+                    document.getElementById('dateNotes').value = date.notes || '';
+                }
+            } else {
+                // Set default to 8:30 PM tonight (or tomorrow if it's already late)
+                const now = new Date();
+                const defaultDate = new Date();
+                
+                // If it's already past 8 PM, default to tomorrow
+                if (now.getHours() >= 20) {
+                    defaultDate.setDate(defaultDate.getDate() + 1);
+                }
+                
+                // Set time to 8:30 PM
+                defaultDate.setHours(20, 30, 0, 0);
+                
+                // Format for datetime-local input
+                const year = defaultDate.getFullYear();
+                const month = String(defaultDate.getMonth() + 1).padStart(2, '0');
+                const day = String(defaultDate.getDate()).padStart(2, '0');
+                const dateTimeString = `${year}-${month}-${day}T20:30`;
+                
+                document.getElementById('dateWoman').value = '';
+                document.getElementById('dateTime').value = dateTimeString;
+                document.getElementById('dateVenue').value = '';
+                document.getElementById('dateNotes').value = '';
+            }
+            
+            document.getElementById('dateModal').classList.add('active');
+        }
+
+        window.showWomanForm = function(womanId = null) {
+            window.editingId = womanId;
+            window.currentRatings = {};
+            window.currentPhotos = [];
+            
+            if (womanId) {
+                const woman = window.women.find(w => w.firebaseKey === womanId);
                 if (woman) {
-                    document.getElementById('womanModalTitle').textContent = 'Edit Woman';
-                    document.getElementById('womanName').value = woman.name || '';
-                    document.getElementById('womanPhone').value = woman.phone || '';
-                    document.getElementById('womanStatus').value = woman.status || 'In Process';
+                    document.getElementById('womanName').value = woman.name;
+                    document.getElementById('womanStatus').value = woman.status;
                     document.getElementById('womanNotes').value = woman.notes || '';
+                    window.currentRatings = woman.ratings || {};
                     window.currentPhotos = woman.photos || [];
-                    window.currentRatings = woman.ratings || window.currentRatings;
                     
                     // Update rating buttons
-                    Object.entries(window.currentRatings).forEach(([category, value]) => {
-                        const buttons = document.querySelectorAll(`.rating-btn[onclick*="setRating('${category}'"]`);
-                        buttons.forEach(btn => {
+                    Object.entries(woman.ratings || {}).forEach(([key, value]) => {
+                        const btns = document.querySelectorAll(`[onclick*="setRating('${key}',"]`);
+                        btns.forEach(btn => {
                             btn.classList.remove('selected');
-                            if (btn.onclick.toString().includes(`'${value}'`)) {
+                            if (btn.onclick.toString().includes(value)) {
                                 btn.classList.add('selected');
                             }
                         });
                     });
                     
+                    // Update photo preview with delete buttons
                     updatePhotoPreview();
                 }
             } else {
-                document.getElementById('womanModalTitle').textContent = 'Add New Woman';
-                document.getElementById('womanForm').reset();
-                updatePhotoPreview();
+                document.getElementById('womanName').value = '';
+                document.getElementById('womanStatus').value = 'in-process';
+                document.getElementById('womanNotes').value = '';
+                document.getElementById('photoPreview').innerHTML = '';
+                document.querySelectorAll('.rating-btn').forEach(btn => btn.classList.remove('selected'));
             }
             
-            document.getElementById('womanModal').style.display = 'block';
+            document.getElementById('womanModal').classList.add('active');
         }
 
-        window.closeWomanModal = function() {
-            document.getElementById('womanModal').style.display = 'none';
-            window.editingWomanKey = null;
-            window.currentPhotos = [];
+        window.closeModal = function(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            window.editingId = null;
         }
 
-        // Woman filtering - FIXED
-        window.filterWomen = function() {
-            const searchTerm = document.querySelector('.search-input')?.value.toLowerCase() || '';
-            let filtered = [...window.women];
+        // Save functions
+        window.saveApproach = async function() {
+            if (!window.currentUser) {
+                alert('Please sign in first');
+                return;
+            }
             
-            // Apply status filters - Only filter if filters are actively selected
+            const date = document.getElementById('approachDate').value;
+            const location = document.getElementById('location').value;
+            const womanId = document.getElementById('approachWomanLink').value;
+            const goodFeedback = document.getElementById('goodFeedback').value;
+            const badFeedback = document.getElementById('badFeedback').value;
+            const outcome = document.getElementById('outcome').value;
+            const notes = document.getElementById('notes').value;
+            
+            if (!date || !location || !goodFeedback || !badFeedback) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            updateSyncStatus('syncing');
+            
+            const approach = {
+                date,
+                location,
+                womanId,
+                effortLevel: window.selectedEffort.level,
+                effortScore: window.selectedEffort.score,
+                goodFeedback,
+                badFeedback,
+                outcome,
+                notes,
+                timestamp: new Date().toISOString()
+            };
+            
+            try {
+                const approachesRef = ref(database, `users/${window.currentUser.uid}/approaches`);
+                
+                if (window.editingId) {
+                    await update(ref(database, `users/${window.currentUser.uid}/approaches/${window.editingId}`), approach);
+                } else {
+                    await push(approachesRef, approach);
+                }
+                
+                closeModal('approachModal');
+                updateSyncStatus('synced');
+            } catch (error) {
+                console.error('Error saving approach:', error);
+                alert('Error saving. Please try again.');
+                updateSyncStatus('offline');
+            }
+        }
+
+        window.saveDate = async function() {
+            if (!window.currentUser) {
+                alert('Please sign in first');
+                return;
+            }
+            
+            const womanId = document.getElementById('dateWoman').value;
+            const dateTime = document.getElementById('dateTime').value;
+            const venue = document.getElementById('dateVenue').value;
+            const notes = document.getElementById('dateNotes').value;
+            
+            // Woman is now optional, only dateTime and venue are required
+            if (!dateTime || !venue) {
+                alert('Please fill in date/time and venue');
+                return;
+            }
+            
+            updateSyncStatus('syncing');
+            
+            const dateObj = {
+                womanId: womanId || null,
+                dateTime,
+                venue,
+                notes,
+                createdAt: new Date().toISOString()
+            };
+            
+            try {
+                const datesRef = ref(database, `users/${window.currentUser.uid}/dates`);
+                
+                if (window.editingId) {
+                    await update(ref(database, `users/${window.currentUser.uid}/dates/${window.editingId}`), dateObj);
+                } else {
+                    await push(datesRef, dateObj);
+                }
+                
+                closeModal('dateModal');
+                updateSyncStatus('synced');
+            } catch (error) {
+                console.error('Error saving date:', error);
+                alert('Error saving. Please try again.');
+                updateSyncStatus('offline');
+            }
+        }
+
+        window.saveWoman = async function() {
+            if (!window.currentUser) {
+                alert('Please sign in first');
+                return;
+            }
+
+            const name = document.getElementById('womanName').value;
+            const status = document.getElementById('womanStatus').value;
+            const notes = document.getElementById('womanNotes').value;
+
+            if (!name) {
+                alert('Please enter a name');
+                return;
+            }
+
+            updateSyncStatus('syncing');
+
+            const score = calculateScore(window.currentRatings);
+
+            const woman = {
+                name,
+                status,
+                ratings: window.currentRatings,
+                notes,
+                photos: window.currentPhotos,
+                score,
+                updatedAt: new Date().toISOString()
+            };
+
+            try {
+                const womenRef = ref(database, `users/${window.currentUser.uid}/women`);
+                
+                if (window.editingId) {
+                    await update(ref(database, `users/${window.currentUser.uid}/women/${window.editingId}`), woman);
+                } else {
+                    woman.createdAt = new Date().toISOString();
+                    await push(womenRef, woman);
+                }
+
+                closeModal('womanModal');
+                updateSyncStatus('synced');
+            } catch (error) {
+                console.error('Error saving woman:', error);
+                alert('Error saving. Please try again.');
+                updateSyncStatus('offline');
+            }
+        }
+
+        // Delete functions
+        window.deleteApproach = async function(approachId) {
+            if (!confirm('Are you sure you want to delete this approach?')) return;
+            
+            try {
+                await remove(ref(database, `users/${window.currentUser.uid}/approaches/${approachId}`));
+            } catch (error) {
+                console.error('Error deleting approach:', error);
+                alert('Error deleting. Please try again.');
+            }
+        }
+
+        window.deleteDate = async function(dateId) {
+            if (!confirm('Are you sure you want to delete this date?')) return;
+            
+            try {
+                await remove(ref(database, `users/${window.currentUser.uid}/dates/${dateId}`));
+            } catch (error) {
+                console.error('Error deleting date:', error);
+                alert('Error deleting. Please try again.');
+            }
+        }
+
+        window.deleteWoman = async function(womanId) {
+            if (!confirm('Are you sure you want to delete this profile?')) return;
+            
+            try {
+                await remove(ref(database, `users/${window.currentUser.uid}/women/${womanId}`));
+            } catch (error) {
+                console.error('Error deleting woman:', error);
+                alert('Error deleting. Please try again.');
+            }
+        }
+
+        // UI Update functions
+        function updateApproachesUI() {
+            // Update week score
+            const weekScore = getWeekScore();
+            document.getElementById('weekScore').textContent = weekScore.toFixed(1);
+            
+            const percentage = Math.min((weekScore / 5) * 100, 100);
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = percentage + '%';
+            progressBar.setAttribute('data-percentage', Math.round(percentage) + '%');
+            
+            // Update approach list
+            const list = document.getElementById('approachList');
+            if (window.approaches.length === 0) {
+                list.innerHTML = '<div class="empty-state"><div class="empty-state-icon">—</div>No approaches yet</div>';
+                return;
+            }
+            
+            list.innerHTML = window.approaches.slice(0, 10).map(approach => {
+                const date = new Date(approach.date);
+                const woman = approach.womanId ? window.women.find(w => w.firebaseKey === approach.womanId) : null;
+                
+                return `
+                    <div class="approach-item" onclick="showApproachForm('${approach.firebaseKey}')">
+                        <div class="approach-header">
+                            <span class="approach-date">${date.toLocaleDateString()}</span>
+                            <span style="background: ${approach.effortLevel === 'high' ? 'rgba(0, 255, 136, 0.15)' : approach.effortLevel === 'medium' ? 'rgba(255, 170, 0, 0.15)' : 'rgba(255, 51, 102, 0.15)'}; color: ${approach.effortLevel === 'high' ? '#00ff88' : approach.effortLevel === 'medium' ? '#ffaa00' : '#ff3366'}; padding: 4px 10px; border-radius: 6px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid ${approach.effortLevel === 'high' ? 'rgba(0, 255, 136, 0.3)' : approach.effortLevel === 'medium' ? 'rgba(255, 170, 0, 0.3)' : 'rgba(255, 51, 102, 0.3)'};">
+                                ${approach.effortLevel} +${approach.effortScore}
+                            </span>
+                        </div>
+                        <div style="color: #888; font-size: 13px; margin: 8px 0;">
+                            <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24" style="vertical-align: middle; margin-right: 4px;">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                            </svg>
+                            ${approach.location}
+                        </div>
+                        ${woman ? `<div style="color: #aaa; font-size: 13px;">
+                            <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24" style="vertical-align: middle; margin-right: 4px;">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                            </svg>
+                            ${woman.name}
+                        </div>` : ''}
+                        <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255, 255, 255, 0.05);">
+                            <div style="color: #00ff88; font-size: 13px;">✓ ${approach.goodFeedback}</div>
+                            <div style="color: #ff3366; font-size: 13px; margin-top: 5px;">→ ${approach.badFeedback}</div>
+                        </div>
+                        <div class="edit-actions">
+                            <button class="btn btn-warning" onclick="event.stopPropagation(); showApproachForm('${approach.firebaseKey}')" style="flex: 1;">Edit</button>
+                            <button class="btn btn-danger" onclick="event.stopPropagation(); deleteApproach('${approach.firebaseKey}')" style="flex: 1;">Delete</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function updateDatesUI() {
+            const now = new Date();
+            const upcoming = window.dates.filter(d => new Date(d.dateTime) >= now);
+            const past = window.dates.filter(d => new Date(d.dateTime) < now);
+            
+            // Update upcoming dates
+            const upcomingList = document.getElementById('upcomingDates');
+            if (upcoming.length === 0) {
+                upcomingList.innerHTML = '<div class="empty-state"><div class="empty-state-icon">—</div>No upcoming dates</div>';
+            } else {
+                upcomingList.innerHTML = upcoming.map(date => {
+                    const woman = date.womanId ? window.women.find(w => w.firebaseKey === date.womanId) : null;
+                    const dateObj = new Date(date.dateTime);
+                    
+                    return `
+                        <div class="date-card">
+                            <div class="date-header">
+                                <span class="date-time">${dateObj.toLocaleDateString()} ${dateObj.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+                                <span class="date-woman">${woman ? woman.name : 'TBD'}</span>
+                            </div>
+                            <div style="color: #666; margin: 10px 0;">
+                                <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24" style="vertical-align: middle; margin-right: 4px;">
+                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                                </svg>
+                                ${date.venue}
+                            </div>
+                            ${date.notes ? `<div style="color: #999; font-size: 14px;">📝 ${date.notes}</div>` : ''}
+                            <div class="edit-actions">
+                                <button class="btn btn-warning" onclick="showDateForm('${date.firebaseKey}')" style="flex: 1;">Edit</button>
+                                <button class="btn btn-danger" onclick="deleteDate('${date.firebaseKey}')" style="flex: 1;">Delete</button>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+            
+            // Update past dates
+            const pastList = document.getElementById('pastDates');
+            if (past.length === 0) {
+                pastList.innerHTML = '<div class="empty-state"><div class="empty-state-icon">—</div>No past dates</div>';
+            } else {
+                pastList.innerHTML = past.slice(0, 5).map(date => {
+                    const woman = date.womanId ? window.women.find(w => w.firebaseKey === date.womanId) : null;
+                    const dateObj = new Date(date.dateTime);
+                    
+                    return `
+                        <div class="date-card" style="opacity: 0.8;">
+                            <div class="date-header">
+                                <span class="date-time">${dateObj.toLocaleDateString()}</span>
+                                <span class="date-woman">${woman ? woman.name : 'TBD'}</span>
+                            </div>
+                            <div style="color: #666;">
+                                <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24" style="vertical-align: middle; margin-right: 4px;">
+                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                                </svg>
+                                ${date.venue}
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+        }
+
+        function updateWomenUI() {
+            filterWomen();
+        }
+
+        window.filterWomen = function() {
+            const searchTerm = document.getElementById('wmsSearch').value.toLowerCase();
+            let filtered = window.women;
+            
+            // Apply status filters
             if (window.activeFilters.length > 0) {
-                filtered = filtered.filter(w => {
-                    return window.activeFilters.includes(w.status);
-                });
+                filtered = filtered.filter(w => window.activeFilters.includes(w.status));
             }
             
             // Apply search
@@ -1534,48 +2344,32 @@
             }
             
             // Sort by score
-            filtered.sort((a, b) => (b.score || 0) - (a.score || 0));
+            filtered.sort((a, b) => b.score - a.score);
             
             const grid = document.getElementById('womanGrid');
             if (filtered.length === 0) {
-                grid.innerHTML = `<div class="empty-state">
-                    <div class="empty-state-icon">
-                        <svg fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
-                        </svg>
-                    </div>
-                    No women found
-                </div>`;
+                grid.innerHTML = '<div class="empty-state"><div class="empty-state-icon">👩</div>No women found</div>';
                 return;
             }
             
             grid.innerHTML = filtered.map(woman => {
                 const photoHtml = woman.photos && woman.photos.length > 0 
                     ? `<img src="${woman.photos[0]}" style="width: 60px; height: 60px; border-radius: 10px; object-fit: cover; margin-right: 10px;">`
-                    : `<div style="width: 60px; height: 60px; border-radius: 10px; background: rgba(255, 255, 255, 0.1); margin-right: 10px; display: flex; align-items: center; justify-content: center;">
-                        <svg width="30" height="30" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
-                        </svg>
-                    </div>`;
-                
-                // Ensure consistent status formatting for CSS classes
-                const statusClass = woman.status.replace(/\s+/g, '-');
+                    : '<div style="width: 60px; height: 60px; border-radius: 10px; background: #f0f0f0; margin-right: 10px; display: flex; align-items: center; justify-content: center;">👩</div>';
                 
                 return `
                     <div class="woman-card" onclick="showWomanForm('${woman.firebaseKey}')">
-                        <div class="woman-score">${woman.score || 'N/A'}</div>
+                        <div class="woman-score">${woman.score}</div>
                         <div style="display: flex; align-items: center;">
                             ${photoHtml}
                             <div style="flex: 1;">
                                 <div style="font-weight: 600; font-size: 16px; margin-bottom: 5px;">${woman.name}</div>
-                                <span class="woman-status-badge status-${statusClass}">${woman.status}</span>
-                                ${woman.ratings ? `
+                                <span class="woman-status-badge status-${woman.status.replace(' ', '-')}">${woman.status}</span>
                                 <div style="margin-top: 10px;">
                                     ${createRatingDisplay(woman.ratings.hot)} Hot<br>
                                     ${createRatingDisplay(woman.ratings.like)} Like<br>
                                     ${createRatingDisplay(woman.ratings.longTerm)} LTR
                                 </div>
-                                ` : ''}
                             </div>
                         </div>
                         <div class="edit-actions">
@@ -1595,7 +2389,7 @@
                     window.women.map(w => `<option value="${w.firebaseKey}">${w.name}</option>`).join('');
             }
             
-            // Update woman select in date form - show ALL women
+            // Update woman select in date form - show ALL women, not just current/in-process
             const dateSelect = document.getElementById('dateWoman');
             if (dateSelect) {
                 dateSelect.innerHTML = '<option value="">No specific woman</option>' + 
@@ -1688,9 +2482,29 @@
 
         function calculateScore(ratings) {
             const weights = {
-                hot: 0.4,
-                like: 0.3,
-                longTerm: 0.3
+                // Personality (25%)
+                funny: 0.05,
+                sweet: 0.05,
+                lowMaintenance: 0.05,
+                loyal: 0.05,
+                intelligence: 0.05,
+                // Body (30%)
+                tits: 0.04,
+                ass: 0.04,
+                height: 0.04,
+                face: 0.06,
+                hair: 0.04,
+                nails: 0.04,
+                tummy: 0.04,
+                // Fashion and Class (15%)
+                clothing: 0.05,
+                money: 0.05,
+                classy: 0.05,
+                // Overall (30%)
+                status: 0.075,
+                hot: 0.075,
+                like: 0.075,
+                longTerm: 0.075
             };
 
             const valueMap = { low: 3, medium: 6.5, high: 10 };
@@ -1734,6 +2548,12 @@
                     text.textContent = 'Offline';
                     break;
             }
+        }
+
+        window.switchTab = function(tab) {
+            // This is for the bottom nav if you want to add more views later
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            event.target.closest('.nav-item').classList.add('active');
         }
     </script>
 </body>
