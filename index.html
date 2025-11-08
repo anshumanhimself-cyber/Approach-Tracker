@@ -1162,8 +1162,8 @@
             </div>
 
             <div style="display: flex; gap: 10px;">
-                <button class="btn btn-success" onclick="saveApproach()" style="flex: 1;">Save</button>
-                <button class="btn btn-danger" onclick="closeModal('approachModal')" style="flex: 1;">Cancel</button>
+                <button type="button" class="btn btn-success" onclick="saveApproach()" style="flex: 1;">Save</button>
+                <button type="button" class="btn btn-danger" onclick="closeModal('approachModal')" style="flex: 1;">Cancel</button>
             </div>
         </div>
     </div>
@@ -1177,9 +1177,9 @@
             </div>
 
             <div class="form-group">
-                <label>Woman</label>
+                <label>Woman (Optional)</label>
                 <select id="dateWoman">
-                    <option value="">Select woman...</option>
+                    <option value="">No specific woman</option>
                 </select>
             </div>
 
@@ -1199,8 +1199,8 @@
             </div>
 
             <div style="display: flex; gap: 10px;">
-                <button class="btn btn-success" onclick="saveDate()" style="flex: 1;">Save</button>
-                <button class="btn btn-danger" onclick="closeModal('dateModal')" style="flex: 1;">Cancel</button>
+                <button type="button" class="btn btn-success" onclick="saveDate()" style="flex: 1;">Save</button>
+                <button type="button" class="btn btn-danger" onclick="closeModal('dateModal')" style="flex: 1;">Cancel</button>
             </div>
         </div>
     </div>
@@ -1232,7 +1232,7 @@
                 <label>Photos (up to 5)</label>
                 <div class="photo-upload-area">
                     <input type="file" id="photoUpload" accept="image/*" multiple onchange="handlePhotoUpload(event)" style="display: none;">
-                    <button onclick="document.getElementById('photoUpload').click()" class="btn btn-primary btn-full">
+                    <button type="button" onclick="document.getElementById('photoUpload').click()" class="btn btn-primary btn-full">
                         Select Photos
                     </button>
                     <p style="font-size: 12px; color: #999; margin-top: 10px; text-align: center;">
@@ -1417,8 +1417,8 @@
             </div>
 
             <div style="display: flex; gap: 10px;">
-                <button class="btn btn-success" onclick="saveWoman()" style="flex: 1;">Save</button>
-                <button class="btn btn-danger" onclick="closeModal('womanModal')" style="flex: 1;">Cancel</button>
+                <button type="button" class="btn btn-success" onclick="saveWoman()" style="flex: 1;">Save</button>
+                <button type="button" class="btn btn-danger" onclick="closeModal('womanModal')" style="flex: 1;">Cancel</button>
             </div>
         </div>
     </div>
@@ -1441,10 +1441,10 @@
                 <input type="text" id="confirmPin" placeholder="Confirm new 4-digit PIN" maxlength="4" pattern="\d{4}">
             </div>
 
-            <button class="btn btn-primary btn-full" onclick="updatePin()">UPDATE PIN</button>
+            <button type="button" class="btn btn-primary btn-full" onclick="updatePin()">UPDATE PIN</button>
 
             <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
-                <button class="btn btn-danger btn-full" onclick="lockApp()">LOCK APP</button>
+                <button type="button" class="btn btn-danger btn-full" onclick="lockApp()">LOCK APP</button>
             </div>
         </div>
     </div>
@@ -1944,14 +1944,32 @@
             if (dateId) {
                 const date = window.dates.find(d => d.firebaseKey === dateId);
                 if (date) {
-                    document.getElementById('dateWoman').value = date.womanId;
+                    document.getElementById('dateWoman').value = date.womanId || '';
                     document.getElementById('dateTime').value = date.dateTime;
                     document.getElementById('dateVenue').value = date.venue;
                     document.getElementById('dateNotes').value = date.notes || '';
                 }
             } else {
+                // Set default to 8:30 PM tonight (or tomorrow if it's already late)
+                const now = new Date();
+                const defaultDate = new Date();
+                
+                // If it's already past 8 PM, default to tomorrow
+                if (now.getHours() >= 20) {
+                    defaultDate.setDate(defaultDate.getDate() + 1);
+                }
+                
+                // Set time to 8:30 PM
+                defaultDate.setHours(20, 30, 0, 0);
+                
+                // Format for datetime-local input
+                const year = defaultDate.getFullYear();
+                const month = String(defaultDate.getMonth() + 1).padStart(2, '0');
+                const day = String(defaultDate.getDate()).padStart(2, '0');
+                const dateTimeString = `${year}-${month}-${day}T20:30`;
+                
                 document.getElementById('dateWoman').value = '';
-                document.getElementById('dateTime').value = new Date().toISOString().slice(0, 16);
+                document.getElementById('dateTime').value = dateTimeString;
                 document.getElementById('dateVenue').value = '';
                 document.getElementById('dateNotes').value = '';
             }
@@ -2067,15 +2085,16 @@
             const venue = document.getElementById('dateVenue').value;
             const notes = document.getElementById('dateNotes').value;
             
-            if (!womanId || !dateTime || !venue) {
-                alert('Please fill in all required fields');
+            // Woman is now optional, only dateTime and venue are required
+            if (!dateTime || !venue) {
+                alert('Please fill in date/time and venue');
                 return;
             }
             
             updateSyncStatus('syncing');
             
             const dateObj = {
-                womanId,
+                womanId: womanId || null,
                 dateTime,
                 venue,
                 notes,
@@ -2245,19 +2264,24 @@
             // Update upcoming dates
             const upcomingList = document.getElementById('upcomingDates');
             if (upcoming.length === 0) {
-                upcomingList.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📅</div>No upcoming dates</div>';
+                upcomingList.innerHTML = '<div class="empty-state"><div class="empty-state-icon">—</div>No upcoming dates</div>';
             } else {
                 upcomingList.innerHTML = upcoming.map(date => {
-                    const woman = window.women.find(w => w.firebaseKey === date.womanId);
+                    const woman = date.womanId ? window.women.find(w => w.firebaseKey === date.womanId) : null;
                     const dateObj = new Date(date.dateTime);
                     
                     return `
                         <div class="date-card">
                             <div class="date-header">
                                 <span class="date-time">${dateObj.toLocaleDateString()} ${dateObj.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
-                                <span class="date-woman">${woman ? woman.name : 'Unknown'}</span>
+                                <span class="date-woman">${woman ? woman.name : 'TBD'}</span>
                             </div>
-                            <div style="color: #666; margin: 10px 0;">📍 ${date.venue}</div>
+                            <div style="color: #666; margin: 10px 0;">
+                                <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24" style="vertical-align: middle; margin-right: 4px;">
+                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                                </svg>
+                                ${date.venue}
+                            </div>
                             ${date.notes ? `<div style="color: #999; font-size: 14px;">📝 ${date.notes}</div>` : ''}
                             <div class="edit-actions">
                                 <button class="btn btn-warning" onclick="showDateForm('${date.firebaseKey}')" style="flex: 1;">Edit</button>
@@ -2271,19 +2295,24 @@
             // Update past dates
             const pastList = document.getElementById('pastDates');
             if (past.length === 0) {
-                pastList.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📜</div>No past dates</div>';
+                pastList.innerHTML = '<div class="empty-state"><div class="empty-state-icon">—</div>No past dates</div>';
             } else {
                 pastList.innerHTML = past.slice(0, 5).map(date => {
-                    const woman = window.women.find(w => w.firebaseKey === date.womanId);
+                    const woman = date.womanId ? window.women.find(w => w.firebaseKey === date.womanId) : null;
                     const dateObj = new Date(date.dateTime);
                     
                     return `
                         <div class="date-card" style="opacity: 0.8;">
                             <div class="date-header">
                                 <span class="date-time">${dateObj.toLocaleDateString()}</span>
-                                <span class="date-woman">${woman ? woman.name : 'Unknown'}</span>
+                                <span class="date-woman">${woman ? woman.name : 'TBD'}</span>
                             </div>
-                            <div style="color: #666;">📍 ${date.venue}</div>
+                            <div style="color: #666;">
+                                <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24" style="vertical-align: middle; margin-right: 4px;">
+                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                                </svg>
+                                ${date.venue}
+                            </div>
                         </div>
                     `;
                 }).join('');
@@ -2354,7 +2383,7 @@
             
             // Update woman select in date form
             const dateSelect = document.getElementById('dateWoman');
-            dateSelect.innerHTML = '<option value="">Select woman...</option>' + 
+            dateSelect.innerHTML = '<option value="">No specific woman</option>' + 
                 window.women.filter(w => w.status === 'current' || w.status === 'in-process')
                     .map(w => `<option value="${w.firebaseKey}">${w.name}</option>`).join('');
         }
