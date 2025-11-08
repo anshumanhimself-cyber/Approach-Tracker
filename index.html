@@ -1904,6 +1904,9 @@
         window.showApproachForm = function(approachId = null) {
             window.editingId = approachId;
             
+            // Update dropdowns first to ensure women are populated
+            updateDropdowns();
+            
             if (approachId) {
                 const approach = window.approaches.find(a => a.firebaseKey === approachId);
                 if (approach) {
@@ -1940,6 +1943,9 @@
 
         window.showDateForm = function(dateId = null) {
             window.editingId = dateId;
+            
+            // Update dropdowns first to ensure women are populated
+            updateDropdowns();
             
             if (dateId) {
                 const date = window.dates.find(d => d.firebaseKey === dateId);
@@ -2378,14 +2384,17 @@
         function updateDropdowns() {
             // Update woman select in approach form
             const approachSelect = document.getElementById('approachWomanLink');
-            approachSelect.innerHTML = '<option value="">None</option>' + 
-                window.women.map(w => `<option value="${w.firebaseKey}">${w.name}</option>`).join('');
+            if (approachSelect) {
+                approachSelect.innerHTML = '<option value="">None</option>' + 
+                    window.women.map(w => `<option value="${w.firebaseKey}">${w.name}</option>`).join('');
+            }
             
-            // Update woman select in date form
+            // Update woman select in date form - show ALL women, not just current/in-process
             const dateSelect = document.getElementById('dateWoman');
-            dateSelect.innerHTML = '<option value="">No specific woman</option>' + 
-                window.women.filter(w => w.status === 'current' || w.status === 'in-process')
-                    .map(w => `<option value="${w.firebaseKey}">${w.name}</option>`).join('');
+            if (dateSelect) {
+                dateSelect.innerHTML = '<option value="">No specific woman</option>' + 
+                    window.women.map(w => `<option value="${w.firebaseKey}">${w.name} (${w.status})</option>`).join('');
+            }
         }
 
         // Helper functions
