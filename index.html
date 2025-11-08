@@ -1001,19 +1001,23 @@
     <script>
         // Firebase configuration
         const firebaseConfig = {
-            apiKey: "AIzaSyCGafoTZ1pnCNlPFb-ZZa7aH2G-cd4eyik",
-            authDomain: "datingboss.firebaseapp.com",
-            databaseURL: "https://datingboss-default-rtdb.firebaseio.com",
-            projectId: "datingboss",
-            storageBucket: "datingboss.appspot.com",
-            messagingSenderId: "731059230379",
-            appId: "1:731059230379:web:b96d969c4dae652e5e66c8"
+            apiKey: "AIzaSyCaQwlzC_QhVJA_NhgJHrQFR-8f6aYyiIA",
+            authDomain: "approach-tracker.firebaseapp.com",
+            databaseURL: "https://approach-tracker-default-rtdb.firebaseio.com",
+            projectId: "approach-tracker",
+            storageBucket: "approach-tracker.firebasestorage.app",
+            messagingSenderId: "175879600021",
+            appId: "1:175879600021:web:2c7b64f9a4eb32f473e89c"
         };
 
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
         const database = firebase.database();
+        
+        // Enable persistence for offline support
+        firebase.database().goOffline();
+        firebase.database().goOnline();
 
         // Global state
         window.currentUser = null;
@@ -1062,16 +1066,17 @@
 
         function checkPin() {
             if (window.enteredPin === window.correctPin) {
-                // PIN correct - sign in anonymously and show app
-                auth.signInAnonymously().then(() => {
-                    document.getElementById('pinContainer').classList.add('hidden');
-                    document.getElementById('mainApp').classList.remove('hidden');
-                    document.getElementById('settingsBtn').classList.remove('hidden');
-                    document.getElementById('syncStatus').classList.remove('hidden');
-                }).catch((error) => {
-                    console.error('Error signing in:', error);
-                    alert('Error connecting to server');
-                    clearPin();
+                // PIN correct - show app and then try to sign in
+                document.getElementById('pinContainer').classList.add('hidden');
+                document.getElementById('mainApp').classList.remove('hidden');
+                document.getElementById('settingsBtn').classList.remove('hidden');
+                document.getElementById('syncStatus').classList.remove('hidden');
+                
+                // Try to sign in anonymously for Firebase sync
+                auth.signInAnonymously().catch((error) => {
+                    console.error('Firebase connection error:', error);
+                    updateSyncStatus('offline');
+                    // Still allow app to work offline
                 });
             } else {
                 // PIN incorrect
